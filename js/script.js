@@ -58,3 +58,31 @@ function validateForm(){
     }
     return true;
 }
+
+function getLocation(callback) {
+    if (navigator.geolocation) {
+        const lat_lng = navigator.geolocation.getCurrentPosition(function (position) {
+            const user_position = {};
+            user_position.lat = position.coords.latitude;
+            user_position.lng = position.coords.longitude;
+            callback(user_position);
+        });
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+}
+getLocation(function(lat_lng){
+    console.log(lat_lng);
+});
+
+function initMap() {
+    const options = {
+        zoom: 15,
+        center: {lat: 33.933241, lng: -84.340288},
+    };
+    const map = new google.maps.Map(document.getElementById('map'), options);
+    const marker = new google.maps.Marker({
+        position: {lat: 33.933241, lng: -84.340288},
+        map: map,
+    });
+}
