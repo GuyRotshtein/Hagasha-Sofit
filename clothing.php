@@ -19,8 +19,7 @@
 
 <body>
     <header class="p-4 py-3 border-bottom">
-        <div class="d-flex align-items-center justify-content-center justify-content-md-between "
-            style="grid-template-columns: 1fr 2fr;">
+        <div class="d-flex align-items-center justify-content-center justify-content-md-between header-wrapper">
             <!--    Hamburger menu-->
             <div class="col-4">
             <div class="mb-2 mb-md-0 header-hamburger">
@@ -37,7 +36,7 @@
                     <div class="offcanvas-body">
                         <div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item" class="nav-item"><a href="./index.html"
+                                <li class="list-group-item" class="nav-item"><a href="index.php"
                                         class="nav-link">Home</a></li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Closet</a>
                                 </li>
@@ -53,8 +52,8 @@
             </div>
             <!--    logo      -->
             <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-                <a class="clother-logo" href="./index.html"> <img src="./images/icons/new_logo.png" class=""
-                        height="40"></a>
+                <a class="clother-logo" href="index.php"> <img src="./images/icons/new_logo.png" class=""
+                                                               height="40"></a>
             </div>
             <!--    User panel    -->
             <div class="col-4 d-flex justify-content-end text-end header-user-menu">
@@ -81,11 +80,11 @@
                 <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link"
-                                                                           href="./index.html">Home</a></li>
+                                                                           href="index.php">Home</a></li>
                         <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link"
-                                                                           href="./index.html">Closet</a></li>
+                                                                           href="index.php">Closet</a></li>
                         <li class="breadcrumb-item active" aria-current="page"><a class="breadcrumb-link"
-                                                                                  href="./index.html">Business attire</a></li>
+                                                                                  href="index.php">Business attire</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Flannel long sleeved shirt</li>
                     </ol>
                 </nav>
@@ -99,7 +98,7 @@
                 <div class="col">
                     <!--        breadcrumbs         -->
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" class="nav-item"><a href="./index.html"
+                        <li class="list-group-item" class="nav-item"><a href="index.php"
                                                                         class="nav-link px-3">Home</a></li>
                         <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Closet</a>
                         </li>
@@ -121,7 +120,7 @@
                                 <h1>Details</h1>
                             </div>
                             <div class="col-9 d-flex flex-row-reverse">
-                                <form class="py-2" action="./clothing.html" method="get">
+                                <form class="py-2" action="clothing.php" method="get">
                                     <input type="hidden" name="clothingId" value="1">
                                     <button type="submit" class="btn text-right text-hide clothingButton"
                                         id="editClothingBtn"></button>
@@ -211,7 +210,7 @@
                     <!--            Blue line           -->
                     <div class="row py-4">
                         <div class="col mx-auto text-center">
-                            <form action="./clothing.html" method="get">
+                            <form action="clothing.php" method="get">
                                 <input type="hidden" name="clothingId" value="1">
                                 <button type="button" class="btn text-right text-hide clothingButton"
                                     data-bs-toggle="modal" data-bs-target="#exampleModal" id="removeClothingBtn">Remove

@@ -19,8 +19,7 @@
 
 <body>
   <header class="p-4 py-3 border-bottom">
-    <div class="d-flex align-items-center justify-content-center justify-content-md-between "
-      style="grid-template-columns: 1fr 2fr;">
+    <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
       <!--    Hamburger menu-->
       <div class="col-4 mb-2 mb-md-0 header-hamburger">
         <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
@@ -36,7 +35,7 @@
           <div class="offcanvas-body">
             <div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item" class="nav-item"><a href="./index.html" class="nav-link">Home</a></li>
+                <li class="list-group-item" class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Closet</a></li>
                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a></li>
                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a></li>
@@ -47,7 +46,7 @@
       </div>
       <!--    logo      -->
       <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-        <a class="clother-logo" href="./index.html"> <img src="./images/icons/new_logo.png" class="" height="40"></a>
+        <a class="clother-logo" href="index.php"> <img src="./images/icons/new_logo.png" class="" height="40"></a>
       </div>
       <!--    User panel    -->
       <div class="col-4 d-flex justify-content-end text-end header-user-menu">
@@ -100,19 +99,19 @@
               <div class="card-group d-flex flex-wrap">
                 <div class="card text-bg-transparent border-0">
                   <img src="images/coats/brown-coat.png" class="card-img " alt="Brown coat" title="Brown coat">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
                 <div class="card text-bg-transparent border-0">
                   <img src="images/coats/beige-coat.png" class="card-img " alt="Beige coat" title="Beige coat">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
                 <div class="card text-bg-transparent border-0">
                   <img src="images/coats/black-coat.png" class="card-img " alt="Black coat" title="Black coat">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
@@ -124,33 +123,33 @@
               <div class="card-group d-flex flex-wrap">
                 <div class="card text-bg-transparent border-0">
                   <img src="images/jackets/black-jacket.png" class="card-img " alt="Black jacket" title="Black jacket">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
                 <div class="card text-bg-transparent border-0">
                   <img src="images/jackets/blue-jacket.png" class="card-img " alt="Blue jacket" title="Blue jacket">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
                 <div class="card text-bg-transparent border-0">
                   <img src="images/jackets/leather-black-jacket.png" class="card-img" alt="Leather black jacket"
                     title="Leather black jacket">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
                 <div class="card text-bg-transparent border-0">
                   <img src="images/jackets/purple-jacket.png" class="card-img" alt="Purple jacket"
                     title="Purple jacket">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
                 <div class="card text-bg-transparent border-0">
                   <img src="images/jackets/white-jacket.png" class="card-img" alt="White jacket" title="White jacket">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
@@ -161,28 +160,28 @@
               <div class="card-group d-flex flex-wrap">
                 <div class="card text-bg-transparent border-0">
                   <img src="images/shirts/black-shirt.png" class="card-img " alt="Black shirt" title="Black shirt">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
                 <div class="card text-bg-transparent border-0">
                   <img src="images/shirts/flannel-striped-shirt.png" class="card-img " alt="Flannel striped shirt"
                     title="Flannel striped shirt">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
                 <div class="card text-bg-transparent border-0">
                   <img src="images/shirts/light-blue-shirt.png" class="card-img " alt="Light blue shirt"
                     title="Light blue shirt">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
                 <div class="card text-bg-transparent border-0">
                   <img src="images/shirts/navy-blue-shirt.png" class="card-img " alt="Navy blue shirt"
                     title="Navy blue shirt">
-                  <a href="clothing.html?clothingId=1">
+                  <a href="clothing.php?clothingId=1">
                     <div class="card-img-overlay"></div>
                   </a>
                 </div>
@@ -194,7 +193,7 @@
       <!--      Add clothing button     -->
       <div class="row">
         <div id="add-clothing" class="col-12 mx-auto d-flex justify-content-center">
-          <a href="./addClothing.html" class="img btn mx-auto p-0 clothingButton" role="button">
+          <a href="addClothing.php" class="img btn mx-auto p-0 clothingButton" role="button">
 
           </a>
         </div>

@@ -17,8 +17,7 @@
 </head>
 <body>
 <header class="p-4 py-3 border-bottom">
-    <div class="d-flex align-items-center justify-content-center justify-content-md-between "
-         style="grid-template-columns: 1fr 2fr;">
+    <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
         <div class="col-4 mb-2 mb-md-0 header-hamburger">
             <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
@@ -34,7 +33,7 @@
                 <div class="offcanvas-body">
                     <div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" class="nav-item"><a href="./index.html"
+                            <li class="list-group-item" class="nav-item"><a href="index.php"
                                                                             class="nav-link">Home</a></li>
                             <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Closet</a>
                             </li>
@@ -49,8 +48,8 @@
         </div>
         <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-            <a class="clother-logo" href="./index.html"> <img src="./images/icons/new_logo.png" class=""
-                                                              height="40"></a>
+            <a class="clother-logo" href="index.php"> <img src="./images/icons/new_logo.png" class=""
+                                                           height="40"></a>
         </div>
         <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
@@ -76,7 +75,7 @@
         <!--        breadcrumbs         -->
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="./index.html">Home</a></li>
+                <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="index.php">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Closets List</li>
             </ol>
         </nav>
@@ -99,7 +98,7 @@
                 <!--    Closet Example 1 - Business attire     -->
                 <div class="row px-2 closet-preview">
                 <!--    Closet name; possibly include in <a> tag-->
-                    <a href="./index.html">
+                    <a href="index.php">
                         <h2>Business attire</h2>
                         <!--    Some random items from the closet. Maybe first from each type. maximum of 5, spread across the entire row -> NO FLEX, USE VW+VH FOR IMAGES-->
                         <div class="card-group d-flex justify-content-between" >
