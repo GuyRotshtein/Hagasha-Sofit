@@ -1,3 +1,13 @@
+<?php
+include "config.php";
+
+session_start();
+
+if(!isset($_SESSION["user"])){
+    echo 'no user ID found! ' ;
+    header('Location: ' . URL . 'login.php');
+} else {}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,13 +24,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<!--    <script defer src="<https://maps.googleapis.com/maps/api/js?key=**YOUR_API_KEY**&callback=initMap>"></script>-->
     <title>Clother - Home</title>
 </head>
 <body>
 <header class="p-4 py-3 border-bottom">
-    <div class="d-flex align-items-center justify-content-center justify-content-md-between "
-         style="grid-template-columns: 1fr 2fr;">
+    <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
         <div class="col-4">
             <div class="mb-2 mb-md-0 header-hamburger">
@@ -69,25 +77,25 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </header>
 <main>
-    <div class="row ">
-        <div class="col ">
-            <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page">Home</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
     <div class="row">
         <div id="desktop-menu" class="col-3 py-2 border-end border-primary-subtle border-3">
             <div class="row">
+            </div>
+            <div class="row ">
+                <div class="col ">
+                    <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page">Home</li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
             <div class="row">
                 <div class="col">
@@ -124,8 +132,8 @@
                             <h5>Recommendations</h5>
                             <div class="col-1"></div>
                             <div class="col">
-                                <div class="card-group d-flex flex-wrap p-2 bg-secondary gap-3">
-                                    <div class="card text-bg-transparent border-0 bg-primary">
+                                <div id="rec_clothes" class="card-group d-flex flex-wrap p-2 bg-secondary gap-3">
+                                    <div class="card text-bg-transparent border-0">
                                         <img src="images/jackets/black-jacket.png" class="card-img " alt="Black jacket" title="Black jacket">
                                         <a href="clothing.html?clothingId=1">
                                             <div class="card-img-overlay"></div>
@@ -162,13 +170,16 @@
                             <div class="col-1"></div>
                         </div>
 <!--                        Map & Weather-->
-                        <div class="row justify-content-center">
-                            <div class="col-4">
+                        <div class="row justify-content-center pb-3">
+                            <div class="col-6">
                                 <div class="row">
                                     <h4>Map</h4>
                                 </div>
-                                <div class="row">
-                                    <div id="googleMap"></div>
+                                <div class="row justify-content-center">
+                                    <div class="col-10">
+                                        <div id="googleMap" class="rounded-3"></div>
+                                    </div>
+
                                 </div>
 
 

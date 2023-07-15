@@ -30,6 +30,9 @@ a{
 header{
     background-color: white;
 }
+.clother-logo img{
+    height: 40px;
+}
 header-container{
     grid-template-columns: 1fr 2fr;
 }
@@ -109,6 +112,10 @@ header-container{
     color: #5C90DF;
     transition: 0.15s;
 }
+#googleMap{
+    height: 400px;
+}
+
 @media only screen and (max-width: 900px) {
     #desktop-menu{
         display: none;
@@ -116,9 +123,22 @@ header-container{
     .breadcrumb {
         display: none;
     }
+    #rec_clothes .card, #rec_clothes .card .card-img{
+        min-width: 10vw;
+        max-width: 10vw;
+        width: 10vw;
+    }
 }
 @media only screen and (min-width: 901px){
     .header-hamburger{
         display: none;
+    }
+    #desktop-menu{
+        height: 95vh;
+    }
+    #rec_clothes .card, #rec_clothes .card .card-img{
+        min-width: 8vw;
+        max-width: 10vw;
+        width: 10vw;
     }
 }
