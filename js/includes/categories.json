@@ -1,0 +1,87 @@
+{
+  "categories":[{
+    "catId": 1,
+    "catName": "shirts",
+    "catMinTemp":-50,
+    "catMaxTemp": 50,
+    "slot_id": "1"
+  },{
+    "catId": 2,
+    "catName": "coats",
+    "catMinTemp":-50,
+    "catMaxTemp": 8,
+    "slot_id": "4"
+  },{
+      "catId": 3,
+      "catName": "jackets",
+      "catMinTemp":9,
+      "catMaxTemp": 20,
+      "slot_id": "4"
+    },
+    {
+      "catId": 4,
+      "catName": "pants",
+      "catMinTemp":-50,
+      "catMaxTemp": 27,
+      "slot_id": "2"
+    },
+    {
+      "catId": 5,
+      "catName": "shoes",
+      "catMinTemp":-50,
+      "catMaxTemp": 50,
+      "slot_id": "4"
+    },
+    {
+      "catId": 6,
+      "catName": "hats",
+      "catMinTemp":19,
+      "catMaxTemp": 50,
+      "slot_id": "5"
+    },
+    {
+      "catId": 7,
+      "catName": "glasses",
+      "catMinTemp":-50,
+      "catMaxTemp": 50,
+      "slot_id": "6"
+    },
+    {
+      "catId": 8,
+      "catName": "shorts",
+      "catMinTemp": 28,
+      "catMaxTemp": 50,
+      "slot_id": "2"
+    }
+  ],
+  "slots": [
+    {
+      "slot_id": 1,
+      "slot_name": "shirt"
+    },
+    {
+      "slot_id": 2,
+      "slot_name": "pants"
+    },
+    {
+      "slot_id": 3,
+      "slot_name": "shoes"
+    },
+    {
+      "slot_id": 4,
+      "slot_name": "shirt_over"
+    },
+    {
+      "slot_id": 5,
+      "slot_name": "hats"
+    },
+    {
+      "slot_id": 6,
+      "slot_name": "glasses"
+    },
+    {
+      "slot_id": 7,
+      "slot_name": "Mufflers"
+    }
+  ]
+}
