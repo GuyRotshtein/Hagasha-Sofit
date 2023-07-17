@@ -8,6 +8,12 @@ if (!isset($_SESSION["user"])) {
   header('Location: ' . URL . 'login.php');
 } else {
 }
+if (!function_exists('str_contains')) {
+    function str_contains(string $haystack, string $needle): bool
+    {
+        return '' === $needle || false !== strpos($haystack, $needle);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
