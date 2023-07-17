@@ -169,7 +169,7 @@ if(!isset($_SESSION["user"])){
                             {
                                 // add item. set currentCloset as lastCloset
                                 echo '<div class="card text-bg-transparent border-0 rounded">';
-                                echo '<img src="./uploads/' . $row["clothing_picture"] . '" class="card-img" alt="'.$row["clothing_name"].'" title="'.$row["clothing_name"].'">';
+                                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="'.$row["clothing_name"].'" title="'.$row["clothing_name"].'">';
                                 echo '<div class="card-img-overlay"></div></div>';
 
                             }
@@ -184,7 +184,7 @@ if(!isset($_SESSION["user"])){
                                     echo '<div class="row px-2 closet-preview">';
                                     echo '<a href="closet.php?closet_id='.$row["closet_id"].'">';
                                     echo '<h2>'.$row["closet_name"].'</h2>';
-                                    echo '<div class="card-group d-flex flex-wrap justify-content-between" >';
+                                    echo '<div class="card-group d-flex flex-wrap justify-content-start" >';
                                     $lastCloset = $currentCloset;
                                     $count = 0;
                                     $closed = 0;
