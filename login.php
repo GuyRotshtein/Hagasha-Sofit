@@ -21,7 +21,7 @@ if (isset($_POST["loginMail"])) {
         $_SESSION["user"] = $row["f_name"];
         $_SESSION["user_type"] = $row['is_admin'];
 
-        header('Location: ' . URL . 'homePage.php');
+        header('Location: ' . URL . 'index.php');
     } else {
             $message = "Invalid Username or Password!";
         // echo $message;
@@ -49,7 +49,7 @@ if (isset($_POST["loginMail"])) {
 <header class="p-4 py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center">
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-            <a class="clother-logo" href="./index.html"> <img src="./images/icons/new_logo.png"></a>
+            <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
         </div>
     </div>
 </header>

@@ -10,7 +10,6 @@ if(!isset($_SESSION["user"])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -24,10 +23,10 @@ if(!isset($_SESSION["user"])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Clother - Home</title>
+    <title>Clother - Closets List</title>
 </head>
 <body>
-<header class="p-4 py-3 border-bottom">
+<header class="p-4 py-3 border-bottom position-sticky">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
         <div class="col-4">
@@ -45,7 +44,7 @@ if(!isset($_SESSION["user"])){
                     <div class="offcanvas-body">
                         <div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item" class="nav-item"><a href="./index.html"
+                                <li class="list-group-item" class="nav-item"><a href="./index.php"
                                                                                 class="nav-link">Home</a></li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Closet</a>
                                 </li>
@@ -61,7 +60,7 @@ if(!isset($_SESSION["user"])){
         </div>
         <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-            <a class="clother-logo" href="./index.html"> <img src="./images/icons/new_logo.png" class=""
+            <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png" class=""
                                                               height="40"></a>
         </div>
         <!--    User panel    -->
@@ -90,105 +89,114 @@ if(!isset($_SESSION["user"])){
             </div>
             <div class="row ">
                 <div class="col ">
+                    <!--        breadcrumbs         -->
                     <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page">Home</li>
+                            <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="index.php">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Closets List</li>
                         </ol>
                     </nav>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <!--        breadcrumbs         -->
+                    <!--        Links         -->
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" class="nav-item"><a href="./index.html"
-                                                                        class="nav-link px-3">Home</a></li>
+                        <li class="list-group-item" class="nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
                         <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Closet</a>
                         </li>
-                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
+                        <li class="list-group-item" class="nav-item"><a href="./index.php" class="nav-link px-3">Calendar</a>
                         </li>
-                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Travel</a>
+                        <li class="list-group-item" class="nav-item"><a href="./index.php" class="nav-link px-3">Travel</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col">
+        <div class="col overflow-auto" id="contentArea">
             <div class="container-fluid ">
                 <div class="container py-2">
                     <div class="container main-container px-3">
                         <div class="container text-left px-0">
                             <div class="row">
-<!--                                Search bar - use AJAX? dunno :)-->
-                                <div class="col-3 py-1">
-                                    <h1>Details</h1>
+                                <div class="col-3 px-3 py-1">
+                                    <h1>Closets</h1>
                                 </div>
-                                <div class="col-9 d-flex flex-row-reverse"></div>
                             </div>
                         </div>
-
-                        <!--            Recommendations           -->
+                        <!--            Blue line           -->
                         <div class="row">
-                            <h5>Recommendations</h5>
-                            <div class="col-1"></div>
-                            <div class="col">
-                                <div id="rec_clothes" class="card-group d-flex flex-wrap p-2 bg-secondary gap-3">
-                                    <div class="card text-bg-transparent border-0">
-                                        <img src="images/jackets/black-jacket.png" class="card-img " alt="Black jacket" title="Black jacket">
-                                        <a href="clothing.html?clothingId=1">
-                                            <div class="card-img-overlay"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card text-bg-transparent border-0">
-                                        <img src="images/jackets/blue-jacket.png" class="card-img " alt="Blue jacket" title="Blue jacket">
-                                        <a href="clothing.html?clothingId=1">
-                                            <div class="card-img-overlay"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card text-bg-transparent border-0">
-                                        <img src="images/jackets/leather-black-jacket.png" class="card-img" alt="Leather black jacket"
-                                             title="Leather black jacket">
-                                        <a href="clothing.html?clothingId=1">
-                                            <div class="card-img-overlay"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card text-bg-transparent border-0">
-                                        <img src="images/jackets/purple-jacket.png" class="card-img" alt="Purple jacket"
-                                             title="Purple jacket">
-                                        <a href="clothing.html?clothingId=1">
-                                            <div class="card-img-overlay"></div>
-                                        </a>
-                                    </div>
-                                    <div class="card text-bg-transparent border-0">
-                                        <img src="images/jackets/white-jacket.png" class="card-img" alt="White jacket" title="White jacket">
-                                        <a href="clothing.html?clothingId=1">
-                                            <div class="card-img-overlay"></div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-1"></div>
-                        </div>
-<!--                        Map & Weather-->
-                        <div class="row justify-content-center pb-3">
-                            <div class="col-6">
-                                <div class="row">
-                                    <h4>Map</h4>
-                                </div>
-                                <div class="row justify-content-center">
-                                    <div class="col-10">
-                                        <div id="googleMap" class="rounded-3"></div>
-                                    </div>
-
-                                </div>
-
-
-                            </div>
-                            <div class="col-6">
-                                <h4>Weather</h4>
+                            <div class="col-6 mx-auto">
+                                <div class=" mx-auto clothingLine d-block"></div>
                             </div>
                         </div>
-<!--                        Messages?-->
+                        <!--            Closets           -->
+                        <?php
+                        include 'db.php';
+                        include "config.php";
+                        $uid = $_SESSION['user_id'];
+                        $query = "SELECT 
+                            cls.closet_name,
+                            cls.closet_id,
+                            clo.clothing_id,
+                            clo.clothing_name,
+                            clo.clothing_picture
+                        FROM
+                            tbl_222_closets cls
+                                INNER JOIN
+                            tbl_222_users USING (user_id)
+                                INNER JOIN
+                            tbl_222_closet_clothes USING (closet_id)
+                                INNER JOIN
+                            tbl_222_clothes clo USING (clothing_id)
+                        WHERE
+                            user_id = $uid
+                        ORDER BY closet_id;";
+
+                        $result = mysqli_query($connection, $query);
+                        if(!$result) {
+                            die("DB query failed.");
+                        }
+
+//                        open first closet group here
+                        $closed = 0;
+                        $lastCloset = 0;
+                        $count = 0;
+                        while($row = mysqli_fetch_assoc($result)) {
+                            $currentCloset = $row['closet_id'];
+
+                            if ($currentCloset == $lastCloset && $count <5)
+                            {
+                                // add item. set currentCloset as lastCloset
+                                echo '<div class="card text-bg-transparent border-0 rounded">';
+                                echo '<img src="./uploads/' . $row["clothing_picture"] . '" class="card-img" alt="'.$row["clothing_name"].'" title="'.$row["clothing_name"].'">';
+                                echo '<div class="card-img-overlay"></div></div>';
+
+                            }
+                            else
+                            {
+                                if ($closed == 0){
+                                    echo '</div></a></div>';
+                                    $closed = 1;
+                                }
+
+                                if ($currentCloset != $lastCloset){
+                                    echo '<div class="row px-2 closet-preview">';
+                                    echo '<a href="closet.php?closet_id='.$row["closet_id"].'">';
+                                    echo '<h2>'.$row["closet_name"].'</h2>';
+                                    echo '<div class="card-group d-flex flex-wrap justify-content-between" >';
+                                    $lastCloset = $currentCloset;
+                                    $count = 0;
+                                    $closed = 0;
+                                }
+//                                close closet group, and continue running. if closet id changes, create a new group, set counter to 0, give it a name and insert the clothing from this row.
+                            }
+                            $count = $count + 1;
+//                            increase counter every time here too!
+                        }
+
+                        mysqli_free_result($result);
+                        ?>
                     </div>
                 </div>
             </div>
@@ -196,5 +204,7 @@ if(!isset($_SESSION["user"])){
     </div>
 </main>
 </body>
-
 </html>
+<?php
+mysqli_close($connection);
+?>

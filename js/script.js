@@ -64,6 +64,67 @@ function validateForm(){
     // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
     // Add other bootstrap parameters as needed, using camel case.
 });
+
+function displayWeather(data){
+    console.log(data);
+    const temperature = Math.round(parseFloat(data.main.temp)).toString();
+    const ulFrag = document.createDocumentFragment();
+    const cityCol = document.createElement('div');
+    cityCol.classList.add('col','pt-3');
+    const cityRow = document.createElement('div');
+    cityRow.classList.add('row')
+    const city = document.createElement('h2');
+    city.innerHTML = data.name;
+    cityRow.appendChild(city);
+    cityCol.appendChild(cityRow);
+
+    const weatherRow = document.createElement('div');
+    weatherRow.classList.add('row');
+    const imageCol = document.createElement('div');
+    imageCol.classList.add('col-4','d-flex','justify-content-center','pe-0')
+    const weatherIcon = document.createElement('img');
+    weatherIcon.src = `https://openweathermap.org/img/wn/`+ data.weather[0].icon +`@2x.png`;
+    weatherIcon.setAttribute('id','weatherImage');
+    weatherIcon.setAttribute('title',data.weather[0].description);
+    weatherIcon.setAttribute('alt',data.weather[0].description);
+    imageCol.appendChild(weatherIcon);
+    weatherRow.appendChild(imageCol);
+    const weatherDescCol = document.createElement('div');
+    weatherDescCol.classList.add('col-8','d-flex','flex-column','justify-content-center','ps-0');
+    const temperatureCol = document.createElement('div');
+    temperatureCol.classList.add('col','d-flex','align-items-end')
+    const temperatureText = document.createElement('h2');
+    temperatureText.classList.add('d-inline');
+    temperatureText.innerHTML = temperature;
+    const temperatureSign = document.createElement('p');
+    temperatureSign.innerHTML = '&#8451;';
+    temperatureCol.appendChild(temperatureText);
+    temperatureCol.appendChild(temperatureSign);
+    weatherDescCol.appendChild(temperatureCol);
+
+    const detailsCol = document.createElement('div');
+    detailsCol.classList.add('col');
+    const weatherDetails = document.createElement('h5');
+    weatherDetails.classList.add('text-secondary');
+
+    let date = new Date;
+    let hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+    let min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    //insert both into h5, add '<br>' and then description.
+    weatherDetails.innerHTML = hour + `:` + min + `<br>` +data.weather[0].description;
+
+    detailsCol.appendChild(weatherDetails);
+    weatherDescCol.appendChild(detailsCol);
+    weatherRow.appendChild(weatherDescCol);
+    cityCol.appendChild(weatherRow);
+    ulFrag.appendChild(cityCol);
+    document.getElementById('weatherPanel').appendChild(ulFrag);
+    console.log(weatherDetails.innerHTML);
+}
+
 let map;
 let location_global;
 function getLocation(callback) {
@@ -75,8 +136,8 @@ function getLocation(callback) {
             callback(user_position);
 
             fetch("https://api.openweathermap.org/data/2.5/weather?lat="+ user_position.lat+"&lon="+user_position.lng+"&units=metric&appid=14d415b6653f524f309d8d3300b0e89e",{})
-                .then(response => response.text())
-                .then(result => console.log(result))
+                .then(response => response.json())
+                .then(data => displayWeather(data))
                 .catch(error => console.log('error', error));
 
             initMap(user_position);

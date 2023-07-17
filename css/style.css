@@ -11,9 +11,12 @@ section,
 div {
     display: block;
 }
-body{
-    height: 100vh;
+html,body{
+    margin: 0;
+    height: 100%;
+    width: 100vw;
     background-color: #F7F6F6;
+    overflow-x: hidden;
 }
 main {
     background-color: #F7F6F6;
@@ -115,7 +118,14 @@ header-container{
 #googleMap{
     height: 400px;
 }
-
+#weatherImage{
+    display: inline-block;
+    width: auto;
+    height: 150px;
+}
+#weatherPanel{
+    height: 400px;
+}
 @media only screen and (max-width: 900px) {
     #desktop-menu{
         display: none;
@@ -134,11 +144,15 @@ header-container{
         display: none;
     }
     #desktop-menu{
-        height: 95vh;
+        height: auto;
+        overflow-y: hidden;
     }
     #rec_clothes .card, #rec_clothes .card .card-img{
         min-width: 8vw;
         max-width: 10vw;
         width: 10vw;
+    }
+    #contentArea{
+        max-height: 90vh;
     }
 }
