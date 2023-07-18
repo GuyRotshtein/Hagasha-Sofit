@@ -142,9 +142,7 @@ header-container{
         display: none;
     }
     #rec_clothes .card, #rec_clothes .card .card-img{
-        min-width: 10vw;
-        max-width: 10vw;
-        width: 10vw;
+        justify-content: center!important;
     }
 }
 @media only screen and (min-width: 901px){
@@ -156,9 +154,7 @@ header-container{
         overflow-y: hidden;
     }
     #rec_clothes .card, #rec_clothes .card .card-img{
-        min-width: 8vw;
-        max-width: 10vw;
-        width: 10vw;
+
     }
     #contentArea{
         max-height: 90vh;

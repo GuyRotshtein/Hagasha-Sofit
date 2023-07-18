@@ -49,7 +49,7 @@
     {
       "catId": 8,
       "catName": "shorts",
-      "catMinTemp": 28,
+      "catMinTemp": 26,
       "catMaxTemp": 50,
       "slot_id": "2"
     }

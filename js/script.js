@@ -265,9 +265,10 @@ async function generateRecommendation(data) {
         cardImg.classList.add('card-img','object-fit-contain');
         cardImg.setAttribute('alt',arrayItem.clothing_name);
         cardImg.setAttribute('title',arrayItem.clothing_name);
-        card.appendChild(cardImg);
+
         const cardLink = document.createElement('a');
         cardLink.href = './clothing.php?clothing_id='+arrayItem.clothing_id;
+        cardLink.appendChild(cardImg);
         const cardOverlay = document.createElement('div');
         cardOverlay.classList.add('card-img-overlay')
         cardLink.appendChild(cardOverlay);
@@ -346,3 +347,4 @@ function insertJSONdata(data){
 fetch("./js/includes/categories.json")
     .then(response => response.json())
     .then(data => insertJSONdata(data));
+

@@ -26,7 +26,7 @@ if(!isset($_SESSION["user"])){
     <title>Clother - Closets List</title>
 </head>
 <body>
-<header class="p-4 py-3 border-bottom position-sticky">
+<header class="p-4 py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
         <div class="col-4">
@@ -46,7 +46,7 @@ if(!isset($_SESSION["user"])){
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" class="nav-item"><a href="./index.php"
                                                                                 class="nav-link">Home</a></li>
-                                <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Closet</a>
+                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closet</a>
                                 </li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                 </li>
@@ -61,7 +61,7 @@ if(!isset($_SESSION["user"])){
         <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
             <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png" class=""
-                                                              height="40"></a>
+                                                             height="40"></a>
         </div>
         <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
@@ -84,30 +84,30 @@ if(!isset($_SESSION["user"])){
 </header>
 <main>
     <div class="row">
-        <div id="desktop-menu" class="col-3 py-2 border-end border-primary-subtle border-3">
+        <div class="col-3 py-2 border-end border-primary-subtle border-3 desktop-menu">
             <div class="row">
             </div>
             <div class="row ">
                 <div class="col ">
-                    <!--        breadcrumbs         -->
                     <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="index.php">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Closets List</li>
+                            <li class="breadcrumb-item " aria-current="page"><a class="breadcrumb-link" href="./index.php">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Closets</li>
                         </ol>
                     </nav>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <!--        Links         -->
+                    <!--        breadcrumbs         -->
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" class="nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
-                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Closet</a>
+                        <li class="list-group-item" class="nav-item"><a href="./index.php"
+                                                                        class="nav-link px-3">Home</a></li>
+                        <li class="list-group-item" class="nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a>
                         </li>
-                        <li class="list-group-item" class="nav-item"><a href="./index.php" class="nav-link px-3">Calendar</a>
+                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
                         </li>
-                        <li class="list-group-item" class="nav-item"><a href="./index.php" class="nav-link px-3">Travel</a>
+                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Travel</a>
                         </li>
                     </ul>
                 </div>
@@ -130,6 +130,7 @@ if(!isset($_SESSION["user"])){
                                 <div class=" mx-auto clothingLine d-block"></div>
                             </div>
                         </div>
+
                         <!--            Closets           -->
                         <?php
                         include 'db.php';
@@ -158,8 +159,7 @@ if(!isset($_SESSION["user"])){
                             die("DB query failed.");
                         }
 
-//                        open first closet group here
-                        $closed = 0;
+                        $closed = 1;
                         $lastCloset = 0;
                         $count = 0;
                         while($row = mysqli_fetch_assoc($result)) {
@@ -168,9 +168,9 @@ if(!isset($_SESSION["user"])){
                             if ($currentCloset == $lastCloset && $count <5)
                             {
                                 // add item. set currentCloset as lastCloset
-                                echo '<div class="card text-bg-transparent border-0 rounded">';
-                                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="'.$row["clothing_name"].'" title="'.$row["clothing_name"].'">';
-                                echo '<div class="card-img-overlay"></div></div>';
+                                echo '<div class="card text-bg-transparent bg-transparent border-0 rounded-3">';
+                                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain rounded-3 bg-transparent" alt="'.$row["clothing_name"].'" title="'.$row["clothing_name"].'">';
+                                echo '<div class="card-img-overlay "></div></div>';
 
                             }
                             else
@@ -181,7 +181,7 @@ if(!isset($_SESSION["user"])){
                                 }
 
                                 if ($currentCloset != $lastCloset){
-                                    echo '<div class="row px-2 closet-preview">';
+                                    echo '<div class="row px-2 pb-4 closet-preview">';
                                     echo '<a href="closet.php?closet_id='.$row["closet_id"].'">';
                                     echo '<h2>'.$row["closet_name"].'</h2>';
                                     echo '<div class="card-group d-flex flex-wrap justify-content-start" >';

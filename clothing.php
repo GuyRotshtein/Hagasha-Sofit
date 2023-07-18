@@ -11,7 +11,6 @@ if (!isset($_SESSION["user"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -59,7 +58,7 @@ FROM
         INNER JOIN
     tbl_222_category cat USING (category_id)
         INNER JOIN
-    tbl_222_colors col ON clo.color_id = col.color_id OR clo.secondary_color_id = col.color_id
+    tbl_222_colors col ON clo.color_id = col.color_id
     
 WHERE
     clothing_id = $cid;
@@ -67,42 +66,36 @@ WHERE
 
     $result = mysqli_query($connection, $query);
 
-
-
     if (!$result) {
         die("DB query failed.");
     }
     $row = mysqli_fetch_assoc($result);
-
-
-
+    $cloth_id = $cid;
+    $closet_id = $row['closet_id'];
     ?>
     <header class="p-4 py-3 border-bottom">
-        <div class="d-flex align-items-center justify-content-center justify-content-md-between header-wrapper">
+        <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
             <!--    Hamburger menu-->
             <div class="col-4">
                 <div class="mb-2 mb-md-0 header-hamburger">
                     <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
-                        aria-controls="Hamburger">
+                            aria-controls="Hamburger">
                         <img src="./images/icons/hamburger.png" height="40" width="40">
                     </button>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger"
-                        aria-labelledby="HamburgerLabel">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
                         <!--        hamburger contents-->
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
                             <div>
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item" class="nav-item"><a href="closet.php"
-                                            class="nav-link">Home</a></li>
-                                    <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Closet</a>
+                                    <li class="list-group-item" class="nav-item"><a href="./index.php"
+                                                                                    class="nav-link">Home</a></li>
+                                    <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closet</a>
                                     </li>
-                                    <li class="list-group-item" class="nav-item"><a href="#"
-                                            class="nav-link">Calendar</a>
+                                    <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                     </li>
                                     <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
                                     </li>
@@ -114,14 +107,14 @@ WHERE
             </div>
             <!--    logo      -->
             <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-                <a class="clother-logo" href="closet.php"> <img src="./images/icons/new_logo.png" class=""
-                        height="40"></a>
+                <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png" class=""
+                                                                 height="40"></a>
             </div>
             <!--    User panel    -->
             <div class="col-4 d-flex justify-content-end text-end header-user-menu">
                 <div class="flex-shrink-0 dropdown">
                     <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                     </button>
                     <ul class="dropdown-menu text-small shadow dropdown-menu-end">
@@ -130,7 +123,7 @@ WHERE
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
                     </ul>
                 </div>
             </div>
@@ -200,9 +193,6 @@ WHERE
                                     echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="mx-auto d-block" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                                     echo '<div class="card-img-overlay"></div></div>';
                                     ?>
-                                    <!-- <img id="clothingImage" class="mx-auto d-block"
-                                src="./images/shirts/flannel-striped-shirt.png" alt="Clothing Item"
-                                title="Clothing item"> -->
                                 </div>
                             </div>
                             <!--            Blue line           -->
@@ -220,7 +210,6 @@ WHERE
                                     <?php
                                     echo '<p class="mx-auto">' . $row['clothing_name'] . '</p>';
                                     ?>
-                                    <!-- <p id="clothingName" class="mx-auto">Flannel long sleeved shirt</p> -->
                                 </div>
                                 <div class="col-3"></div>
                             </div>
@@ -233,7 +222,32 @@ WHERE
                                     echo '<div id="clothingColors" class="mx-auto d-flex justify-content-center">';
 
                                     echo '<img src="./images/colors/' . $row['color_picture'] . '">';
-                                    echo '<img src="./images/colors/' . $row['color_picture'] . '">';
+                                    $query_secondary =    "SELECT 
+                                                                col.color_picture 
+                                                            FROM
+                                                                tbl_222_closets cls
+                                                                    INNER JOIN
+                                                                tbl_222_users USING (user_id)
+                                                                    INNER JOIN
+                                                                tbl_222_closet_clothes USING (closet_id)
+                                                                    INNER JOIN
+                                                                tbl_222_clothes clo USING (clothing_id)
+                                                                    INNER JOIN
+                                                                tbl_222_category cat USING (category_id)
+                                                                    INNER JOIN
+                                                                tbl_222_colors col ON clo.secondary_color_id = col.color_id
+                                                                
+                                                            WHERE
+                                                                clothing_id = $cid;
+                                                                                    ";
+                                    $result_color = mysqli_query($connection, $query_secondary);
+                                    if (!$result_color) {
+                                        die("DB color query failed.");
+                                    }
+                                    $row_color = mysqli_fetch_assoc($result_color);
+                                    if (isset($row_color['color_picture'])){
+                                        echo '<img src="./images/colors/' . $row_color['color_picture'] . '">';
+                                    }
 
                                    echo '</div>'
                                         ?>
@@ -273,7 +287,6 @@ WHERE
                                     <?php
                                     echo '<p class="mx-auto">' . $row['closet_name'] . '</p>';
                                     ?>
-                                    <!-- <p id="clothingCloset" class="mx-auto">Business attire</p> -->
                                 </div>
                                 <div class="col-3"></div>
                             </div>
@@ -295,25 +308,12 @@ WHERE
                                             return $retCat . ': ' . $catName;
                                         } else
                                             return 'Accessories';
-
-
-
                                     }
-
                                     echo '<p id="clothingCategory" class="mx-auto">' . category($catId, $catName) . '</p>';
                                     ?>
                                 </div>
                                 <div class="col-3"></div>
                             </div>
-                            <!-- <div class="row py-3">
-                                <div class="col-3">
-                                    <h6>Brand name</h6>
-                                </div>
-                                <div class="col-6 text-center">
-                                    <p id="clothingBrand" class="mx-auto">Lorem Ipsum</p>
-                                </div>
-                                <div class="col-3"></div>
-                            </div> -->
                             <!--            Blue line           -->
                             <div class="row">
                                 <div class="col-6 mx-auto">
@@ -346,7 +346,14 @@ WHERE
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">No</button>
-                                                        <button type="button" class="btn btn-primary">Yes</button>
+                                                        <form name="removalForm" id="removalForm" method="post" action="./index.php">
+                                                            <?php
+                                                            echo '<input type="hidden" name="clothing_id" value="'.$cloth_id.'">';
+                                                            echo '<input type="hidden" name="closet_id" value="'.$closet_id.'">';
+                                                            ?>
+                                                            <button type="submit" class="btn btn-primary" id="removeButton">Yes</button>
+                                                        </form>
+
                                                     </div>
                                                 </div>
                                             </div>

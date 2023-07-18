@@ -132,7 +132,7 @@ if(!isset($_SESSION["user"])){
                             <h5>Recommendations</h5>
                             <div class="col-1"></div>
                             <div class="col">
-                                <div id="rec_clothes" class="card-group d-flex flex-wrap p-2 bg-light-subtle gap-3 border-3">
+                                <div id="rec_clothes" class="card-group d-flex flex-wrap p-2 bg-light-subtle gap-1 border-3">
                                     <div class="card col text-bg-transparent border-0 bg-light-">
                                         <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                             <div class="card-img-overlay placeholder placeholder-glow"></div>
@@ -174,7 +174,6 @@ if(!isset($_SESSION["user"])){
                                     <h4>Weather</h4>
                                 </div>
                                 <div class="d-flex flex-wrap align-content-start justify-content-start" id="weatherPanel">
-
                                 </div>
                             </div>
                         </div>
@@ -187,6 +186,3 @@ if(!isset($_SESSION["user"])){
 </main>
 </body>
 </html>
-<?php
-mysqli_close($connection);
-?>
