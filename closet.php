@@ -124,10 +124,6 @@ if (!function_exists('str_contains')) {
           <li class="breadcrumb-item"><a class="breadcrumb-link" href="./index.php">Home</a></li>
           <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="./closetList.php">Closet</a>
           </li>
-          <?php
-                $row = mysqli_fetch_assoc($result);
-          echo '<li class="breadcrumb-item active" aria-current="page">'.$row['closet_name'].'</li>'
-          ?>
           <li class="breadcrumb-item active" aria-current="page">Business attire</li>
         </ol>
       </nav>
