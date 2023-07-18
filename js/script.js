@@ -64,9 +64,17 @@ function validateForm(){
     // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
     // Add other bootstrap parameters as needed, using camel case.
 });
-
+let globalTemp = 0;
+let slot1Array = [];
+let slot2Array = [];
+let slot3Array = [];
+let slot4Array = [];
+let slot5Array = [];
+let slot6Array = [];
+let selectedClothes = [];
 function displayWeather(data){
     console.log(data);
+    globalTemp = Math.round(parseFloat(data.main.temp));
     const temperature = Math.round(parseFloat(data.main.temp)).toString();
     const ulFrag = document.createDocumentFragment();
     const cityCol = document.createElement('div');
@@ -122,38 +130,148 @@ function displayWeather(data){
     cityCol.appendChild(weatherRow);
     ulFrag.appendChild(cityCol);
     document.getElementById('weatherPanel').appendChild(ulFrag);
-    console.log(weatherDetails.innerHTML);
+
+    fetch("./js/includes/categories.json")
+        .then(response=> response.json())
+        .then(data => generateRecommendation(data));
 }
 
 let map;
-let location_global;
 function getLocation(callback) {
-    if (navigator.geolocation) {
-        const lat_lng = navigator.geolocation.getCurrentPosition(function (position) {
-            const user_position = {};
-            user_position.lat = position.coords.latitude;
-            user_position.lng = position.coords.longitude;
-            callback(user_position);
+    if (document.getElementsByClassName('homePage') !== null){
+        if (navigator.geolocation ) {
+            const lat_lng = navigator.geolocation.getCurrentPosition(function (position) {
+                const user_position = {};
+                user_position.lat = position.coords.latitude;
+                user_position.lng = position.coords.longitude;
+                callback(user_position);
+                if (document.getElementById('googleMap') !== null){
+                fetch("https://api.openweathermap.org/data/2.5/weather?lat="+ user_position.lat+"&lon="+user_position.lng+"&units=metric&appid=14d415b6653f524f309d8d3300b0e89e",{})
+                    .then(response => response.json())
+                    .then(data => displayWeather(data))
+                    .catch(error => console.log('error', error));
 
-            fetch("https://api.openweathermap.org/data/2.5/weather?lat="+ user_position.lat+"&lon="+user_position.lng+"&units=metric&appid=14d415b6653f524f309d8d3300b0e89e",{})
-                .then(response => response.json())
-                .then(data => displayWeather(data))
-                .catch(error => console.log('error', error));
-
-            initMap(user_position);
-        },function error(msg) {alert('Please enable your GPS position feature.');},{ enableHighAccuracy: true, timeout: 10 * 1000 * 1000, maximumAge: 0 });
-    } else {
-        alert("Geolocation is not supported by this browser.");
+                initMap(user_position);
+                }
+            },function error(msg) {alert('Please enable your GPS position feature.');},{ enableHighAccuracy: true, timeout: 10 * 1000 * 1000, maximumAge: 0 });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
     }
 }
 getLocation(function(lat_lng){});
 
 async function initMap(user_position) {
     const { Map } = await google.maps.importLibrary("maps");
-
     map = new Map(document.getElementById("googleMap"), {
         center: { lat: user_position.lat, lng: user_position.lng },
         zoom: 12,
     });
 }
+
+function isInArray(value, array) {
+    return array.indexOf(value) > -1;
+}
+
+function tidyArray(array,favColor){
+    let favColorExists = 0;
+    if (array.length > 1){
+        array.forEach(function (arrayItem) {
+            if (parseInt(arrayItem.color_id) == favColor){
+                favColorExists = 1;
+            }
+            // console.log(arrayItem.color_id);
+        });
+        if (favColorExists == 1){
+            for (var i = array.length; i--;) {
+                if (parseInt(array[i].color_id) != favColor) array.splice(i, 1);
+            }
+        }
+    }
+    return array;
+};
+
+function pickRandomClothing(array){
+    const selectedClothing = array[Math.floor(Math.random()*array.length)];
+    return selectedClothing;
+};
+
+const getClothes  = async (data)=>{
+    let response = await fetch('recommendation.php', {
+        // method: 'POST',
+        // body: new FormData(form),
+    });
+    const result = await response.json();
+    const allowedCats = [];
+    for (const key in data.categories){
+        let tempCat = data.categories[key];
+        if(globalTemp > tempCat.catMinTemp && globalTemp < tempCat.catMaxTemp){
+            allowedCats.push(tempCat.catId);
+        }
+    }
+
+    for (const key in result.clothes) {
+        let clothCat = parseInt(result.clothes[key].category_id);
+        if (allowedCats.indexOf(clothCat) !== -1) {
+            if (clothCat == 1) {
+                slot1Array.push(result.clothes[key]);
+            }
+            if (clothCat === 4 || clothCat === 8) {
+                slot2Array.push(result.clothes[key]);
+            }
+            if (clothCat == 2 || clothCat == 3) {
+                slot3Array.push(result.clothes[key]);
+            }
+            if (clothCat == 5) {
+                slot4Array.push(result.clothes[key]);
+            }
+            if (clothCat == 6) {
+                slot5Array.push(result.clothes[key]);
+            }
+            if (clothCat == 7) {
+                slot6Array.push(result.clothes[key]);
+            }
+        }
+    }
+
+    slot1Array = tidyArray(slot1Array, result.fav_color[0]);
+    slot3Array = tidyArray(slot3Array, result.fav_color[0]);
+    slot4Array = tidyArray(slot4Array, result.fav_color[0]);
+    slot5Array = tidyArray(slot5Array, result.fav_color[0]);
+
+    // const selectedClothes = [];
+    if (slot1Array.length>0){selectedClothes.push(pickRandomClothing(slot1Array));}
+    if (slot2Array.length>0){selectedClothes.push(pickRandomClothing(slot2Array));}
+    if (slot3Array.length>0){selectedClothes.push(pickRandomClothing(slot3Array));}
+    if (slot4Array.length>0){selectedClothes.push(pickRandomClothing(slot4Array));}
+    if (slot5Array.length>0){selectedClothes.push(pickRandomClothing(slot5Array));}
+};
+
+async function generateRecommendation(data) {
+    selectedClothes.length = 0;
+    await getClothes(data);
+    const recWindow = document.getElementById('');
+    //now we get rec_clothes and put the bitches in it
+    const recommendationWindow = document.getElementById('rec_clothes');
+    const ulFrg = document.createDocumentFragment();
+    selectedClothes.forEach(function (arrayItem) {
+        const card = document.createElement('div');
+        card.classList.add('card','bg-transparent','border-0');
+        const cardImg = document.createElement('img');
+        cardImg.src='./uploads/clothing/'+arrayItem.clothing_picture;
+        cardImg.classList.add('card-img');
+        cardImg.setAttribute('alt',arrayItem.clothing_name);
+        cardImg.setAttribute('title',arrayItem.clothing_name);
+        card.appendChild(cardImg);
+        const cardLink = document.createElement('a');
+        cardLink.href = './clothing.php?clothingId='+arrayItem.clothing_id;
+        const cardOverlay = document.createElement('div');
+        cardOverlay.classList.add('card-img-overlay')
+        cardLink.appendChild(cardOverlay);
+        card.appendChild(cardLink);
+        ulFrg.appendChild(card);
+    });
+    recommendationWindow.innerHTML="";
+    recommendationWindow.appendChild(ulFrg);
+};
 

@@ -2,47 +2,47 @@
   "categories":[{
     "catId": 1,
     "catName": "shirts",
-    "catMinTemp":-50,
+    "catMinTemp": -50,
     "catMaxTemp": 50,
     "slot_id": "1"
   },{
     "catId": 2,
     "catName": "coats",
-    "catMinTemp":-50,
+    "catMinTemp": -50,
     "catMaxTemp": 8,
     "slot_id": "4"
   },{
       "catId": 3,
       "catName": "jackets",
-      "catMinTemp":9,
+      "catMinTemp": 9,
       "catMaxTemp": 20,
       "slot_id": "4"
     },
     {
       "catId": 4,
       "catName": "pants",
-      "catMinTemp":-50,
+      "catMinTemp": -50,
       "catMaxTemp": 27,
       "slot_id": "2"
     },
     {
       "catId": 5,
       "catName": "shoes",
-      "catMinTemp":-50,
+      "catMinTemp": -50,
       "catMaxTemp": 50,
-      "slot_id": "4"
+      "slot_id": "3"
     },
     {
       "catId": 6,
       "catName": "hats",
-      "catMinTemp":19,
+      "catMinTemp": 19,
       "catMaxTemp": 50,
       "slot_id": "5"
     },
     {
       "catId": 7,
       "catName": "glasses",
-      "catMinTemp":-50,
+      "catMinTemp": -50,
       "catMaxTemp": 50,
       "slot_id": "6"
     },
@@ -78,10 +78,6 @@
     {
       "slot_id": 6,
       "slot_name": "glasses"
-    },
-    {
-      "slot_id": 7,
-      "slot_name": "Mufflers"
     }
   ]
 }
