@@ -186,5 +186,7 @@ if(!isset($_SESSION["user"])){
     </div>
 </main>
 </body>
-
 </html>
+<?php
+mysqli_close($connection);
+?>

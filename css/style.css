@@ -126,10 +126,14 @@ header-container{
 #weatherPanel{
     height: 400px;
 }
+.card-img{
+    height: 200px;
+}
 #clothingImage, #clothingImage div img, #clothingImage div{
     height: 430px;
     max-height: 430px;
 }
+
 @media only screen and (max-width: 900px) {
     .desktop-menu{
         display: none;

@@ -113,7 +113,6 @@ if (!function_exists('str_contains')) {
                         ORDER BY closet_id;";
 
     $result = mysqli_query($connection, $query);
-
     if (!$result) {
       die("DB query failed.");
     }
@@ -128,7 +127,6 @@ if (!function_exists('str_contains')) {
           $row = mysqli_fetch_assoc($result);
           echo '<li class="breadcrumb-item active" aria-current="page">' . $row['closet_name'] . '</li>'
             ?>
-          <li class="breadcrumb-item active" aria-current="page">Business attire</li>
         </ol>
       </nav>
       <div class="container">
@@ -161,11 +159,10 @@ if (!function_exists('str_contains')) {
             echo '<h5>coats</h5>';
             echo '<div class="card-group d-flex flex-wrap">';
             while ($row = mysqli_fetch_assoc($result)) {
-
-              if (str_contains($row["clothing_name"], 'coat')) {
+              if ($row["category_id"] == 2) {
                 echo '<div class="card text-bg-transparent border-0">';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                 echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
@@ -182,10 +179,10 @@ if (!function_exists('str_contains')) {
 
             while ($row = mysqli_fetch_assoc($result)) {
 
-              if (str_contains($row["clothing_name"], 'jacket')) {
+              if ($row["category_id"] == 3) {
                 echo '<div class="card text-bg-transparent border-0">';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                 echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
@@ -202,10 +199,10 @@ if (!function_exists('str_contains')) {
 
             while ($row = mysqli_fetch_assoc($result)) {
 
-              if (str_contains($row["clothing_name"], 'shirt')) {
+              if ($row["category_id"] == 1) {
                 echo '<div class="card text-bg-transparent border-0">';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                 echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
@@ -232,10 +229,10 @@ if (!function_exists('str_contains')) {
             echo '<div class="card-group d-flex flex-wrap">';
             while ($row = mysqli_fetch_assoc($result)) {
 
-              if (str_contains($row["clothing_name"], 'pants')) {
+              if ($row["category_id"] == 4) {
                 echo '<div class="card text-bg-transparent border-0">';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                 echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
@@ -252,10 +249,10 @@ if (!function_exists('str_contains')) {
 
             while ($row = mysqli_fetch_assoc($result)) {
 
-              if (str_contains($row["clothing_name"], 'shorts')) {
+              if ($row["category_id"] == 8) {
                 echo '<div class="card text-bg-transparent border-0">';
     echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-    echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+    echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
     echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
@@ -272,10 +269,10 @@ if (!function_exists('str_contains')) {
 
             while ($row = mysqli_fetch_assoc($result)) {
 
-              if (str_contains($row["clothing_name"], 'shoes')) {
+              if ($row["category_id"] == 5) {
                 echo '<div class="card text-bg-transparent border-0">';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                 echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
@@ -303,10 +300,10 @@ if (!function_exists('str_contains')) {
 
             while ($row = mysqli_fetch_assoc($result)) {
 
-              if (str_contains($row["clothing_name"], 'hat')) {
+              if ($row["category_id"] == 6) {
                 echo '<div class="card text-bg-transparent border-0">';
     echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-    echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+    echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
     echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
@@ -325,10 +322,10 @@ if (!function_exists('str_contains')) {
 
             while ($row = mysqli_fetch_assoc($result)) {
 
-              if (str_contains($row["clothing_name"], 'glasses')) {
+              if ($row["category_id"] == 7) {
                 echo '<div class="card text-bg-transparent border-0">';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                 echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
@@ -354,5 +351,6 @@ if (!function_exists('str_contains')) {
 
 </html>
 <?php
+mysqli_free_result($result);
 mysqli_close($connection);
 ?>

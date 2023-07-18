@@ -156,9 +156,9 @@
                             <!--                Clothing image          -->
                             <div class="row pb-3">
                                 <div class="col-5 mx-auto">
+                                    <h6>Please choose a picture:</h6>
                                     <div id="clothingImage" class="carousel slide">
                                         <div class="carousel-inner bg-secondary-subtle rounded-3">
-<!--                                            here picture!!!!!!!!!!!!!!!!!-->
                                             <div class="carousel-item active">
                                                 <img src="./uploads/clothing/default.png" class="d-block w-100">
                                             </div>
@@ -172,12 +172,12 @@
                                             <span class="visually-hidden">Next</span>
                                         </button>
                                     </div>
-                                    <input type="hidden" id="pictureInput" name="picture" value="">
                                 </div>
                             </div>
                             <?php
                             echo '<form name="addClothingForm" id="addClothingForm" action="action.php" method="post" onsubmit="return validateForm()">';
                             ?>
+                                <input type="hidden" name="pictureInput" id="pictureInput" value="" form="addClothingForm">
                                 <!--            Blue line           -->
                                 <div class="row">
                                     <div class="col-6 mx-auto">

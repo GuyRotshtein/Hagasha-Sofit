@@ -231,6 +231,7 @@ WHERE
                                 <div class="col-6 text-center">
                                     <?php
                                     echo '<div id="clothingColors" class="mx-auto d-flex justify-content-center">';
+
                                     echo '<img src="./images/colors/' . $row['color_picture'] . '">';
                                     echo '<img src="./images/colors/' . $row['color_picture'] . '">';
 
@@ -360,5 +361,8 @@ WHERE
         </div>
     </main>
 </body>
-
 </html>
+<?php
+mysqli_free_result($result);
+mysqli_close($connection);
+?>

@@ -50,12 +50,19 @@ function validateForm(){
             errorFlag = 1;
         }
     }
-    console.log(`final: ` +errorFlag);
+    let activePic = document.querySelector('.carousel-item.active img');
+    let pictureSrc =  activePic.getAttribute('src').replace('./uploads/clothing/', '');
+
+    document.getElementById('pictureInput').value = pictureSrc;
     // if there is an error, don't submit the form
     if (errorFlag == 1){
         errorFlag = 0;
-        return false
+        return false;
     }
+
+    //get carousel's current image, and set it as the hidden value
+
+
     return true;
 }
 (g=>{let h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});const d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
@@ -247,7 +254,7 @@ async function generateRecommendation(data) {
     selectedClothes.length = 0;
     await getClothes(data);
     const recWindow = document.getElementById('');
-    //now we get rec_clothes and put the bitches in it
+
     const recommendationWindow = document.getElementById('rec_clothes');
     const ulFrg = document.createDocumentFragment();
     selectedClothes.forEach(function (arrayItem) {
@@ -255,12 +262,12 @@ async function generateRecommendation(data) {
         card.classList.add('card','bg-transparent','border-0');
         const cardImg = document.createElement('img');
         cardImg.src='./uploads/clothing/'+arrayItem.clothing_picture;
-        cardImg.classList.add('card-img');
+        cardImg.classList.add('card-img','object-fit-contain');
         cardImg.setAttribute('alt',arrayItem.clothing_name);
         cardImg.setAttribute('title',arrayItem.clothing_name);
         card.appendChild(cardImg);
         const cardLink = document.createElement('a');
-        cardLink.href = './clothing.php?clothingId='+arrayItem.clothing_id;
+        cardLink.href = './clothing.php?clothing_id='+arrayItem.clothing_id;
         const cardOverlay = document.createElement('div');
         cardOverlay.classList.add('card-img-overlay')
         cardLink.appendChild(cardOverlay);
@@ -294,7 +301,6 @@ function insertJSONdata(data){
         clothingCategory.innerHTML = "";
         clothingCategory.appendChild(ulFrag);
 
-        //now we add the sizes >:)
         ulFrag.innerHTML = '';
         const defaultSize = document.createElement('option');
         defaultSize.value ='default';
@@ -313,7 +319,6 @@ function insertJSONdata(data){
         clothingSize.innerHTML = "";
         clothingSize.appendChild(ulFrag);
 
-        //adding Pictures + setting event listener
         ulFrag.innerHTML = '';
         const defaultPicDiv = document.createElement('div');
         defaultPicDiv.classList.add('carousel-item','active');
