@@ -36,34 +36,46 @@ if (!isset($_SESSION["user"])) {
     $cid = $_GET['clothing_id'];
 
     $query = "SELECT 
-                            cls.closet_name,
-                            cls.closet_id,
-                            clo.clothing_id,
-                            clo.clothing_name,
-                            clo.clothing_picture,
-                            clo.size_id,
-                            cat.category_id,
-                            cat.category_name
-                        FROM
-                            tbl_222_closets cls
-                                INNER JOIN
-                            tbl_222_users USING (user_id)
-                                INNER JOIN
-                            tbl_222_closet_clothes USING (closet_id)
-                                INNER JOIN
-                            tbl_222_clothes clo USING (clothing_id)
-                                INNER JOIN
-                            tbl_222_category cat USING (category_id)
-                        WHERE
-                            clothing_id = $cid; 
+    cls.closet_name,
+    cls.closet_id,
+    clo.clothing_id,
+    clo.clothing_name,
+    clo.clothing_picture,
+    clo.size_id,
+    clo.secondary_color_id,
+    cat.category_id,
+    cat.category_name,
+    col.color_id,
+    col.color_picture 
+    
+FROM
+    tbl_222_closets cls
+        INNER JOIN
+    tbl_222_users USING (user_id)
+        INNER JOIN
+    tbl_222_closet_clothes USING (closet_id)
+        INNER JOIN
+    tbl_222_clothes clo USING (clothing_id)
+        INNER JOIN
+    tbl_222_category cat USING (category_id)
+        INNER JOIN
+    tbl_222_colors col ON clo.color_id = col.color_id OR clo.secondary_color_id = col.color_id
+    
+WHERE
+    clothing_id = $cid;
                         ";
 
     $result = mysqli_query($connection, $query);
+
+
 
     if (!$result) {
         die("DB query failed.");
     }
     $row = mysqli_fetch_assoc($result);
+
+
+
     ?>
     <header class="p-4 py-3 border-bottom">
         <div class="d-flex align-items-center justify-content-center justify-content-md-between header-wrapper">
@@ -172,8 +184,8 @@ if (!isset($_SESSION["user"])) {
                                         <h1>Details</h1>
                                     </div>
                                     <div class="col-9 d-flex flex-row-reverse">
-                                        <form class="py-2" action="clothing.php" method="get">
-                                            <input type="hidden" name="clothingId" value="1">
+                                        <form class="py-2" action="clothing.php?clothing_id=" method="get">
+                                            <input type="hidden" name="clothing_id" value="1">
                                             <button type="submit" class="btn text-right text-hide clothingButton"
                                                 id="editClothingBtn"></button>
                                         </form>
@@ -217,11 +229,13 @@ if (!isset($_SESSION["user"])) {
                                     <h6>Colors</h6>
                                 </div>
                                 <div class="col-6 text-center">
-                                    <div id="clothingColors" class="mx-auto d-flex justify-content-center">
-                                        <img src="./images/colors/red1.png">
-                                        <img src="./images/colors/red2.png">
-                                        <img src="./images/colors/red3.png">
-                                    </div>
+                                    <?php
+                                    echo '<div id="clothingColors" class="mx-auto d-flex justify-content-center">';
+                                    echo '<img src="./images/colors/' . $row['color_picture'] . '">';
+                                    echo '<img src="./images/colors/' . $row['color_picture'] . '">';
+
+                                   echo '</div>'
+                                        ?>
                                 </div>
                                 <div class="col-3"></div>
                             </div>
@@ -270,23 +284,22 @@ if (!isset($_SESSION["user"])) {
                                     <?php
                                     $catId = $row['category_id'];
                                     $catName = $row['category_name'];
-                                        function category($catId,$catName){
-                                            if($catId >= 1 && $catId <=3){
-                                                $retCat = 'Tops';
-                                                return $retCat . ': ' . $catName;
-                                            }
-                                            elseif($catId == 4 || $catId  == 8 || $catId == 5 ){
-                                                $retCat = 'Bottoms';
-                                                return $retCat . ': '. $catName;
-                                            }
-                                            else
-                                                return 'Accessories';
-                                            
+                                    function category($catId, $catName)
+                                    {
+                                        if ($catId >= 1 && $catId <= 3) {
+                                            $retCat = 'Tops';
+                                            return $retCat . ': ' . $catName;
+                                        } elseif ($catId == 4 || $catId == 8 || $catId == 5) {
+                                            $retCat = 'Bottoms';
+                                            return $retCat . ': ' . $catName;
+                                        } else
+                                            return 'Accessories';
 
-                                            
-                                        }
-                                    
-                                    echo'<p id="clothingCategory" class="mx-auto">'. category($catId,$catName) .'</p>';
+
+
+                                    }
+
+                                    echo '<p id="clothingCategory" class="mx-auto">' . category($catId, $catName) . '</p>';
                                     ?>
                                 </div>
                                 <div class="col-3"></div>
