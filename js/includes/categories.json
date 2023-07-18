@@ -2,47 +2,47 @@
   "categories":[{
     "catId": 1,
     "catName": "shirts",
-    "catMinTemp":-50,
+    "catMinTemp": -50,
     "catMaxTemp": 50,
     "slot_id": "1"
   },{
     "catId": 2,
     "catName": "coats",
-    "catMinTemp":-50,
+    "catMinTemp": -50,
     "catMaxTemp": 8,
     "slot_id": "4"
   },{
       "catId": 3,
       "catName": "jackets",
-      "catMinTemp":9,
+      "catMinTemp": 9,
       "catMaxTemp": 20,
       "slot_id": "4"
     },
     {
       "catId": 4,
       "catName": "pants",
-      "catMinTemp":-50,
+      "catMinTemp": -50,
       "catMaxTemp": 27,
       "slot_id": "2"
     },
     {
       "catId": 5,
       "catName": "shoes",
-      "catMinTemp":-50,
+      "catMinTemp": -50,
       "catMaxTemp": 50,
-      "slot_id": "4"
+      "slot_id": "3"
     },
     {
       "catId": 6,
       "catName": "hats",
-      "catMinTemp":19,
+      "catMinTemp": 19,
       "catMaxTemp": 50,
       "slot_id": "5"
     },
     {
       "catId": 7,
       "catName": "glasses",
-      "catMinTemp":-50,
+      "catMinTemp": -50,
       "catMaxTemp": 50,
       "slot_id": "6"
     },
@@ -78,10 +78,156 @@
     {
       "slot_id": 6,
       "slot_name": "glasses"
+    }
+  ],
+  "sizes": [
+    {
+      "size_id": 1,
+      "size_code": "XS",
+      "size_name": "Xtra Small"
     },
     {
-      "slot_id": 7,
-      "slot_name": "Mufflers"
+      "size_id": 2,
+      "size_code": "S",
+      "size_name": "Small"
+    },
+    {
+      "size_id": 3,
+      "size_code": "M",
+      "size_name": "Medium"
+    },
+    {
+      "size_id": 4,
+      "size_code": "L",
+      "size_name": "Large"
+    },
+    {
+      "size_id": 5,
+      "size_code": "XL",
+      "size_name": "Xtra Large"
+    }
+  ],
+  "pictures": [
+    {
+      "picture_id": 1,
+      "clothing_picture": "beige-coat.png"
+    },{
+      "picture_id": 2,
+      "clothing_picture": "biege-flip-flop-shoes.png"
+    },{
+      "picture_id": 3,
+      "clothing_picture": "biege-trouser-pants.png"
+    },{
+      "picture_id": 4,
+      "clothing_picture": "biege-t-shirt.png"
+    },{
+      "picture_id": 5,
+      "clothing_picture": "black-coat.png"
+    },{
+      "picture_id": 6,
+      "clothing_picture": "black-derby-shoes.png"
+    },{
+      "picture_id": 7,
+      "clothing_picture": "black-jacket.png"
+    },{
+      "picture_id": 8,
+      "clothing_picture": "black-pilot-glasses.png"
+    },{
+      "picture_id": 9,
+      "clothing_picture": "black-running-shoes.png"
+    },{
+      "picture_id": 10,
+      "clothing_picture": "black-shirt.png"
+    },{
+      "picture_id": 11,
+      "clothing_picture": "black-square-glasses.png"
+    },{
+      "picture_id": 12,
+      "clothing_picture": "black-trouser-pants.png"
+    },{
+      "picture_id": 13,
+      "clothing_picture": "black-t-shirt.png"
+    },{
+      "picture_id": 14,
+      "clothing_picture": "blue-jacket.png"
+    },{
+      "picture_id": 15,
+      "clothing_picture": "brown-coat.png"
+    },{
+      "picture_id": 16,
+      "clothing_picture": "brown-sneakers-shoes.png"
+    },{
+      "picture_id": 17,
+      "clothing_picture": "brown-t-shirt.png"
+    },{
+      "picture_id": 18,
+      "clothing_picture": "dark-black-jeans-pants.png"
+    },{
+      "picture_id": 19,
+      "clothing_picture": "dark-blue-jeans-pants.png"
+    },{
+      "picture_id": 20,
+      "clothing_picture": "flannel-striped-shirt.png"
+    },{
+      "picture_id": 21,
+      "clothing_picture": "green-t-shirt.png"
+    },{
+      "picture_id": 22,
+      "clothing_picture": "grey-pilot-glasses.png"
+    },{
+      "picture_id": 23,
+      "clothing_picture": "black-square-glasses.png"
+    },{
+      "picture_id": 24,
+      "clothing_picture": "grey-shorts.png"
+    },{
+      "picture_id": 25,
+      "clothing_picture": "grey-trouser-pants.png"
+    },{
+      "picture_id": 26,
+      "clothing_picture": "hawaian-shorts.png"
+    },{
+      "picture_id": 27,
+      "clothing_picture": "it-matters-not.png"
+    },{
+      "picture_id": 28,
+      "clothing_picture": "leather-black-jacket.png"
+    },{
+      "picture_id": 29,
+      "clothing_picture": "light-blue-jeans-pants.png"
+    },{
+      "picture_id": 30,
+      "clothing_picture": "light-blue-shirt.png"
+    },{
+      "picture_id": 30,
+      "clothing_picture": "light-navy-jeans-pants.png"
+    },{
+      "picture_id": 32,
+      "clothing_picture": "navy-blue-jeans-pants.png"
+    },{
+      "picture_id": 33,
+      "clothing_picture": "navy-blue-shirt.png"
+    },{
+      "picture_id": 34,
+      "clothing_picture": "navy-trousers-pants.png"
+    },{
+      "picture_id": 35,
+      "clothing_picture": "navy-t-shirt.png"
+    },{
+      "picture_id": 36,
+      "clothing_picture": "purple-jacket.png"
+    },{
+      "picture_id": 37,
+      "clothing_picture": "purple-t-shirt.png"
+    },{
+      "picture_id": 38,
+      "clothing_picture": "red-t-shirt.png"
+    },{
+      "picture_id": 39,
+      "clothing_picture": "white-jacket.png"
+    },{
+      "picture_id": 40,
+      "clothing_picture": "white-t-shirt.png"
     }
   ]
 }

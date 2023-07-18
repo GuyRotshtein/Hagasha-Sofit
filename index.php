@@ -26,7 +26,7 @@ if(!isset($_SESSION["user"])){
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Clother - Home</title>
 </head>
-<body>
+<body class="homePage">
 <header class="p-4 py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
@@ -85,7 +85,7 @@ if(!isset($_SESSION["user"])){
 </header>
 <main>
     <div class="row">
-        <div id="desktop-menu" class="col-3 py-2 border-end border-primary-subtle border-3">
+        <div class="col-3 py-2 border-end border-primary-subtle border-3 desktop-menu">
             <div class="row">
             </div>
             <div class="row ">
@@ -132,38 +132,26 @@ if(!isset($_SESSION["user"])){
                             <h5>Recommendations</h5>
                             <div class="col-1"></div>
                             <div class="col">
-                                <div id="rec_clothes" class="card-group d-flex flex-wrap p-2 bg-secondary gap-3">
-                                    <div class="card text-bg-transparent border-0">
-                                        <img src="images/jackets/black-jacket.png" class="card-img " alt="Black jacket" title="Black jacket">
-                                        <a href="clothing.php?clothingId=1">
-                                            <div class="card-img-overlay"></div>
-                                        </a>
+                                <div id="rec_clothes" class="card-group d-flex flex-wrap p-2 bg-light-subtle gap-3 border-3">
+                                    <div class="card col text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                            <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card text-bg-transparent border-0">
-                                        <img src="images/jackets/blue-jacket.png" class="card-img " alt="Blue jacket" title="Blue jacket">
-                                        <a href="clothing.php?clothingId=1">
-                                            <div class="card-img-overlay"></div>
-                                        </a>
+                                    <div class="card col text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                        <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card text-bg-transparent border-0">
-                                        <img src="images/jackets/leather-black-jacket.png" class="card-img" alt="Leather black jacket"
-                                             title="Leather black jacket">
-                                        <a href="clothing.php?clothingId=1">
-                                            <div class="card-img-overlay"></div>
-                                        </a>
+                                    <div class="card col text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                        <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card text-bg-transparent border-0">
-                                        <img src="images/jackets/purple-jacket.png" class="card-img" alt="Purple jacket"
-                                             title="Purple jacket">
-                                        <a href="clothing.php?clothingId=1">
-                                            <div class="card-img-overlay"></div>
-                                        </a>
+                                    <div class="card col text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                        <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card text-bg-transparent border-0">
-                                        <img src="images/jackets/white-jacket.png" class="card-img" alt="White jacket" title="White jacket">
-                                        <a href="clothing.php?clothingId=1">
-                                            <div class="card-img-overlay"></div>
-                                        </a>
+                                    <div class="card col text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                        <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
                                 </div>
                             </div>

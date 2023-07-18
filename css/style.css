@@ -42,7 +42,7 @@ header-container{
 .main-container {
     background-color: white;
 }
-#clothingImage {
+#clothingImage>div>div>img, carousel-item{
     max-width: 100%;
     max-height: 100%;
 }
@@ -126,8 +126,12 @@ header-container{
 #weatherPanel{
     height: 400px;
 }
+#clothingImage, #clothingImage div img, #clothingImage div{
+    height: 430px;
+    max-height: 430px;
+}
 @media only screen and (max-width: 900px) {
-    #desktop-menu{
+    .desktop-menu{
         display: none;
     }
     .breadcrumb {
@@ -143,7 +147,7 @@ header-container{
     .header-hamburger{
         display: none;
     }
-    #desktop-menu{
+    .desktop-menu{
         height: auto;
         overflow-y: hidden;
     }
