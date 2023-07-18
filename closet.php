@@ -118,7 +118,10 @@ if (!isset($_SESSION["user"])) {
           <li class="breadcrumb-item"><a class="breadcrumb-link" href="./index.php">Home</a></li>
           <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="./closetList.php">Closet</a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Business attire</li>
+          <?php
+                $row = mysqli_fetch_assoc($result);
+          echo '<li class="breadcrumb-item active" aria-current="page">'.$row['closet_name'].'</li>'
+          ?>
         </ol>
       </nav>
       <div class="container">
@@ -154,11 +157,12 @@ if (!isset($_SESSION["user"])) {
 
               if (str_contains($row["clothing_name"], 'coat')) {
                 echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
-              }
+            }
+            
             }
             if ($data == 0)
               echo 'No coats yet.';
@@ -174,9 +178,9 @@ if (!isset($_SESSION["user"])) {
 
               if (str_contains($row["clothing_name"], 'jacket')) {
                 echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
             }
@@ -194,9 +198,9 @@ if (!isset($_SESSION["user"])) {
 
               if (str_contains($row["clothing_name"], 'shirt')) {
                 echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
 
@@ -224,9 +228,9 @@ if (!isset($_SESSION["user"])) {
 
               if (str_contains($row["clothing_name"], 'pants')) {
                 echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
             }
@@ -244,9 +248,9 @@ if (!isset($_SESSION["user"])) {
 
               if (str_contains($row["clothing_name"], 'shorts')) {
                 echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
             }
@@ -264,9 +268,9 @@ if (!isset($_SESSION["user"])) {
 
               if (str_contains($row["clothing_name"], 'shoes')) {
                 echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
 
@@ -295,9 +299,9 @@ if (!isset($_SESSION["user"])) {
 
               if (str_contains($row["clothing_name"], 'hat')) {
                 echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
 
@@ -317,9 +321,9 @@ if (!isset($_SESSION["user"])) {
 
               if (str_contains($row["clothing_name"], 'glasses')) {
                 echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<div class="card-img-overlay"></div></a></div>';
                 $data = 1;
               }
 
