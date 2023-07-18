@@ -85,7 +85,7 @@ if(!isset($_SESSION["user"])){
 </header>
 <main>
     <div class="row">
-        <div id="desktop-menu" class="col-3 py-2 border-end border-primary-subtle border-3">
+        <div class="col-3 py-2 border-end border-primary-subtle border-3 desktop-menu">
             <div class="row">
             </div>
             <div class="row ">

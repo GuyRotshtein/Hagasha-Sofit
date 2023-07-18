@@ -169,10 +169,6 @@ async function initMap(user_position) {
     });
 }
 
-function isInArray(value, array) {
-    return array.indexOf(value) > -1;
-}
-
 function tidyArray(array,favColor){
     let favColorExists = 0;
     if (array.length > 1){
@@ -275,3 +271,73 @@ async function generateRecommendation(data) {
     recommendationWindow.appendChild(ulFrg);
 };
 
+function insertJSONdata(data){
+    if (document.addClothingForm) {
+        const ulFrag = document.createDocumentFragment();
+
+        const defaultCategory = document.createElement('option');
+        defaultCategory.value ='default';
+        defaultCategory.innerHTML = 'Select a category';
+        defaultCategory.selected = true;
+        defaultCategory.disabled = true;
+        ulFrag.appendChild(defaultCategory);
+
+        for(const key in data.categories){
+
+            const closetOption = document.createElement('option');
+            closetOption.value=data.categories[key].catId;
+            closetOption.innerHTML=data.categories[key].catName;
+            ulFrag.appendChild(closetOption);
+        }
+
+        let clothingCategory = document.addClothingForm.category;
+        clothingCategory.innerHTML = "";
+        clothingCategory.appendChild(ulFrag);
+
+        //now we add the sizes >:)
+        ulFrag.innerHTML = '';
+        const defaultSize = document.createElement('option');
+        defaultSize.value ='default';
+        defaultSize.innerHTML = 'Select a size';
+        defaultSize.selected = true;
+        defaultSize.disabled = true;
+        ulFrag.appendChild(defaultSize);
+        for(const key in data.sizes){
+
+            const sizeOption = document.createElement('option');
+            sizeOption.value=data.sizes[key].size_id;
+            sizeOption.innerHTML=data.sizes[key].size_code;
+            ulFrag.appendChild(sizeOption);
+        }
+        let clothingSize = document.addClothingForm.size;
+        clothingSize.innerHTML = "";
+        clothingSize.appendChild(ulFrag);
+
+        //adding Pictures + setting event listener
+        ulFrag.innerHTML = '';
+        const defaultPicDiv = document.createElement('div');
+        defaultPicDiv.classList.add('carousel-item','active');
+        const defaultPicImg = document.createElement('img');
+        defaultPicImg.src='./uploads/clothing/default.png';
+        defaultPicImg.value = 'default';
+        defaultPicImg.classList.add('d-block','w-100','object-fit-contain');
+        defaultPicDiv.appendChild(defaultPicImg);
+        ulFrag.appendChild(defaultPicDiv);
+        for(const key in data.pictures){
+            const pictureDiv = document.createElement('div');
+            pictureDiv.classList.add('carousel-item','object-fit-contain');
+            const pictureImg = document.createElement('img');
+            pictureImg.classList.add('d-block','w-100','object-fit-contain');
+            pictureImg.src = './uploads/clothing/' + data.pictures[key].clothing_picture;
+            pictureDiv.appendChild(pictureImg);
+            ulFrag.appendChild(pictureDiv);
+        }
+        const pictureCarousel = document.querySelector('.carousel-inner');
+        pictureCarousel.innerHTML = "";
+        pictureCarousel.appendChild(ulFrag);
+    }
+};
+
+fetch("./js/includes/categories.json")
+    .then(response => response.json())
+    .then(data => insertJSONdata(data));

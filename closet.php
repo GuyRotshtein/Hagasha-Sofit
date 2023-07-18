@@ -89,7 +89,7 @@ if (!function_exists('str_contains')) {
     include 'db.php';
     include "config.php";
     $uid = $_SESSION['user_id'];
-    $cid = $_GET['closet_id'];
+    $cid = $_GET['closet_id']?:header('Location: ' . URL . 'closetList.php');
     $query = "SELECT 
                             cls.closet_name,
                             cls.closet_id,
@@ -334,117 +334,19 @@ if (!function_exists('str_contains')) {
               echo 'No glasses yet.';
             else
               $data = 0;
-            echo '</div></div>';
-
+            echo '</div></div></div></div></div>';
+            echo '<div class="row">
+                    <div id="add-clothing" class="col-12 mx-auto d-flex justify-content-center">
+                    <a href="addClothing.php?closet_id='.$cid.'" class="img btn mx-auto p-0 clothingButton" role="button"></a></div></div>'
             ?>
-            <!-- <div class="row">
-              <h5>coats</h5>
-              <div class="card-group d-flex flex-wrap">
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/coats/brown-coat.png" class="card-img " alt="Brown coat" title="Brown coat">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/coats/beige-coat.png" class="card-img " alt="Beige coat" title="Beige coat">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/coats/black-coat.png" class="card-img " alt="Black coat" title="Black coat">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-              </div>
-            </div> -->
-            <!--        Jackets       -->
-            <!-- <div class="row">
-              <h5>jackets</h5>
-              <div class="card-group d-flex flex-wrap">
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/jackets/black-jacket.png" class="card-img " alt="Black jacket" title="Black jacket">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/jackets/blue-jacket.png" class="card-img " alt="Blue jacket" title="Blue jacket">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/jackets/leather-black-jacket.png" class="card-img" alt="Leather black jacket"
-                    title="Leather black jacket">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/jackets/purple-jacket.png" class="card-img" alt="Purple jacket"
-                    title="Purple jacket">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/jackets/white-jacket.png" class="card-img" alt="White jacket" title="White jacket">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-              </div>
-            </div> -->
-            <!-- <div class="row">
-              <h5>shirts</h5>
-              <div class="card-group d-flex flex-wrap">
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/shirts/black-shirt.png" class="card-img " alt="Black shirt" title="Black shirt">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/shirts/flannel-striped-shirt.png" class="card-img " alt="Flannel striped shirt"
-                    title="Flannel striped shirt">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/shirts/light-blue-shirt.png" class="card-img " alt="Light blue shirt"
-                    title="Light blue shirt">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-                <div class="card text-bg-transparent border-0">
-                  <img src="images/shirts/navy-blue-shirt.png" class="card-img " alt="Navy blue shirt"
-                    title="Navy blue shirt">
-                  <a href="clothing.php?clothingId=1">
-                    <div class="card-img-overlay"></div>
-                  </a>
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
       </div>
       <!--      Add clothing button     -->
-      <div class="row">
-        <div id="add-clothing" class="col-12 mx-auto d-flex justify-content-center">
-          <a href="addClothing.php" class="img btn mx-auto p-0 clothingButton" role="button">
 
-          </a>
-        </div>
-      </div>
     </div>
   </main>
 </body>
-
 </html>
 <?php
 mysqli_close($connection);

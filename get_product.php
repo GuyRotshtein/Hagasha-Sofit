@@ -1,3 +1,29 @@
+<?php
+include "config.php";
+include "db.php";
+
+session_start();
+
+if (!isset($_SESSION["user"])) {
+    echo 'no user ID found! ';
+    header('Location: ' . URL . 'login.php');
+} else{
+}
+if (!function_exists('str_contains')) {
+    function str_contains(string $haystack, string $needle): bool
+    {
+        return '' === $needle || false !== strpos($haystack, $needle);
+    }
+}
+$uid = $_SESSION['user_id'];
+$cid = $_GET['closet_id']?:header('Location: ' . URL . 'closetList.php');
+
+if (!$result) {
+    die("DB query failed.");
+}
+//upload to DB here!
+//then, search DB for thing matching it!
+?>
 <!DOCTYPE html>
 <html>
 <head>

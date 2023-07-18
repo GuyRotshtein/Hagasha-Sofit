@@ -4,30 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8754e0d6-43b2-45b3-b725-f3b8fcef56a6" name="Changes" comment="Updated and header style. Also added gitIgnore file and created file for login page, as well as a config php file.">
-      <change afterPath="$PROJECT_DIR$/closet.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/beige-coat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/black-coat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/black-jacket.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/black-shirt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/blue-jacket.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/brown-coat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/flannel-striped-shirt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/leather-black-jacket.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/light-blue-shirt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/navy-blue-shirt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/purple-jacket.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/clothing/white-jacket.png" afterDir="false" />
+    <list default="true" id="8754e0d6-43b2-45b3-b725-f3b8fcef56a6" name="Changes" comment="Added redundancy feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ClosetList.php" beforeDir="false" afterPath="$PROJECT_DIR$/closetList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addClothing.php" beforeDir="false" afterPath="$PROJECT_DIR$/addClothing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clothing.php" beforeDir="false" afterPath="$PROJECT_DIR$/clothing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_product.php" beforeDir="false" afterPath="$PROJECT_DIR$/get_product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/homePage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/closet.php" beforeDir="false" afterPath="$PROJECT_DIR$/closet.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/includes/categories.json" beforeDir="false" afterPath="$PROJECT_DIR$/js/includes/categories.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reccomendation.php" beforeDir="false" afterPath="$PROJECT_DIR$/recommendation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +25,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
@@ -57,31 +41,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/guyro/Documents/Shenkar/Year 3/Semester 2/Web and Cloud/FinalHagasha/Hagasha-Sofit/uploads/clothing",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/guyro/Documents/Shenkar/Year 3/Semester 2/Web and Cloud/FinalHagasha/Hagasha-Sofit/uploads/clothing&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\guyro\Documents\Shenkar\Year 3\Semester 2\Web and Cloud\FinalHagasha\Hagasha-Sofit\uploads\clothing" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.closetList.php">
+  <component name="RunManager" selected="JavaScript Debug.index.php">
     <configuration name="closetList.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hagasha-Sofit/closetList.php" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="clothing.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/hagasha/clothing.html" useBuiltInWebServerPort="true">
+    <configuration name="closet.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hagasha-Sofit/closet.php" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="clothing.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hagasha-Sofit/clothing.php" useBuiltInWebServerPort="true">
@@ -93,24 +78,24 @@
     <configuration name="index.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hagasha-Sofit/index.php" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
-    <configuration name="login.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hagasha-Sofit/login.php" useBuiltInWebServerPort="true">
+    <configuration name="recommendation.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hagasha-Sofit/recommendation.php" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="JavaScript Debug.index.html" />
+      <item itemvalue="JavaScript Debug.recommendation.php" />
+      <item itemvalue="JavaScript Debug.closet.php" />
       <item itemvalue="JavaScript Debug.index.php" />
       <item itemvalue="JavaScript Debug.clothing.php" />
-      <item itemvalue="JavaScript Debug.login.php" />
-      <item itemvalue="JavaScript Debug.clothing.html" />
       <item itemvalue="JavaScript Debug.closetList.php" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.closetList.php" />
         <item itemvalue="JavaScript Debug.index.php" />
+        <item itemvalue="JavaScript Debug.closet.php" />
+        <item itemvalue="JavaScript Debug.recommendation.php" />
+        <item itemvalue="JavaScript Debug.closetList.php" />
         <item itemvalue="JavaScript Debug.clothing.php" />
-        <item itemvalue="JavaScript Debug.login.php" />
-        <item itemvalue="JavaScript Debug.clothing.html" />
       </list>
     </recent_temporary>
   </component>
@@ -134,6 +119,10 @@
       <workItem from="1689409126381" duration="12572000" />
       <workItem from="1689504519742" duration="8305000" />
       <workItem from="1689512950024" duration="4064000" />
+      <workItem from="1689615750916" duration="771000" />
+      <workItem from="1689621333191" duration="629000" />
+      <workItem from="1689662354382" duration="1988000" />
+      <workItem from="1689673933481" duration="10078000" />
     </task>
     <task id="LOCAL-00001" summary="Updated and header style. Also added gitIgnore file and created file for login page, as well as a config php file.">
       <created>1689409894029</created>
@@ -142,7 +131,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689409894029</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added first parts of AJAX code, as well as the godforsaken JSON (do we really need one at this point we use 3 JSONs already from the APIs and the F'ing AJAX???)">
+      <created>1689610600237</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1689610600237</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added redundancy feature">
+      <created>1689621959222</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1689621959223</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,7 +164,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated and header style. Also added gitIgnore file and created file for login page, as well as a config php file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated and header style. Also added gitIgnore file and created file for login page, as well as a config php file." />
+    <MESSAGE value="Added first parts of AJAX code, as well as the godforsaken JSON (do we really need one at this point we use 3 JSONs already from the APIs and the F'ing AJAX???)" />
+    <MESSAGE value="Added redundancy feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added redundancy feature" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
