@@ -129,32 +129,30 @@ if(!isset($_SESSION["user"])){
                         <!--            Recommendations           -->
                         <div class="row">
                             <h5>Recommendations</h5>
-                            <div class="col-1"></div>
-                            <div class="col">
-                                <div id="rec_clothes" class="card-group d-flex flex-wrap p-2 bg-light-subtle gap-1 border-3">
-                                    <div class="card col text-bg-transparent border-0 bg-light-">
-                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                            <div class="col d-inline-flex">
+                                <div id="rec_clothes" class="card-group d-flex flex-wrap p-2 bg-light-subtle gap-1 border-3 mx-auto">
+                                    <div class="card text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img card-img-main object-fit-contain placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                             <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card col text-bg-transparent border-0 bg-light-">
-                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                    <div class="card text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img card-img-main object-fit-contain placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                         <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card col text-bg-transparent border-0 bg-light-">
-                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                    <div class="card text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img card-img-main object-fit-contain placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                         <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card col text-bg-transparent border-0 bg-light-">
-                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                    <div class="card text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img card-img-main object-fit-contain placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                         <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card col text-bg-transparent border-0 bg-light-">
-                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                    <div class="card text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img card-img-main object-fit-contain placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                         <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1"></div>
                         </div>
 <!--                        Map & Weather-->
                         <div class="row justify-content-center pb-3 pt-5">

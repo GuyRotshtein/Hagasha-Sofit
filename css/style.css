@@ -133,7 +133,10 @@ header-container{
     height: 430px;
     max-height: 430px;
 }
-
+.card-img-main{
+    height: 160px;
+    width: 160px;
+}
 @media only screen and (max-width: 900px) {
     .desktop-menu{
         display: none;
