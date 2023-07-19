@@ -316,28 +316,30 @@ function insertJSONdata(data){
         let clothingSize = document.addClothingForm.size;
         clothingSize.innerHTML = "";
         clothingSize.appendChild(ulFrag);
-
-        ulFrag.innerHTML = '';
-        const defaultPicDiv = document.createElement('div');
-        defaultPicDiv.classList.add('carousel-item','active');
-        const defaultPicImg = document.createElement('img');
-        defaultPicImg.src='./uploads/clothing/default.png';
-        defaultPicImg.value = 'default';
-        defaultPicImg.classList.add('d-block','w-100','object-fit-contain');
-        defaultPicDiv.appendChild(defaultPicImg);
-        ulFrag.appendChild(defaultPicDiv);
-        for(const key in data.pictures){
-            const pictureDiv = document.createElement('div');
-            pictureDiv.classList.add('carousel-item','object-fit-contain');
-            const pictureImg = document.createElement('img');
-            pictureImg.classList.add('d-block','w-100','object-fit-contain');
-            pictureImg.src = './uploads/clothing/' + data.pictures[key].clothing_picture;
-            pictureDiv.appendChild(pictureImg);
-            ulFrag.appendChild(pictureDiv);
+        if (document.getElementById('editSwitch').innerHTML != 'true'){
+            ulFrag.innerHTML = '';
+            const defaultPicDiv = document.createElement('div');
+            defaultPicDiv.classList.add('carousel-item','active');
+            const defaultPicImg = document.createElement('img');
+            defaultPicImg.src='./uploads/clothing/default.png';
+            defaultPicImg.value = 'default';
+            defaultPicImg.classList.add('d-block','w-100','object-fit-contain');
+            defaultPicDiv.appendChild(defaultPicImg);
+            ulFrag.appendChild(defaultPicDiv);
+            for(const key in data.pictures){
+                const pictureDiv = document.createElement('div');
+                pictureDiv.classList.add('carousel-item','object-fit-contain');
+                const pictureImg = document.createElement('img');
+                pictureImg.classList.add('d-block','w-100','object-fit-contain');
+                pictureImg.src = './uploads/clothing/' + data.pictures[key].clothing_picture;
+                pictureDiv.appendChild(pictureImg);
+                ulFrag.appendChild(pictureDiv);
+            }
+            const pictureCarousel = document.querySelector('.carousel-inner');
+            pictureCarousel.innerHTML = "";
+            pictureCarousel.appendChild(ulFrag);
         }
-        const pictureCarousel = document.querySelector('.carousel-inner');
-        pictureCarousel.innerHTML = "";
-        pictureCarousel.appendChild(ulFrag);
+
     }
 };
 

@@ -177,8 +177,11 @@ WHERE
                                         <h1>Details</h1>
                                     </div>
                                     <div class="col-9 d-flex flex-row-reverse">
-                                        <form class="py-2" action="clothing.php?clothing_id=" method="get">
-                                            <input type="hidden" name="clothing_id" value="1">
+                                            <?php
+                                                echo '<form name="editClothing" class="py-2" action="addClothing.php?closet_id='.$closet_id.'" method="post">';
+                                                echo '<input type="hidden" name="is_edit" value="true">';
+                                                echo '<input type="hidden" name="clothing_id" value="'.$clothing_id.'">';
+                                            ?>
                                             <button type="submit" class="btn text-right text-hide clothingButton"
                                                 id="editClothingBtn"></button>
                                         </form>
