@@ -70,7 +70,7 @@ WHERE
         die("DB query failed.");
     }
     $row = mysqli_fetch_assoc($result);
-    $cloth_id = $cid;
+    $clothing_id = $cid;
     $closet_id = $row['closet_id'];
     ?>
     <header class="p-4 py-3 border-bottom">
@@ -323,8 +323,11 @@ WHERE
                             <!--            Blue line           -->
                             <div class="row py-4">
                                 <div class="col mx-auto text-center">
-                                    <form action="clothing.php" method="get">
-                                        <input type="hidden" name="clothingId" value="1">
+                                    <form name="clothingRemovalForm" id="clothingRemovalForm" action="removeClothing.php" method="post">
+                                        <?php
+                                        echo '<input type="hidden" name="clothing_id" value="'.$clothing_id.'" form="clothingRemovalForm">';
+                                        echo '<input type="hidden" name="closet_id" value="'.$closet_id.'" form="clothingRemovalForm">';
+                                        ?>
                                         <button type="button" class="btn text-right text-hide clothingButton"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal"
                                             id="removeClothingBtn">Remove
@@ -344,16 +347,8 @@ WHERE
                                                         Are you sure you want to delete the product?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">No</button>
-                                                        <form name="removalForm" id="removalForm" method="post" action="./index.php">
-                                                            <?php
-                                                            echo '<input type="hidden" name="clothing_id" value="'.$cloth_id.'">';
-                                                            echo '<input type="hidden" name="closet_id" value="'.$closet_id.'">';
-                                                            ?>
-                                                            <button type="submit" class="btn btn-primary" id="removeButton">Yes</button>
-                                                        </form>
-
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                                        <button type="submit" class="btn btn-primary" id="removeButton">Yes</button>
                                                     </div>
                                                 </div>
                                             </div>
