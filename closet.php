@@ -202,7 +202,8 @@ if (!function_exists('str_contains')) {
                   }
                 }
                 if ($data == 0)
-                  echo 'No coats yet.';
+                echo '<p class="p-3 bg-light text-center">No coats yet.</p>';
+
                 else
                   $data = 0;
                 echo '</div></div>';
@@ -222,7 +223,7 @@ if (!function_exists('str_contains')) {
                   }
                 }
                 if ($data == 0)
-                  echo 'No jackets yet.';
+                echo '<p class="p-3 bg-light text-center">No jackets yet.</p>';
                 else
                   $data = 0;
                 echo '</div></div>';
@@ -243,7 +244,7 @@ if (!function_exists('str_contains')) {
 
                 }
                 if ($data == 0)
-                  echo 'No shirts yet.';
+                echo '<p class="p-3 bg-light text-center">No shirts yet.</p>';
                 else
                   $data = 0;
 
@@ -272,7 +273,7 @@ if (!function_exists('str_contains')) {
                   }
                 }
                 if ($data == 0)
-                  echo 'No pants yet.';
+                echo '<p class="p-3 bg-light text-center">No pants yet.</p>';
                 else
                   $data = 0;
                 echo '</div></div>';
@@ -292,7 +293,8 @@ if (!function_exists('str_contains')) {
                   }
                 }
                 if ($data == 0)
-                  echo 'No shorts yet.';
+                  echo '<p class="p-3 bg-light text-center">No shorts yet.</p>
+                  ';
                 else
                   $data = 0;
                 echo '</div></div>';
@@ -313,7 +315,7 @@ if (!function_exists('str_contains')) {
 
                 }
                 if ($data == 0)
-                  echo 'No shoes yet.';
+                echo '<p class="p-3 bg-light text-center">No shoes yet.</p>';
                 else
                   $data = 0;
                 echo '</div></div>';
@@ -344,7 +346,7 @@ if (!function_exists('str_contains')) {
 
                 }
                 if ($data == 0)
-                  echo 'No hats yet.';
+                echo '<p class="p-3 bg-light text-center">No hats yet.</p>';
                 else
                   $data = 0;
                 echo '</div></div>';
@@ -366,7 +368,7 @@ if (!function_exists('str_contains')) {
 
                 }
                 if ($data == 0)
-                  echo 'No glasses yet.';
+                echo '<p class="p-3 bg-light text-center">No glasses yet.</p>';
                 else
                   $data = 0;
                 echo '</div></div></div>';
