@@ -126,7 +126,6 @@ if(!isset($_SESSION["user"])){
                                 <div class="col-9 d-flex flex-row-reverse"></div>
                             </div>
                         </div>
-
                         <!--            Recommendations           -->
                         <div class="row">
                             <h5>Recommendations</h5>
@@ -158,7 +157,7 @@ if(!isset($_SESSION["user"])){
                             <div class="col-1"></div>
                         </div>
 <!--                        Map & Weather-->
-                        <div class="row justify-content-center pb-3 pt-5">
+                        <div id="ajaxCorner" class="row justify-content-center pb-3 pt-5">
                             <div class="col-6">
                                 <div class="row">
                                     <h4>Map</h4>
