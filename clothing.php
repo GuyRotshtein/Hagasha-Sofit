@@ -11,6 +11,7 @@ if (!isset($_SESSION["user"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
@@ -79,23 +80,27 @@ WHERE
             <div class="col-4">
                 <div class="mb-2 mb-md-0 header-hamburger">
                     <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
-                            aria-controls="Hamburger">
+                        aria-controls="Hamburger">
                         <img src="./images/icons/hamburger.png" height="40" width="40">
                     </button>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger"
+                        aria-labelledby="HamburgerLabel">
                         <!--        hamburger contents-->
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
                             <div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item" class="nav-item"><a href="./index.php"
-                                                                                    class="nav-link">Home</a></li>
-                                    <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closet</a>
+                                            class="nav-link">Home</a></li>
+                                    <li class="list-group-item" class="nav-item"><a href="closetList.php"
+                                            class="nav-link">Closet</a>
                                     </li>
-                                    <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
+                                    <li class="list-group-item" class="nav-item"><a href="#"
+                                            class="nav-link">Calendar</a>
                                     </li>
                                     <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
                                     </li>
@@ -108,13 +113,13 @@ WHERE
             <!--    logo      -->
             <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
                 <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png" class=""
-                                                                 height="40"></a>
+                        height="40"></a>
             </div>
             <!--    User panel    -->
             <div class="col-4 d-flex justify-content-end text-end header-user-menu">
                 <div class="flex-shrink-0 dropdown">
                     <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                     </button>
                     <ul class="dropdown-menu text-small shadow dropdown-menu-end">
@@ -177,13 +182,13 @@ WHERE
                                         <h1>Details</h1>
                                     </div>
                                     <div class="col-9 d-flex flex-row-reverse">
-                                            <?php
-                                                echo '<form name="editClothing" class="py-2" action="addClothing.php?closet_id='.$closet_id.'" method="post">';
-                                                echo '<input type="hidden" name="is_edit" value="true">';
-                                                echo '<input type="hidden" name="clothing_id" value="'.$clothing_id.'">';
-                                            ?>
-                                            <button type="submit" class="btn text-right text-hide clothingButton"
-                                                id="editClothingBtn"></button>
+                                        <?php
+                                        echo '<form name="editClothing" class="py-2" action="addClothing.php?closet_id=' . $closet_id . '" method="post">';
+                                        echo '<input type="hidden" name="is_edit" value="true">';
+                                        echo '<input type="hidden" name="clothing_id" value="' . $clothing_id . '">';
+                                        ?>
+                                        <button type="submit" class="btn text-right text-hide clothingButton"
+                                            id="editClothingBtn"></button>
                                         </form>
                                     </div>
                                 </div>
@@ -225,7 +230,7 @@ WHERE
                                     echo '<div id="clothingColors" class="mx-auto d-flex justify-content-center">';
 
                                     echo '<img src="./images/colors/' . $row['color_picture'] . '">';
-                                    $query_secondary =    "SELECT 
+                                    $query_secondary = "SELECT 
                                                                 col.color_picture 
                                                             FROM
                                                                 tbl_222_closets cls
@@ -248,11 +253,11 @@ WHERE
                                         die("DB color query failed.");
                                     }
                                     $row_color = mysqli_fetch_assoc($result_color);
-                                    if (isset($row_color['color_picture'])){
+                                    if (isset($row_color['color_picture'])) {
                                         echo '<img src="./images/colors/' . $row_color['color_picture'] . '">';
                                     }
 
-                                   echo '</div>'
+                                    echo '</div>'
                                         ?>
                                 </div>
                                 <div class="col-3"></div>
@@ -326,10 +331,11 @@ WHERE
                             <!--            Blue line           -->
                             <div class="row py-4">
                                 <div class="col mx-auto text-center">
-                                    <form name="clothingRemovalForm" id="clothingRemovalForm" action="removeClothing.php" method="post">
+                                    <form name="clothingRemovalForm" id="clothingRemovalForm"
+                                        action="removeClothing.php" method="post">
                                         <?php
-                                        echo '<input type="hidden" name="clothing_id" value="'.$clothing_id.'" form="clothingRemovalForm">';
-                                        echo '<input type="hidden" name="closet_id" value="'.$closet_id.'" form="clothingRemovalForm">';
+                                        echo '<input type="hidden" name="clothing_id" value="' . $clothing_id . '" form="clothingRemovalForm">';
+                                        echo '<input type="hidden" name="closet_id" value="' . $closet_id . '" form="clothingRemovalForm">';
                                         ?>
                                         <button type="button" class="btn text-right text-hide clothingButton"
                                             data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -347,11 +353,15 @@ WHERE
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Are you sure you want to delete the product?
+                                                        <?php
+                                                        echo 'Are you sure you want to delete ' . $row['clothing_name'] . '?'
+                                                            ?>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                                        <button type="submit" class="btn btn-primary" id="removeButton">Yes</button>
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">No</button>
+                                                        <button type="submit" class="btn btn-primary"
+                                                            id="removeButton">Yes</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -366,6 +376,7 @@ WHERE
         </div>
     </main>
 </body>
+
 </html>
 <?php
 mysqli_free_result($result);
