@@ -3,13 +3,11 @@ function validateForm(){
     let clothingSize = document.addClothingForm.size.value;
     let clothingCloset = document.addClothingForm.closet.value;
     let clothingCategory = document.addClothingForm.category.value;
-    let clothingBrand = document.addClothingForm.brand.value;
     let errorFlag = 0;
 
     //hiding all error texts on the page in case some were fixed
     document.getElementById(`invalidName`).style.display = `none`;
     document.getElementById(`invalidSize`).style.display = `none`;
-    document.getElementById(`invalidBrand`).style.display = `none`;
     document.getElementById(`invalidCategory`).style.display = `none`;
     document.getElementById(`invalidCloset`).style.display = `none`;
 
@@ -39,14 +37,6 @@ function validateForm(){
         document.getElementById(`invalidCategory`).style.display = `block`;
         if (errorFlag == 0){
             window.setTimeout(function() { document.addClothingForm.category.focus(); },0);
-            errorFlag = 1;
-        }
-    }
-    if (clothingBrand == `default`){
-        window.setTimeout(function() { document.addClothingForm.brand.focus(); },0);
-        document.getElementById(`invalidBrand`).style.display = `block`;
-        if (errorFlag == 0){
-            window.setTimeout(function() { document.addClothingForm.brand.focus(); },0);
             errorFlag = 1;
         }
     }
@@ -125,9 +115,7 @@ function displayWeather(data){
     let min  = date.getMinutes();
     min = (min < 10 ? "0" : "") + min;
 
-    //insert both into h5, add '<br>' and then description.
     weatherDetails.innerHTML = hour + `:` + min + `<br>` +data.weather[0].description;
-
     detailsCol.appendChild(weatherDetails);
     weatherDescCol.appendChild(detailsCol);
     weatherRow.appendChild(weatherDescCol);
@@ -177,14 +165,18 @@ function tidyArray(array,favColor){
     let favColorExists = 0;
     if (array.length > 1){
         array.forEach(function (arrayItem) {
-            if (parseInt(arrayItem.color_id) == favColor){
+            if (parseInt(arrayItem.color_id) == favColor || (typeof(arrayItem.secondary_color_id) !== 'undefined' && parseInt(arrayItem.secondary_color_id))){
                 favColorExists = 1;
             }
             // console.log(arrayItem.color_id);
         });
         if (favColorExists == 1){
             for (var i = array.length; i--;) {
-                if (parseInt(array[i].color_id) != favColor) array.splice(i, 1);
+                if ((typeof(array[i].secondary_color_id) !== 'undefined')){
+                    if (parseInt(array[i].color_id) != favColor && parseInt(array[i].secondary_color_id) != favColor) array.splice(i, 1);
+                } else {
+                    if (parseInt(array[i].color_id) != favColor) array.splice(i, 1);
+                }
             }
         }
     }
@@ -197,10 +189,7 @@ function pickRandomClothing(array){
 };
 
 const getClothes  = async (data)=>{
-    let response = await fetch('recommendation.php', {
-        // method: 'POST',
-        // body: new FormData(form),
-    });
+    let response = await fetch('recommendation.php', {});
     const result = await response.json();
     const allowedCats = [];
     for (const key in data.categories){
@@ -239,7 +228,6 @@ const getClothes  = async (data)=>{
     slot4Array = tidyArray(slot4Array, result.fav_color[0]);
     slot5Array = tidyArray(slot5Array, result.fav_color[0]);
 
-    // const selectedClothes = [];
     if (slot1Array.length>0){selectedClothes.push(pickRandomClothing(slot1Array));}
     if (slot2Array.length>0){selectedClothes.push(pickRandomClothing(slot2Array));}
     if (slot3Array.length>0){selectedClothes.push(pickRandomClothing(slot3Array));}
@@ -279,43 +267,52 @@ async function generateRecommendation(data) {
 function insertJSONdata(data){
     if (document.addClothingForm) {
         const ulFrag = document.createDocumentFragment();
-
+        let clothingCategory = document.addClothingForm.category;
+        const editCategory = clothingCategory.value;
         const defaultCategory = document.createElement('option');
-        defaultCategory.value ='default';
-        defaultCategory.innerHTML = 'Select a category';
-        defaultCategory.selected = true;
+        defaultCategory.value ='default';defaultCategory.innerHTML = 'Select a category';
+        if (document.getElementById('editSwitch').innerHTML != 'true'){
+            defaultCategory.selected = true;
+        }
         defaultCategory.disabled = true;
         ulFrag.appendChild(defaultCategory);
 
         for(const key in data.categories){
-
             const closetOption = document.createElement('option');
             closetOption.value=data.categories[key].catId;
             closetOption.innerHTML=data.categories[key].catName;
+            if (document.getElementById('editSwitch').innerHTML == 'true' && editCategory == data.categories[key].catId){
+                    closetOption.selected = true;
+            }
             ulFrag.appendChild(closetOption);
         }
-
-        let clothingCategory = document.addClothingForm.category;
+        let selectedCategory = clothingCategory.value;
         clothingCategory.innerHTML = "";
         clothingCategory.appendChild(ulFrag);
 
         ulFrag.innerHTML = '';
+        let clothingSize = document.addClothingForm.size;
+        const editSize = clothingSize.value;
         const defaultSize = document.createElement('option');
         defaultSize.value ='default';
         defaultSize.innerHTML = 'Select a size';
-        defaultSize.selected = true;
+        if (document.getElementById('editSwitch').innerHTML != 'true'){
+            defaultSize.selected = true;
+        }
         defaultSize.disabled = true;
         ulFrag.appendChild(defaultSize);
         for(const key in data.sizes){
-
             const sizeOption = document.createElement('option');
             sizeOption.value=data.sizes[key].size_id;
             sizeOption.innerHTML=data.sizes[key].size_code;
+            if (document.getElementById('editSwitch').innerHTML == 'true' && editSize == data.sizes[key].size_id){
+                sizeOption.selected = true;
+            }
             ulFrag.appendChild(sizeOption);
         }
-        let clothingSize = document.addClothingForm.size;
         clothingSize.innerHTML = "";
         clothingSize.appendChild(ulFrag);
+
         if (document.getElementById('editSwitch').innerHTML != 'true'){
             ulFrag.innerHTML = '';
             const defaultPicDiv = document.createElement('div');
@@ -347,3 +344,6 @@ fetch("./js/includes/categories.json")
     .then(response => response.json())
     .then(data => insertJSONdata(data));
 
+window.onload=()=>{
+
+}

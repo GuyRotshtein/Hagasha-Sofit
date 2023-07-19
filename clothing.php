@@ -217,12 +217,12 @@ WHERE
                                 <div class="col-3"></div>
                             </div>
                             <div class="row 3 py-3">
-                                <div class="col-3">
+                                <div class="col-4">
                                     <h6>Colors</h6>
                                 </div>
-                                <div class="col-6 text-center">
+                                <div class="col-4 text-center">
                                     <?php
-                                    echo '<div id="clothingColors" class="mx-auto d-flex justify-content-center">';
+                                    echo '<div id="clothingColors" class="mx-auto d-inline-flex justify-content-center p-1 bg-body-tertiary rounded-2">';
 
                                     echo '<img src="./images/colors/' . $row['color_picture'] . '">';
                                     $query_secondary =    "SELECT 
@@ -255,7 +255,7 @@ WHERE
                                    echo '</div>'
                                         ?>
                                 </div>
-                                <div class="col-3"></div>
+                                <div class="col-4"></div>
                             </div>
                             <div class="row py-3">
                                 <div class="col-3">
@@ -264,19 +264,25 @@ WHERE
                                 <div class="col-6 text-center">
                                     <?php
                                     $size = $row['size_id'];
-                                    function sizeName($size)
-                                    {
-                                        if ($size == 1)
-                                            return 'S';
-                                        if ($size == 2)
-                                            return 'M';
-                                        if ($size == 3)
-                                            return 'L';
-                                        if ($size == 4)
-                                            return 'XL';
-
+                                    echo '<p class="mx-auto">';
+                                    switch ($size) {
+                                        case 1:
+                                            echo "XS";
+                                            break;
+                                        case 2:
+                                            echo "S";
+                                            break;
+                                        case 3:
+                                            echo "M";
+                                            break;
+                                        case 4:
+                                            echo "L";
+                                            break;
+                                        case 5:
+                                            echo "XL";
+                                            break;
                                     }
-                                    echo '<p class="mx-auto">' . sizeName($size) . '</p>';
+                                    echo '</p>';
                                     ?>
                                     <!-- <p id="clothingSize" class="mx-auto">M</p> -->
                                 </div>
