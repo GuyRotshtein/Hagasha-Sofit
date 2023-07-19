@@ -268,40 +268,37 @@ $favColor = $row['user_fav_color'];
                             </div>
                             <div class="row pb-4">
                                 <div class="col mx-auto text-center">
-                                    <form name="userRemovalForm"
-                                          action="userCRUD.php" method="post">
-                                        <input type="hidden" form="userRemovalForm" name="isRemove" value="true" form="userRemovalForm">
-                                        <?php
-                                        echo '<input type="hidden" name="user_id" value="' . $uid . '" form="userRemovalForm">';
-                                        ?>
-                                        <button type="button" class="btn text-right text-hide clothingButton removeItemBtn removeItemBtnDanger px-5 text-bg-danger"
-                                                data-bs-toggle="modal" data-bs-target="#removeUserModal">Delete User</button>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="removeUserModal" tabindex="-1"
-                                             aria-labelledby="removeUserModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="removeUserModalLabel">Delete <?php $fName.' '.$lName?>
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                                aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <?php
-                                                        echo 'Are you sure you want to delete your user? <br><br> all of your data will be lost'
-                                                        ?>
-                                                    </div>
-                                                    <div class="modal-footer mx-auto">
-                                                        <button type="button" class="btn btn-secondary"
-                                                                data-bs-dismiss="modal">No</button>
-                                                        <button type="submit" class="btn btn-primary"
-                                                                id="removeButton">Yes</button>
-                                                    </div>
+                                    <form name="userRemovalForm" id="userRemovalForm"
+                                          action="userCRUD.php" method="POST">
+                                        <input type="hidden" name="is_remove" value="true">
+                                    </form>
+                                    <button type="button" class="btn text-right text-hide clothingButton removeItemBtn removeItemBtnDanger px-5 text-bg-danger"
+                                            data-bs-toggle="modal" data-bs-target="#removeUserModal">Delete User</button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="removeUserModal" tabindex="-1"
+                                         aria-labelledby="removeUserModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="removeUserModalLabel">Delete <?php $fName.' '.$lName?>
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <?php
+                                                    echo 'Are you sure you want to delete your user? <br><br> all of your data will be lost'
+                                                    ?>
+                                                </div>
+                                                <div class="modal-footer mx-auto">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">No</button>
+                                                    <button type="submit" form="userRemovalForm" class="btn btn-primary"
+                                                            id="removeButton">Yes</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

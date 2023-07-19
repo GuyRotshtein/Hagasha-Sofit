@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 include "db.php";
-if (!isset($_POST['isRemove']) || $_POST['isRemove'] != 'true'){
+if (!isset($_POST['is_remove'])){
     $fName = mysqli_real_escape_string($connection, $_POST['userFName']);
     $lName = mysqli_real_escape_string($connection, $_POST['userLName']);
     $eMail = mysqli_real_escape_string($connection, $_POST['userMail']);
@@ -12,6 +12,7 @@ if (!isset($_POST['isRemove']) || $_POST['isRemove'] != 'true'){
     $country = mysqli_real_escape_string($connection, $_POST['userCountry']);
     $favColor = mysqli_real_escape_string($connection, $_POST['userColor']);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,9 +78,10 @@ if (!isset($_POST['isRemove']) || $_POST['isRemove'] != 'true'){
                             echo 'UPDATE SUCCESFULL!';
                             sleep(4);
                             header('Location: ' . URL . 'userSettings.php');
-                        } else if (isset($_POST['isRemove'])){
+                        } else if (isset($_POST['is_remove'])){
                             //first, get all clothes in closets that the user owns
-                            $number = mysqli_real_escape_string($connection,$_POST['userId']);
+                            session_start();
+                            $number = $_SESSION['user_id'];
                             $query = "DELETE clth . * FROM tbl_222_clothes clth
                                         INNER JOIN
                                             tbl_222_closet_clothes clcs ON clth.clothing_id = clcs.clothing_id
@@ -89,13 +91,24 @@ if (!isset($_POST['isRemove']) || $_POST['isRemove'] != 'true'){
                                             clst.user_id = $number;";
                             $result = mysqli_query($connection, $query);
                             if (!$result) {
-                                die("DB delete query failed.");
+                                die("DB delete clothing query failed.");
                             }
                             //delete the clothes
+                            $query = "DELETE clos . * FROM tbl_222_closets clos WHERE clos.user_id = $number;";
+                            $result = mysqli_query($connection, $query);
+                            if (!$result) {
+                                die("DB delete closets query failed.");
+                            }
                             //delete the closets
-                            //close session
+                            $query = "DELETE usr . * FROM tbl_222_users usr WHERE usr.user_id = $number;";
+                            $result = mysqli_query($connection, $query);
+                            if (!$result) {
+                                die("DB delete closets query failed.");
+                            }
                             //delete user
                             //send to login page
+                            sleep(5);
+                            header('Location: ' . URL . 'login.php');
                         } else {
                             $query = "INSERT INTO tbl_222_users(f_name,l_name,email,password,phone,user_picture,gender,user_country,user_fav_color) VALUES ('$fName','$lName','$eMail','$pass','$phone','$picture','$gender','$country','$favColor')";
                             $result = mysqli_query($connection, $query);
