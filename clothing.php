@@ -80,27 +80,23 @@ WHERE
             <div class="col-4">
                 <div class="mb-2 mb-md-0 header-hamburger">
                     <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
-                        aria-controls="Hamburger">
+                            aria-controls="Hamburger">
                         <img src="./images/icons/hamburger.png" height="40" width="40">
                     </button>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger"
-                        aria-labelledby="HamburgerLabel">
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
                         <!--        hamburger contents-->
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
                             <div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item" class="nav-item"><a href="./index.php"
-                                            class="nav-link">Home</a></li>
-                                    <li class="list-group-item" class="nav-item"><a href="closetList.php"
-                                            class="nav-link">Closet</a>
+                                                                                    class="nav-link">Home</a></li>
+                                    <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closets</a>
                                     </li>
-                                    <li class="list-group-item" class="nav-item"><a href="#"
-                                            class="nav-link">Calendar</a>
+                                    <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                     </li>
                                     <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
                                     </li>
@@ -112,14 +108,13 @@ WHERE
             </div>
             <!--    logo      -->
             <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-                <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png" class=""
-                        height="40"></a>
+                <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
             </div>
             <!--    User panel    -->
             <div class="col-4 d-flex justify-content-end text-end header-user-menu">
                 <div class="flex-shrink-0 dropdown">
                     <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                     </button>
                     <ul class="dropdown-menu text-small shadow dropdown-menu-end">
@@ -136,7 +131,7 @@ WHERE
     </header>
     <main>
         <div class="row ">
-            <div class="col ">
+            <div class="col desktop-menu">
                 <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <?php
@@ -153,16 +148,16 @@ WHERE
             </div>
         </div>
         <div class="row">
-            <div id="desktop-menu" class="col-3 py-2 border-end border-primary-subtle border-3">
+            <div class="col-3 py-2 border-end border-primary-subtle border-3 desktop-menu">
                 <div class="row">
                 </div>
                 <div class="row">
                     <div class="col">
                         <!--        breadcrumbs         -->
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" class="nav-item"><a href="closet.php"
+                            <li class="list-group-item" class="nav-item"><a href="index.php"
                                     class="nav-link px-3">Home</a></li>
-                            <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Closet</a>
+                            <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link px-3">Closet</a>
                             </li>
                             <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
                             </li>

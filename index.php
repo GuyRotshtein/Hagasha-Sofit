@@ -47,7 +47,7 @@ if(!isset($_SESSION["user"])){
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" class="nav-item"><a href="./index.php"
                                                                                 class="nav-link">Home</a></li>
-                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closet</a>
+                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closets</a>
                                 </li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                 </li>
@@ -61,8 +61,7 @@ if(!isset($_SESSION["user"])){
         </div>
         <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-            <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png" class=""
-                                                              height="40"></a>
+            <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
         </div>
         <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">

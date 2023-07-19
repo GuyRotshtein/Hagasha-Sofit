@@ -87,7 +87,7 @@
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" class="nav-item"><a href="./index.php"
                                                                                 class="nav-link">Home</a></li>
-                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closet</a>
+                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closets</a>
                                 </li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                 </li>
@@ -101,7 +101,7 @@
         </div>
         <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-            <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png" class="" height="40"></a>
+            <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
         </div>
         <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
@@ -130,33 +130,34 @@
     }
     ?>
     <main>
+        <div class="row ">
+            <div class="col desktop-menu">
+                <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="index.php">Home</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="closetList.php">Closets</a></li>
+                        <?php
+                        $row = mysqli_fetch_assoc($result);
+                        $cName = $row["closet_name"];
+                        echo '<li class="breadcrumb-item active" aria-current="page"><a class="breadcrumb-link"
+                                                                                          href="closet.php?closet_id='.$cid.'">'.$row["closet_name"].'</a></li>';
+                        ?>
+                        <li class="breadcrumb-item active" aria-current="page">Add new clothing</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
         <div class="row">
             <div class="col-3 py-2 border-end border-primary-subtle border-3 desktop-menu">
-                <div class="row"></div>
                 <div class="row">
-                    <div class="col ">
-                        <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="index.php">Home</a></li>
-                                <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="closetList.php">Closets</a></li>
-                                <?php
-                                $row = mysqli_fetch_assoc($result);
-                                $cName = $row["closet_name"];
-                                echo '<li class="breadcrumb-item active" aria-current="page"><a class="breadcrumb-link"
-                                                                                          href="closet.php?closet_id='.$cid.'">'.$row["closet_name"].'</a></li>';
-                                ?>
-                                <li class="breadcrumb-item active" aria-current="page">Add new clothing</li>
-                            </ol>
-                        </nav>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <!--        breadcrumbs         -->
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" class="nav-item"><a href="./index.php"
+                            <li class="list-group-item" class="nav-item"><a href="index.php"
                                                                             class="nav-link px-3">Home</a></li>
-                            <li class="list-group-item" class="nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a>
+                            <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link px-3">Closet</a>
                             </li>
                             <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
                             </li>

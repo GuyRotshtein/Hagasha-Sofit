@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8754e0d6-43b2-45b3-b725-f3b8fcef56a6" name="Changes" comment="Added code for automatic reccomendation of clothes">
-      <change afterPath="$PROJECT_DIR$/removeClothing.php" afterDir="false" />
+    <list default="true" id="8754e0d6-43b2-45b3-b725-f3b8fcef56a6" name="Changes" comment="Implemented updating of existing clothes, altered the addClothing page to include secondary colors, as well as fixes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addClothing.php" beforeDir="false" afterPath="$PROJECT_DIR$/addClothing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/closet.php" beforeDir="false" afterPath="$PROJECT_DIR$/closet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/closetList.php" beforeDir="false" afterPath="$PROJECT_DIR$/closetList.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clothing.php" beforeDir="false" afterPath="$PROJECT_DIR$/clothing.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +115,8 @@
       <workItem from="1689504519742" duration="8305000" />
       <workItem from="1689512950024" duration="4064000" />
       <workItem from="1689705658341" duration="659000" />
-      <workItem from="1689706333523" duration="2384000" />
+      <workItem from="1689706333523" duration="7865000" />
+      <workItem from="1689753420811" duration="17757000" />
     </task>
     <task id="LOCAL-00001" summary="Updated and header style. Also added gitIgnore file and created file for login page, as well as a config php file.">
       <created>1689409894029</created>
@@ -123,7 +125,42 @@
       <option name="project" value="LOCAL" />
       <updated>1689409894029</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="More fixes, responsivity, optimization etc.">
+      <created>1689714178725</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1689714178725</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added red1">
+      <created>1689714197995</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1689714197995</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added clothing removal code and pages">
+      <created>1689766778299</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689766778299</updated>
+    </task>
+    <task id="LOCAL-00005" summary="updated edit button to work">
+      <created>1689769472586</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689769472586</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implemented updating of existing clothes, altered the addClothing page to include secondary colors, as well as fixes">
+      <created>1689780287633</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689780287633</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,7 +179,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Updated and header style. Also added gitIgnore file and created file for login page, as well as a config php file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated and header style. Also added gitIgnore file and created file for login page, as well as a config php file." />
+    <MESSAGE value="More fixes, responsivity, optimization etc." />
+    <MESSAGE value="added red1" />
+    <MESSAGE value="Added clothing removal code and pages" />
+    <MESSAGE value="updated edit button to work" />
+    <MESSAGE value="Implemented updating of existing clothes, altered the addClothing page to include secondary colors, as well as fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented updating of existing clothes, altered the addClothing page to include secondary colors, as well as fixes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

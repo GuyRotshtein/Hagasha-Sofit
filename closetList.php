@@ -83,27 +83,28 @@ if(!isset($_SESSION["user"])){
     </div>
 </header>
 <main>
+    <div class="row ">
+        <div class="col desktop-menu">
+            <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item " aria-current="page"><a class="breadcrumb-link" href="./index.php">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Closets</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
     <div class="row">
+
         <div class="col-3 py-2 border-end border-primary-subtle border-3 desktop-menu">
             <div class="row">
-            </div>
-            <div class="row ">
-                <div class="col ">
-                    <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item " aria-current="page"><a class="breadcrumb-link" href="./index.php">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Closets</li>
-                        </ol>
-                    </nav>
-                </div>
             </div>
             <div class="row">
                 <div class="col">
                     <!--        breadcrumbs         -->
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" class="nav-item"><a href="./index.php"
+                        <li class="list-group-item" class="nav-item"><a href="index.php"
                                                                         class="nav-link px-3">Home</a></li>
-                        <li class="list-group-item" class="nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a>
+                        <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link px-3">Closet</a>
                         </li>
                         <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
                         </li>
@@ -164,37 +165,37 @@ if(!isset($_SESSION["user"])){
                         $count = 0;
                         while($row = mysqli_fetch_assoc($result)) {
                             $currentCloset = $row['closet_id'];
-
-                            if ($currentCloset == $lastCloset && $count <5)
+                            if ($currentCloset == $lastCloset && $count <6)
                             {
-                                // add item. set currentCloset as lastCloset
                                 echo '<div class="card text-bg-transparent bg-transparent border-0 rounded-3">';
                                 echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain rounded-3 bg-transparent" alt="'.$row["clothing_name"].'" title="'.$row["clothing_name"].'">';
                                 echo '<div class="card-img-overlay "></div></div>';
-
                             }
                             else
                             {
                                 if ($closed == 0){
                                     echo '</div></a></div>';
+                                    echo '<div class="row pt-2">
+                                            <div class="col-5 mx-auto">
+                                                <div class=" mx-auto clothingLine d-block"></div>
+                                                    </div>
+                                            </div>';
                                     $closed = 1;
                                 }
 
                                 if ($currentCloset != $lastCloset){
+
                                     echo '<div class="row px-2 pb-4 closet-preview">';
-                                    echo '<a href="closet.php?closet_id='.$row["closet_id"].'">';
-                                    echo '<h2>'.$row["closet_name"].'</h2>';
-                                    echo '<div class="card-group d-flex flex-wrap justify-content-start" >';
+                                    echo '<a href="closet.php?closet_id='.$row["closet_id"].'"class="col d-inline-flex flex-column">';
+                                    echo '<h2 class="pb-2 mx-auto">'.$row["closet_name"].'</h2>';
+                                    echo '<div class="card-group d-flex flex-wrap justify-content-center" >';
                                     $lastCloset = $currentCloset;
                                     $count = 0;
                                     $closed = 0;
                                 }
-//                                close closet group, and continue running. if closet id changes, create a new group, set counter to 0, give it a name and insert the clothing from this row.
                             }
                             $count = $count + 1;
-//                            increase counter every time here too!
                         }
-
                         mysqli_free_result($result);
                         ?>
                     </div>
