@@ -68,6 +68,15 @@ header-container{
     width: 220px;
     font-weight: bold;
 }
+#addClosetBtn {
+    background-image: url('../images/icons/add.png');
+    background-position: left;
+    background-size: 20px;
+    width: 220px;
+    font-weight: bold;
+    margin-left:30px ;
+
+}
 #editClothingBtn {
     background-image: url('../images/icons/edit.png');
     background-position: center;

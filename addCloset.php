@@ -1,4 +1,5 @@
 <?php
+include "db.php";
 include "config.php";
 
 session_start();
@@ -7,6 +8,26 @@ if (!isset($_SESSION["user"])) {
     echo 'no user ID found! ';
     header('Location: ' . URL . 'login.php');
 } else {
+}
+if (!function_exists('str_contains')) {
+    function str_contains(string $haystack, string $needle): bool
+    {
+        return '' === $needle || false !== strpos($haystack, $needle);
+    }
+}
+$uid = $_SESSION['user_id'] ?: header('Location: ' . URL . 'closetList.php');
+
+$query = "SELECT 
+                            *
+                            FROM
+                                tbl_222_closets cls
+                            WHERE
+                                user_id = $uid 
+                            ORDER BY closet_id;";
+$result = mysqli_query($connection, $query);
+
+if (!$result) {
+    die("DB query failed.");
 }
 ?>
 <!DOCTYPE html>
@@ -25,7 +46,7 @@ if (!isset($_SESSION["user"])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Clother - Closets List</title>
+    <title>Clother - Add new clothing item</title>
 </head>
 
 <body>
@@ -98,9 +119,12 @@ if (!isset($_SESSION["user"])) {
                     <div class="col ">
                         <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item " aria-current="page"><a class="breadcrumb-link"
-                                        href="./index.php">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Closets</li>
+                                <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link"
+                                        href="index.php">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link"
+                                        href="closetList.php">Closets</a></li>
+
+                                <li class="breadcrumb-item active" aria-current="page">Add new closet</li>
                             </ol>
                         </nav>
                     </div>
@@ -122,91 +146,67 @@ if (!isset($_SESSION["user"])) {
                     </div>
                 </div>
             </div>
-            <div class="col overflow-auto" id="contentArea">
+            <div class="col">
                 <div class="container-fluid ">
                     <div class="container py-2">
                         <div class="container main-container px-3">
                             <div class="container text-left px-0">
                                 <div class="row">
                                     <div class="col-3 px-3 py-1">
-                                        <h1>Closets</h1>
+                                        <h1>Add closet</h1>
                                     </div>
                                 </div>
                             </div>
+                            <!--                Clothing image          -->
+
+                            <?php
+                            echo '<form name="addClosetForm" id="addClosetForm" action="action.php" method="post" onsubmit="return validateForm()">';
+                            ?>
+                            <input type="hidden" name="pictureInput" id="pictureInput" value="" form="addClothingForm">
                             <!--            Blue line           -->
                             <div class="row">
                                 <div class="col-6 mx-auto">
                                     <div class=" mx-auto clothingLine d-block"></div>
                                 </div>
                             </div>
-
-                            <!--            Closets           -->
-                            <?php
-                            include 'db.php';
-                            include "config.php";
-                            $uid = $_SESSION['user_id'];
-                            $query = "SELECT 
-                            cls.closet_name,
-                            cls.closet_id,
-                            clo.clothing_id,
-                            clo.clothing_name,
-                            clo.clothing_picture
-                        FROM
-                            tbl_222_closets cls
-                                INNER JOIN
-                            tbl_222_users USING (user_id)
-                                INNER JOIN
-                            tbl_222_closet_clothes USING (closet_id)
-                                INNER JOIN
-                            tbl_222_clothes clo USING (clothing_id)
-                        WHERE
-                            user_id = $uid
-                        ORDER BY closet_id;";
-
-                            $result = mysqli_query($connection, $query);
-                            if (!$result) {
-                                die("DB query failed.");
-                            }
-
-                            $closed = 1;
-                            $lastCloset = 0;
-                            $count = 0;
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $currentCloset = $row['closet_id'];
-
-                                if ($currentCloset == $lastCloset && $count < 5) {
-                                    // add item. set currentCloset as lastCloset
-                                    echo '<div class="card text-bg-transparent bg-transparent border-0 rounded-3">';
-                                    echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain rounded-3 bg-transparent" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
-                                    echo '<div class="card-img-overlay "></div></div>';
-
-                                } else {
-                                    if ($closed == 0) {
-                                        echo '</div></a></div>';
-                                        $closed = 1;
-                                    }
-
-                                    if ($currentCloset != $lastCloset) {
-                                        echo '<div class="row px-2 pb-4 closet-preview">';
-                                        echo '<a href="closet.php?closet_id=' . $row["closet_id"] . '">';
-                                        echo '<h2>' . $row["closet_name"] . '</h2>';
-                                        echo '<div class="card-group d-flex flex-wrap justify-content-start" >';
-                                        $lastCloset = $currentCloset;
-                                        $count = 0;
-                                        $closed = 0;
-                                    }
-                                    //                                close closet group, and continue running. if closet id changes, create a new group, set counter to 0, give it a name and insert the clothing from this row.
-                                }
-                                $count = $count + 1;
-                                //                            increase counter every time here too!
-                            }
-                            echo '<div class="row">
-                                <div id="add-clothing" class="col-12 mx-auto d-flex justify-content-center">
-                                <a href="addCloset.php?user_id=' . $uid . '" class="img btn mx-auto p-0 clothingButton" role="button"></a></div></div>';
+                            <!--            details           -->
+                            <div class="row py-3">
+                                <div class="col-3">
+                                    <h6>Closet name:</h6>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <input class="form-control" type="text" name="item" value=""
+                                        placeholder="Closet name">
+                                </div>
+                                <div class="col-3"></div>
+                                <div id="invalidName" class="invalid-feedback text-center">
+                                    Please write The closet name
+                                </div>
+                            </div>
 
 
-                            mysqli_free_result($result);
-                            ?>
+
+
+                            <!--            Blue line           -->
+                            <div class="row">
+                                <div class="col-6 mx-auto">
+                                    <div class=" mx-auto clothingLine d-block"></div>
+                                </div>
+                            </div>
+                            <!--            Blue line           -->
+                            <div class="row py-4">
+                                <div class="col-3 mx-auto d-flex justify-content-center">
+                                    <div class="col-3 mx-auto d-flex justify-content-center">
+                                        <input type="submit" id="submit" name="submit"
+                                            class="btn btn-outline-success mx-2 clothingSubmit" value="Confirm">
+                                        <a href="closetList.php" class="btn btn-outline-danger mx-2">Cancel</a>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div id="clothingMsg" class="row text-center"></div>
+                            </form>
                         </div>
                     </div>
                 </div>
