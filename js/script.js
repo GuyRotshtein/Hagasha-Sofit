@@ -137,7 +137,6 @@ function validateRegisterForm(){
 
     let activePic = document.querySelector('.carousel-item.active img');
     let pictureSrc =  activePic.getAttribute('src').replace('./uploads/user_pictures/', '');
-    console.log(pictureSrc);
     document.getElementById('userPicture').value = pictureSrc;
 
     if (errorFlag == 1){
@@ -162,7 +161,6 @@ let slot6Array = [];
 let selectedClothes = [];
 
 function displayWeather(data){
-    console.log(data);
     globalTemp = Math.round(parseFloat(data.main.temp));
     const temperature = Math.round(parseFloat(data.main.temp)).toString();
     const ulFrag = document.createDocumentFragment();
@@ -263,7 +261,6 @@ function tidyArray(array,favColor){
             if (parseInt(arrayItem.color_id) == favColor || (typeof(arrayItem.secondary_color_id) !== 'undefined' && parseInt(arrayItem.secondary_color_id))){
                 favColorExists = 1;
             }
-            // console.log(arrayItem.color_id);
         });
         if (favColorExists == 1){
             for (var i = array.length; i--;) {

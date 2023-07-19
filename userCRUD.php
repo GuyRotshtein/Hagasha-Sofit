@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 include "db.php";
-if ($_POST['isRemove'] != 'true'){
+if (!isset($_POST['isRemove']) || $_POST['isRemove'] != 'true'){
     $fName = mysqli_real_escape_string($connection, $_POST['userFName']);
     $lName = mysqli_real_escape_string($connection, $_POST['userLName']);
     $eMail = mysqli_real_escape_string($connection, $_POST['userMail']);
@@ -55,14 +55,27 @@ if ($_POST['isRemove'] != 'true'){
                     <div class="container justify-content-center text-center rounded-5 px-5">
                         <?php
                         if (isset($_POST['isEdit'])){
-                            $number = mysqli_real_escape_string($connection,$_POST['userId']);
+                            session_start();
+                            $number = $_SESSION['user_id'];
+
+                            $fName = mysqli_real_escape_string($connection, $_POST['userFName']);
+                            $lName = mysqli_real_escape_string($connection, $_POST['userLName']);
+                            $eMail = mysqli_real_escape_string($connection, $_POST['userMail']);
+                            $pass = mysqli_real_escape_string($connection, $_POST['userPass']);
+                            $phone = mysqli_real_escape_string($connection, $_POST['userPhone']);
+                            $picture = mysqli_real_escape_string($connection, $_POST['userPicture']);
+                            $gender = mysqli_real_escape_string($connection, $_POST['userGender']);
+                            $country = mysqli_real_escape_string($connection, $_POST['userCountry']);
+                            $favColor = mysqli_real_escape_string($connection, $_POST['userColor']);
 
                             $query = "UPDATE tbl_222_users SET `f_name`='$fName',`l_name`='$lName',`email`='$eMail',`password`='$pass',`phone`='$phone',`user_picture`='$picture',`gender`='$gender',`user_country`='$country',`user_fav_color`='$favColor' WHERE (`user_id`='$number');";
                             $result = mysqli_query($connection, $query);
                             if (!$result) {
                                 die("DB update query failed.");
                             }
-                            sleep(3);
+//                            sleep(3);
+                            echo 'UPDATE SUCCESFULL!';
+                            sleep(4);
                             header('Location: ' . URL . 'userSettings.php');
                         } else if (isset($_POST['isRemove'])){
                             //first, get all clothes in closets that the user owns
