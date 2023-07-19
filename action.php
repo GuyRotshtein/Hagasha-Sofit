@@ -2,7 +2,6 @@
 include "config.php";
 include "db.php";
 
-//just fucking upload to the server here
 $name = mysqli_real_escape_string($connection, $_POST['item']);
 $picture = mysqli_real_escape_string($connection, $_POST['pictureInput']);
 $color = mysqli_real_escape_string($connection, $_POST['color']);
@@ -24,12 +23,13 @@ if (!$result2) {
 }
 $row = mysqli_fetch_assoc($result2);
 $cid = $row['clothing_id'];
+
 $query3 = "INSERT INTO tbl_222_closet_clothes(closet_id, clothing_id) VALUES ('$closet','$cid')";
 $result3 = mysqli_query($connection, $query3);
 if (!$result3) {
     die("DB query 3 failed.");
 }
-header('Location: ' . URL . 'closetList.php');
 
-// //close DB connection
+header('Location: ' . URL . 'closet.php?closet_id='.$closet);
+
 mysqli_close($connection);
