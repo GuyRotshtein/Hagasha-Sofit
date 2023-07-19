@@ -30,7 +30,8 @@ $query = "SELECT
                             clo.clothing_name,
                             clo.clothing_picture,
                             clo.category_id,
-                            clo.color_id
+                            clo.color_id,
+                            clo.secondary_color_id
                         FROM
                             tbl_222_closets cls
                                 INNER JOIN

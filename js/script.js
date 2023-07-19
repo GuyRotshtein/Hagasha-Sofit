@@ -3,13 +3,11 @@ function validateForm(){
     let clothingSize = document.addClothingForm.size.value;
     let clothingCloset = document.addClothingForm.closet.value;
     let clothingCategory = document.addClothingForm.category.value;
-    let clothingBrand = document.addClothingForm.brand.value;
     let errorFlag = 0;
 
     //hiding all error texts on the page in case some were fixed
     document.getElementById(`invalidName`).style.display = `none`;
     document.getElementById(`invalidSize`).style.display = `none`;
-    document.getElementById(`invalidBrand`).style.display = `none`;
     document.getElementById(`invalidCategory`).style.display = `none`;
     document.getElementById(`invalidCloset`).style.display = `none`;
 
@@ -42,28 +40,23 @@ function validateForm(){
             errorFlag = 1;
         }
     }
-    if (clothingBrand == `default`){
-        window.setTimeout(function() { document.addClothingForm.brand.focus(); },0);
-        document.getElementById(`invalidBrand`).style.display = `block`;
-        if (errorFlag == 0){
-            window.setTimeout(function() { document.addClothingForm.brand.focus(); },0);
-            errorFlag = 1;
-        }
-    }
-    console.log(`final: ` +errorFlag);
+    let activePic = document.querySelector('.carousel-item.active img');
+    let pictureSrc =  activePic.getAttribute('src').replace('./uploads/clothing/', '');
+
+    document.getElementById('pictureInput').value = pictureSrc;
     // if there is an error, don't submit the form
     if (errorFlag == 1){
         errorFlag = 0;
-        return false
+        return false;
     }
+
     return true;
 }
 (g=>{let h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});const d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
     key: "AIzaSyAlQTuJhg4tUJ1YQqO_JdHAjo7cQ8sdqZk",
     v: "weekly",
-    // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-    // Add other bootstrap parameters as needed, using camel case.
 });
+
 let globalTemp = 0;
 let slot1Array = [];
 let slot2Array = [];
@@ -72,6 +65,7 @@ let slot4Array = [];
 let slot5Array = [];
 let slot6Array = [];
 let selectedClothes = [];
+
 function displayWeather(data){
     console.log(data);
     globalTemp = Math.round(parseFloat(data.main.temp));
@@ -121,9 +115,7 @@ function displayWeather(data){
     let min  = date.getMinutes();
     min = (min < 10 ? "0" : "") + min;
 
-    //insert both into h5, add '<br>' and then description.
     weatherDetails.innerHTML = hour + `:` + min + `<br>` +data.weather[0].description;
-
     detailsCol.appendChild(weatherDetails);
     weatherDescCol.appendChild(detailsCol);
     weatherRow.appendChild(weatherDescCol);
@@ -173,14 +165,18 @@ function tidyArray(array,favColor){
     let favColorExists = 0;
     if (array.length > 1){
         array.forEach(function (arrayItem) {
-            if (parseInt(arrayItem.color_id) == favColor){
+            if (parseInt(arrayItem.color_id) == favColor || (typeof(arrayItem.secondary_color_id) !== 'undefined' && parseInt(arrayItem.secondary_color_id))){
                 favColorExists = 1;
             }
             // console.log(arrayItem.color_id);
         });
         if (favColorExists == 1){
             for (var i = array.length; i--;) {
-                if (parseInt(array[i].color_id) != favColor) array.splice(i, 1);
+                if ((typeof(array[i].secondary_color_id) !== 'undefined')){
+                    if (parseInt(array[i].color_id) != favColor && parseInt(array[i].secondary_color_id) != favColor) array.splice(i, 1);
+                } else {
+                    if (parseInt(array[i].color_id) != favColor) array.splice(i, 1);
+                }
             }
         }
     }
@@ -193,10 +189,7 @@ function pickRandomClothing(array){
 };
 
 const getClothes  = async (data)=>{
-    let response = await fetch('recommendation.php', {
-        // method: 'POST',
-        // body: new FormData(form),
-    });
+    let response = await fetch('recommendation.php', {});
     const result = await response.json();
     const allowedCats = [];
     for (const key in data.categories){
@@ -235,7 +228,6 @@ const getClothes  = async (data)=>{
     slot4Array = tidyArray(slot4Array, result.fav_color[0]);
     slot5Array = tidyArray(slot5Array, result.fav_color[0]);
 
-    // const selectedClothes = [];
     if (slot1Array.length>0){selectedClothes.push(pickRandomClothing(slot1Array));}
     if (slot2Array.length>0){selectedClothes.push(pickRandomClothing(slot2Array));}
     if (slot3Array.length>0){selectedClothes.push(pickRandomClothing(slot3Array));}
@@ -247,7 +239,7 @@ async function generateRecommendation(data) {
     selectedClothes.length = 0;
     await getClothes(data);
     const recWindow = document.getElementById('');
-    //now we get rec_clothes and put the bitches in it
+
     const recommendationWindow = document.getElementById('rec_clothes');
     const ulFrg = document.createDocumentFragment();
     selectedClothes.forEach(function (arrayItem) {
@@ -255,12 +247,13 @@ async function generateRecommendation(data) {
         card.classList.add('card','bg-transparent','border-0');
         const cardImg = document.createElement('img');
         cardImg.src='./uploads/clothing/'+arrayItem.clothing_picture;
-        cardImg.classList.add('card-img');
+        cardImg.classList.add('card-img','object-fit-contain');
         cardImg.setAttribute('alt',arrayItem.clothing_name);
         cardImg.setAttribute('title',arrayItem.clothing_name);
-        card.appendChild(cardImg);
+
         const cardLink = document.createElement('a');
-        cardLink.href = './clothing.php?clothingId='+arrayItem.clothing_id;
+        cardLink.href = './clothing.php?clothing_id='+arrayItem.clothing_id;
+        cardLink.appendChild(cardImg);
         const cardOverlay = document.createElement('div');
         cardOverlay.classList.add('card-img-overlay')
         cardLink.appendChild(cardOverlay);
@@ -274,67 +267,76 @@ async function generateRecommendation(data) {
 function insertJSONdata(data){
     if (document.addClothingForm) {
         const ulFrag = document.createDocumentFragment();
-
+        let clothingCategory = document.addClothingForm.category;
+        const editCategory = clothingCategory.value;
         const defaultCategory = document.createElement('option');
-        defaultCategory.value ='default';
-        defaultCategory.innerHTML = 'Select a category';
-        defaultCategory.selected = true;
+        defaultCategory.value ='default';defaultCategory.innerHTML = 'Select a category';
+        if (document.getElementById('editSwitch').innerHTML != 'true'){
+            defaultCategory.selected = true;
+        }
         defaultCategory.disabled = true;
         ulFrag.appendChild(defaultCategory);
 
         for(const key in data.categories){
-
             const closetOption = document.createElement('option');
             closetOption.value=data.categories[key].catId;
             closetOption.innerHTML=data.categories[key].catName;
+            if (document.getElementById('editSwitch').innerHTML == 'true' && editCategory == data.categories[key].catId){
+                    closetOption.selected = true;
+            }
             ulFrag.appendChild(closetOption);
         }
-
-        let clothingCategory = document.addClothingForm.category;
+        let selectedCategory = clothingCategory.value;
         clothingCategory.innerHTML = "";
         clothingCategory.appendChild(ulFrag);
 
-        //now we add the sizes >:)
         ulFrag.innerHTML = '';
+        let clothingSize = document.addClothingForm.size;
+        const editSize = clothingSize.value;
         const defaultSize = document.createElement('option');
         defaultSize.value ='default';
         defaultSize.innerHTML = 'Select a size';
-        defaultSize.selected = true;
+        if (document.getElementById('editSwitch').innerHTML != 'true'){
+            defaultSize.selected = true;
+        }
         defaultSize.disabled = true;
         ulFrag.appendChild(defaultSize);
         for(const key in data.sizes){
-
             const sizeOption = document.createElement('option');
             sizeOption.value=data.sizes[key].size_id;
             sizeOption.innerHTML=data.sizes[key].size_code;
+            if (document.getElementById('editSwitch').innerHTML == 'true' && editSize == data.sizes[key].size_id){
+                sizeOption.selected = true;
+            }
             ulFrag.appendChild(sizeOption);
         }
-        let clothingSize = document.addClothingForm.size;
         clothingSize.innerHTML = "";
         clothingSize.appendChild(ulFrag);
 
-        //adding Pictures + setting event listener
-        ulFrag.innerHTML = '';
-        const defaultPicDiv = document.createElement('div');
-        defaultPicDiv.classList.add('carousel-item','active');
-        const defaultPicImg = document.createElement('img');
-        defaultPicImg.src='./uploads/clothing/default.png';
-        defaultPicImg.value = 'default';
-        defaultPicImg.classList.add('d-block','w-100','object-fit-contain');
-        defaultPicDiv.appendChild(defaultPicImg);
-        ulFrag.appendChild(defaultPicDiv);
-        for(const key in data.pictures){
-            const pictureDiv = document.createElement('div');
-            pictureDiv.classList.add('carousel-item','object-fit-contain');
-            const pictureImg = document.createElement('img');
-            pictureImg.classList.add('d-block','w-100','object-fit-contain');
-            pictureImg.src = './uploads/clothing/' + data.pictures[key].clothing_picture;
-            pictureDiv.appendChild(pictureImg);
-            ulFrag.appendChild(pictureDiv);
+        if (document.getElementById('editSwitch').innerHTML != 'true'){
+            ulFrag.innerHTML = '';
+            const defaultPicDiv = document.createElement('div');
+            defaultPicDiv.classList.add('carousel-item','active');
+            const defaultPicImg = document.createElement('img');
+            defaultPicImg.src='./uploads/clothing/default.png';
+            defaultPicImg.value = 'default';
+            defaultPicImg.classList.add('d-block','w-100','object-fit-contain');
+            defaultPicDiv.appendChild(defaultPicImg);
+            ulFrag.appendChild(defaultPicDiv);
+            for(const key in data.pictures){
+                const pictureDiv = document.createElement('div');
+                pictureDiv.classList.add('carousel-item','object-fit-contain');
+                const pictureImg = document.createElement('img');
+                pictureImg.classList.add('d-block','w-100','object-fit-contain');
+                pictureImg.src = './uploads/clothing/' + data.pictures[key].clothing_picture;
+                pictureDiv.appendChild(pictureImg);
+                ulFrag.appendChild(pictureDiv);
+            }
+            const pictureCarousel = document.querySelector('.carousel-inner');
+            pictureCarousel.innerHTML = "";
+            pictureCarousel.appendChild(ulFrag);
         }
-        const pictureCarousel = document.querySelector('.carousel-inner');
-        pictureCarousel.innerHTML = "";
-        pictureCarousel.appendChild(ulFrag);
+
     }
 };
 
@@ -342,32 +344,6 @@ fetch("./js/includes/categories.json")
     .then(response => response.json())
     .then(data => insertJSONdata(data));
 
+window.onload=()=>{
 
-// window.onresize = updateLayout;
-// function updateLayout(){
-//     let windowWidth = window.innerWidth;
-//     if (windowWidth >= 1200){
-//         document.getElementsByTagName('ul')[0].classList.remove('justify-content-center');
-//     }
-//     if (windowWidth < 1200){
-//         document.getElementsByTagName('ul')[0].classList.add('justify-content-center');
-//     }
-//     if(windowWidth >= 900){
-//         document.getElementsByTagName('header')[0].classList.remove('justify-content-center');
-//         document.getElementsByTagName('header')[0].classList.add('justify-content-start');
-//         if (window.location.href.indexOf("index") > -1){
-//             document.getElementsByTagName('ul')[0].classList.add('list-group-horizontal');
-//             document.getElementsByTagName('ul')[0].classList.remove('list-group-flush');
-//         }
-//         return;
-//     }
-//     document.getElementsByTagName('header')[0].classList.remove('justify-content-start');
-//     document.getElementsByTagName('header')[0].classList.add('justify-content-center');
-//     if (window.location.href.indexOf("index") > -1){
-//         document.getElementsByTagName('ul')[0].classList.remove('list-group-horizontal');
-//         document.getElementsByTagName('ul')[0].classList.add('list-group-flush');
-//
-//     }
-//
-// }
-
+}

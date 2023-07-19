@@ -9,10 +9,10 @@ if (!isset($_SESSION["user"])) {
 } else {
 }
 if (!function_exists('str_contains')) {
-    function str_contains(string $haystack, string $needle): bool
-    {
-        return '' === $needle || false !== strpos($haystack, $needle);
-    }
+  function str_contains(string $haystack, string $needle): bool
+  {
+    return '' === $needle || false !== strpos($haystack, $needle);
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -35,61 +35,67 @@ if (!function_exists('str_contains')) {
 </head>
 
 <body>
-  <header class="p-4 py-3 border-bottom">
+<header class="p-4 py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-      <!--    Hamburger menu-->
-      <div class="col-4 mb-2 mb-md-0 header-hamburger">
-        <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
-          aria-controls="Hamburger">
-          <img src="./images/icons/hamburger.png" height="40" width="40">
-        </button>
-        <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
-          <!--        hamburger contents-->
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item" class="nav-item"><a href="./index.php" class="nav-link">Home</a></li>
-                <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Closet</a></li>
-                <li class="list-group-item" class="nav-item"><a href="./index.php" class="nav-link">Calendar</a></li>
-                <li class="list-group-item" class="nav-item"><a href="./index.php" class="nav-link">Travel</a></li>
-              </ul>
+        <!--    Hamburger menu-->
+        <div class="col-4">
+            <div class="mb-2 mb-md-0 header-hamburger">
+                <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
+                        aria-controls="Hamburger">
+                    <img src="./images/icons/hamburger.png" height="40" width="40">
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
+                    <!--        hamburger contents-->
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" class="nav-item"><a href="./index.php"
+                                                                                class="nav-link">Home</a></li>
+                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closets</a>
+                                </li>
+                                <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
+                                </li>
+                                <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <!--    logo      -->
-      <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-        <a class="clother-logo" href="closet.php"> <img src="./images/icons/new_logo.png" class="" height="40"></a>
-      </div>
-      <!--    User panel    -->
-      <div class="col-4 d-flex justify-content-end text-end header-user-menu">
-        <div class="flex-shrink-0 dropdown">
-          <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </button>
-          <ul class="dropdown-menu text-small shadow dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
+        <!--    logo      -->
+        <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
+            <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
         </div>
-      </div>
+        <!--    User panel    -->
+        <div class="col-4 d-flex justify-content-end text-end header-user-menu">
+            <div class="flex-shrink-0 dropdown">
+                <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                </button>
+                <ul class="dropdown-menu text-small shadow dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </header>
-  <main>
+</header>
+<main>
     <?php
     include 'db.php';
     include "config.php";
     $uid = $_SESSION['user_id'];
-    $cid = $_GET['closet_id']?:header('Location: ' . URL . 'closetList.php');
+    $cid = $_GET['closet_id'] ?: header('Location: ' . URL . 'closetList.php');
     $query = "SELECT 
                             cls.closet_name,
                             cls.closet_id,
@@ -113,241 +119,268 @@ if (!function_exists('str_contains')) {
                         ORDER BY closet_id;";
 
     $result = mysqli_query($connection, $query);
-
     if (!$result) {
       die("DB query failed.");
     }
     ?>
-    <div class="container-fluid ">
-      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a class="breadcrumb-link" href="./index.php">Home</a></li>
-          <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="./closetList.php">Closet</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">Business attire</li>
-        </ol>
-      </nav>
-      <div class="container">
-        <div class="container main-container">
-          <div class="container text-left">
+    <div class="row ">
+        <div class="col desktop-menu">
+            <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item " aria-current="page"><a class="breadcrumb-link" href="./index.php">Home</a></li>
+                    <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="./closetList.php">Closets</a></li>
+                    <?php
+                    $row = mysqli_fetch_assoc($result);
+                    echo '<li class="breadcrumb-item active" aria-current="page">' . $row['closet_name'] . '</li>'
+                    ?>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 py-2 border-end border-primary-subtle border-3 desktop-menu">
             <div class="row">
-              <div class="col">
-                <?php
-                $row = mysqli_fetch_assoc($result);
-                echo '<h1>' . $row['closet_name'] . '</h1>';
-                mysqli_data_seek($result, 0);
-
-                ?>
-              </div>
             </div>
-          </div>
-          <div class="container text-center">
             <div class="row">
-              <div class="col">
-                <h3>Tops</h3>
-              </div>
-            </div>
-          </div>
-          <div class="container text-left">
-
-            <!--    Coats     -->
-            <?php
-            $data = 0;
-            echo '<div class="row">';
-            echo '<h5>coats</h5>';
-            echo '<div class="card-group d-flex flex-wrap">';
-            while ($row = mysqli_fetch_assoc($result)) {
-
-              if (str_contains($row["clothing_name"], 'coat')) {
-                echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
-                echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
-                $data = 1;
-              }
-            }
-            if ($data == 0)
-              echo 'No coats yet.';
-            else
-              $data = 0;
-            echo '</div></div>';
-            mysqli_data_seek($result, 0);
-            echo '<div class="row">';
-            echo '<h5>jackets</h5>';
-            echo '<div class="card-group d-flex flex-wrap">';
-
-            while ($row = mysqli_fetch_assoc($result)) {
-
-              if (str_contains($row["clothing_name"], 'jacket')) {
-                echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
-                echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
-                $data = 1;
-              }
-            }
-            if ($data == 0)
-              echo 'No jackets yet.';
-            else
-              $data = 0;
-            echo '</div></div>';
-            mysqli_data_seek($result, 0);
-            echo '<div class="row">';
-            echo '<h5>shirts</h5>';
-            echo '<div class="card-group d-flex flex-wrap">';
-
-            while ($row = mysqli_fetch_assoc($result)) {
-
-              if (str_contains($row["clothing_name"], 'shirt')) {
-                echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
-                echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
-                $data = 1;
-              }
-
-            }
-            if ($data == 0)
-              echo 'No shirts yet.';
-            else
-              $data = 0;
-
-            ?>
-            <div class="container text-center">
-              <div class="row">
                 <div class="col">
-                  <h3>bottoms</h3>
+                    <!--        breadcrumbs         -->
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" class="nav-item"><a href="index.php"
+                                                                        class="nav-link px-3">Home</a></li>
+                        <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link px-3">Closet</a>
+                        </li>
+                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
+                        </li>
+                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Travel</a>
+                        </li>
+                    </ul>
                 </div>
-              </div>
             </div>
-            <?php
-            echo '</div></div>';
-            mysqli_data_seek($result, 0);
-            echo '<div class="row">';
-            echo '<h5>pants</h5>';
-            echo '<div class="card-group d-flex flex-wrap">';
-            while ($row = mysqli_fetch_assoc($result)) {
+        </div>
+          <div class="col">
+              <div class="container-fluid ">
+                  <div class="container py-2">
+                    <div class="container main-container">
+                      <div class="container text-left">
+                        <div class="row">
+                          <div class="col">
+                            <?php
+                            $row = mysqli_fetch_assoc($result);
+                            echo '<h1>' . $row['closet_name'] . '</h1>';
+                            mysqli_data_seek($result, 0);
 
-              if (str_contains($row["clothing_name"], 'pants')) {
-                echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
+                            ?>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container text-center">
+                        <div class="row">
+                          <div class="col">
+                            <h3>Tops</h3>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="container text-left">
+
+                        <!--    Coats     -->
+                        <?php
+                        $data = 0;
+                        echo '<div class="row">';
+                        echo '<h5>coats</h5>';
+                        echo '<div class="card-group d-flex flex-wrap">';
+                        while ($row = mysqli_fetch_assoc($result)) {
+                          if ($row["category_id"] == 2) {
+                            echo '<div class="card text-bg-transparent border-0">';
+                            echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
+                            echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                            echo '<div class="card-img-overlay"></div></a></div>';
+                            $data = 1;
+                          }
+                        }
+                        if ($data == 0)
+                          echo 'No coats yet.';
+                        else
+                          $data = 0;
+                        echo '</div></div>';
+                        mysqli_data_seek($result, 0);
+                        echo '<div class="row">';
+                        echo '<h5>jackets</h5>';
+                        echo '<div class="card-group d-flex flex-wrap">';
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                          if ($row["category_id"] == 3) {
+                            echo '<div class="card text-bg-transparent border-0">';
+                            echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
+                            echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                            echo '<div class="card-img-overlay"></div></a></div>';
+                            $data = 1;
+                          }
+                        }
+                        if ($data == 0)
+                          echo 'No jackets yet.';
+                        else
+                          $data = 0;
+                        echo '</div></div>';
+                        mysqli_data_seek($result, 0);
+                        echo '<div class="row">';
+                        echo '<h5>shirts</h5>';
+                        echo '<div class="card-group d-flex flex-wrap">';
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                          if ($row["category_id"] == 1) {
+                            echo '<div class="card text-bg-transparent border-0">';
+                            echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
+                            echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                            echo '<div class="card-img-overlay"></div></a></div>';
+                            $data = 1;
+                          }
+
+                        }
+                        if ($data == 0)
+                          echo 'No shirts yet.';
+                        else
+                          $data = 0;
+
+                        ?>
+                        <div class="container text-center">
+                          <div class="row">
+                            <div class="col">
+                              <h3>bottoms</h3>
+                            </div>
+                          </div>
+                        </div>
+                        <?php
+                        echo '</div></div>';
+                        mysqli_data_seek($result, 0);
+                        echo '<div class="row">';
+                        echo '<h5>pants</h5>';
+                        echo '<div class="card-group d-flex flex-wrap">';
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                          if ($row["category_id"] == 4) {
+                            echo '<div class="card text-bg-transparent border-0">';
+                            echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
+                            echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                            echo '<div class="card-img-overlay"></div></a></div>';
+                            $data = 1;
+                          }
+                        }
+                        if ($data == 0)
+                          echo 'No pants yet.';
+                        else
+                          $data = 0;
+                        echo '</div></div>';
+                        mysqli_data_seek($result, 0);
+                        echo '<div class="row">';
+                        echo '<h5>shorts</h5>';
+                        echo '<div class="card-group d-flex flex-wrap">';
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                          if ($row["category_id"] == 8) {
+                            echo '<div class="card text-bg-transparent border-0">';
+                            echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
+                            echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                            echo '<div class="card-img-overlay"></div></a></div>';
+                            $data = 1;
+                          }
+                        }
+                        if ($data == 0)
+                          echo 'No shorts yet.';
+                        else
+                          $data = 0;
+                        echo '</div></div>';
+                        mysqli_data_seek($result, 0);
+                        echo '<div class="row">';
+                        echo '<h5>shoes</h5>';
+                        echo '<div class="card-group d-flex flex-wrap">';
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                          if ($row["category_id"] == 5) {
+                            echo '<div class="card text-bg-transparent border-0">';
+                            echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
+                            echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                            echo '<div class="card-img-overlay"></div></a></div>';
+                            $data = 1;
+                          }
+
+                        }
+                        if ($data == 0)
+                          echo 'No shoes yet.';
+                        else
+                          $data = 0;
+                        echo '</div></div>';
+                        mysqli_data_seek($result, 0); ?>
+
+
+                        <div class="container text-center">
+                          <div class="row">
+                            <div class="col">
+                              <h3>Accessories</h3>
+                            </div>
+                          </div>
+                        </div>
+                        <?php
+                        echo '<div class="row">';
+                        echo '<h5>hats</h5>';
+                        echo '<div class="card-group d-flex flex-wrap">';
+
+                        while ($row = mysqli_fetch_assoc($result)) {
+
+                          if ($row["category_id"] == 6) {
+                            echo '<div class="card text-bg-transparent border-0">';
                 echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
-                $data = 1;
-              }
-            }
-            if ($data == 0)
-              echo 'No pants yet.';
-            else
-              $data = 0;
-            echo '</div></div>';
-            mysqli_data_seek($result, 0);
-            echo '<div class="row">';
-            echo '<h5>shorts</h5>';
-            echo '<div class="card-group d-flex flex-wrap">';
+                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                echo '<div class="card-img-overlay"></div></a></div>';
+                            $data = 1;
+                          }
 
-            while ($row = mysqli_fetch_assoc($result)) {
+                        }
+                        if ($data == 0)
+                          echo 'No hats yet.';
+                        else
+                          $data = 0;
+                        echo '</div></div>';
 
-              if (str_contains($row["clothing_name"], 'shorts')) {
-                echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
-                echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
-                $data = 1;
-              }
-            }
-            if ($data == 0)
-              echo 'No shorts yet.';
-            else
-              $data = 0;
-            echo '</div></div>';
-            mysqli_data_seek($result, 0);
-            echo '<div class="row">';
-            echo '<h5>shoes</h5>';
-            echo '<div class="card-group d-flex flex-wrap">';
+                        mysqli_data_seek($result, 0);
+                        echo '<div class="row">';
+                        echo '<h5>glasses</h5>';
+                        echo '<div class="card-group d-flex flex-wrap">';
 
-            while ($row = mysqli_fetch_assoc($result)) {
+                        while ($row = mysqli_fetch_assoc($result)) {
 
-              if (str_contains($row["clothing_name"], 'shoes')) {
-                echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
-                echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
-                $data = 1;
-              }
+                          if ($row["category_id"] == 7) {
+                            echo '<div class="card text-bg-transparent border-0">';
+                            echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
+                            echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                            echo '<div class="card-img-overlay"></div></a></div>';
+                            $data = 1;
+                          }
 
-            }
-            if ($data == 0)
-              echo 'No shoes yet.';
-            else
-              $data = 0;
-            echo '</div></div>';
-            mysqli_data_seek($result, 0); ?>
-
-
-            <div class="container text-center">
-              <div class="row">
-                <div class="col">
-                  <h3>Accessories</h3>
-                </div>
+                        }
+                        if ($data == 0)
+                          echo 'No glasses yet.';
+                        else
+                          $data = 0;
+                        echo '</div></div></div></div></div>';
+                        echo '<div class="row">
+                                <div id="add-clothing" class="col-12 mx-auto d-flex justify-content-center">
+                                <a href="addClothing.php?closet_id=' . $cid . '" class="img btn mx-auto p-0 clothingButton" role="button"></a></div></div>'
+                          ?>
+                      </div>
+                    </div>
+                  </div>
               </div>
-            </div>
-            <?php
-            echo '<div class="row">';
-            echo '<h5>hats</h5>';
-            echo '<div class="card-group d-flex flex-wrap">';
-
-            while ($row = mysqli_fetch_assoc($result)) {
-
-              if (str_contains($row["clothing_name"], 'hat')) {
-                echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
-                echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
-                $data = 1;
-              }
-
-            }
-            if ($data == 0)
-              echo 'No hats yet.';
-            else
-              $data = 0;
-            echo '</div></div>';
-
-            mysqli_data_seek($result, 0);
-            echo '<div class="row">';
-            echo '<h5>glasses</h5>';
-            echo '<div class="card-group d-flex flex-wrap">';
-
-            while ($row = mysqli_fetch_assoc($result)) {
-
-              if (str_contains($row["clothing_name"], 'glasses')) {
-                echo '<div class="card text-bg-transparent border-0">';
-                echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '"';
-                echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
-                echo '<div class="card-img-overlay"></div></div>';
-                $data = 1;
-              }
-
-            }
-            if ($data == 0)
-              echo 'No glasses yet.';
-            else
-              $data = 0;
-            echo '</div></div></div></div></div>';
-            echo '<div class="row">
-                    <div id="add-clothing" class="col-12 mx-auto d-flex justify-content-center">
-                    <a href="addClothing.php?closet_id='.$cid.'" class="img btn mx-auto p-0 clothingButton" role="button"></a></div></div>'
-            ?>
           </div>
         </div>
-      </div>
-      <!--      Add clothing button     -->
-
-    </div>
   </main>
 </body>
+
 </html>
 <?php
+mysqli_free_result($result);
 mysqli_close($connection);
 ?>

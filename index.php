@@ -47,7 +47,7 @@ if(!isset($_SESSION["user"])){
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" class="nav-item"><a href="./index.php"
                                                                                 class="nav-link">Home</a></li>
-                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closet</a>
+                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closets</a>
                                 </li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                 </li>
@@ -61,8 +61,7 @@ if(!isset($_SESSION["user"])){
         </div>
         <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-            <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png" class=""
-                                                              height="40"></a>
+            <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
         </div>
         <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
@@ -126,38 +125,37 @@ if(!isset($_SESSION["user"])){
                                 <div class="col-9 d-flex flex-row-reverse"></div>
                             </div>
                         </div>
+
                         <!--            Recommendations           -->
                         <div class="row">
                             <h5>Recommendations</h5>
-                            <div class="col-1"></div>
-                            <div class="col">
-                                <div id="rec_clothes" class="card-group d-flex flex-wrap p-2 bg-light-subtle gap-3 border-3">
-                                    <div class="card col text-bg-transparent border-0 bg-light-">
-                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                            <div class="col d-inline-flex">
+                                <div id="rec_clothes" class="card-group d-flex flex-wrap p-2 bg-light-subtle gap-1 border-3 mx-auto">
+                                    <div class="card text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img card-img-main object-fit-contain placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                             <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card col text-bg-transparent border-0 bg-light-">
-                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                    <div class="card text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img card-img-main object-fit-contain placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                         <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card col text-bg-transparent border-0 bg-light-">
-                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                    <div class="card text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img card-img-main object-fit-contain placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                         <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card col text-bg-transparent border-0 bg-light-">
-                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                    <div class="card text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img card-img-main object-fit-contain placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                         <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
-                                    <div class="card col text-bg-transparent border-0 bg-light-">
-                                        <img src="uploads/clothing/default.png" class="card-img placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
+                                    <div class="card text-bg-transparent border-0 bg-light-">
+                                        <img src="uploads/clothing/default.png" class="card-img card-img-main object-fit-contain placeholder placeholder-glow" alt="Black jacket" title="Black jacket">
                                         <div class="card-img-overlay placeholder placeholder-glow"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1"></div>
                         </div>
 <!--                        Map & Weather-->
-                        <div id="ajaxCorner" class="row justify-content-center pb-3 pt-5">
+                        <div class="row justify-content-center pb-3 pt-5">
                             <div class="col-6">
                                 <div class="row">
                                     <h4>Map</h4>
@@ -173,7 +171,6 @@ if(!isset($_SESSION["user"])){
                                     <h4>Weather</h4>
                                 </div>
                                 <div class="d-flex flex-wrap align-content-start justify-content-start" id="weatherPanel">
-
                                 </div>
                             </div>
                         </div>
@@ -185,5 +182,4 @@ if(!isset($_SESSION["user"])){
     </div>
 </main>
 </body>
-
 </html>
