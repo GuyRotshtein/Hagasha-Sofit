@@ -178,8 +178,8 @@ if(!isset($_SESSION["user"])){
                                     echo '<div class="row pt-2">
                                             <div class="col-5 mx-auto">
                                                 <div class=" mx-auto clothingLine d-block"></div>
-                                                    </div>
-                                            </div>';
+                                            </div>
+                                          </div>';
                                     $closed = 1;
                                 }
 

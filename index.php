@@ -71,8 +71,8 @@ if(!isset($_SESSION["user"])){
                     <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                 </button>
                 <ul class="dropdown-menu text-small shadow dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="./userSettings.php">Settings</a></li>
+                    <li><a class="dropdown-item" href="./userSettings.php">Profile</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>

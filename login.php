@@ -24,7 +24,6 @@ if (isset($_POST["loginMail"])) {
         header('Location: ' . URL . 'index.php');
     } else {
             $message = "Invalid Username or Password!";
-        // echo $message;
     }
 }
 ?>
@@ -101,7 +100,7 @@ if (isset($_POST["loginMail"])) {
                             <div class="row justify-content-center py-3">
                                 <div class="col-12 d-flex flex-wrap justify-content-center">
                                     <a href="#" class="px-5">Forgot password?</a>
-                                    <a href="#" class="px-5">Not registered?</a>
+                                    <a href="./registerUser.php" class="px-5">Not registered?</a>
                                 </div>
                             </div>
                         </div>
@@ -115,6 +114,5 @@ if (isset($_POST["loginMail"])) {
 </body>
 </html>
 <?php
-//close DB connection
 mysqli_close($connection);
 ?>

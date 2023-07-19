@@ -229,5 +229,23 @@
       "picture_id": 40,
       "clothing_picture": "white-t-shirt.png"
     }
+  ],
+  "userPictures": [
+    {
+      "picture_name": "Cat_3.png"
+    },{
+      "picture_name": "greg.png"
+    },{
+      "picture_name": "sus.png"
+    },{
+      "picture_name": "tea_time.jpg"
+    },{
+      "picture_name": "kermit_gun.gif"
+    }
+  ,{
+      "picture_name": "oh_happy.gif"
+    },{
+      "picture_name": "653.gif"
+    }
   ]
 }

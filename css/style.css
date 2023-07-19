@@ -61,14 +61,18 @@ header-container{
     background-repeat: no-repeat;
     background-attachment: local;
 }
-#removeClothingBtn {
+
+.removeItemBtn {
     background-image: url('../images/icons/delete.png');
-    background-position: left;
+    background-position: 15% 50%;
     background-size: 20px;
     width: 220px;
     font-weight: bold;
 }
-#editClothingBtn {
+.removeItemBtnDanger{
+    background-image: url('../images/icons/delete_light.png');!important;
+}
+.editBtn {
     background-image: url('../images/icons/edit.png');
     background-position: center;
     background-size: 30px;
@@ -84,6 +88,9 @@ header-container{
 .card {
     min-width: 200px;
     max-width: 200px;
+}
+.register_image{
+    width: 200px;
 }
 .row-added-product {
     background-color: #F7F6F6;
@@ -147,6 +154,9 @@ header-container{
     #rec_clothes .card, #rec_clothes .card .card-img{
         justify-content: center!important;
     }
+    .desktop-label{
+        display: none;
+    }
 }
 @media only screen and (min-width: 901px){
     .header-hamburger{
@@ -161,5 +171,8 @@ header-container{
     }
     #contentArea{
         max-height: 90vh;
+    }
+    .mobile-label{
+        display: none;
     }
 }

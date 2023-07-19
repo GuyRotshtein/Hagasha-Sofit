@@ -1,4 +1,5 @@
 <?php
+include 'db.php';
 include "config.php";
 
 session_start();
@@ -8,34 +9,10 @@ if (!isset($_SESSION["user"])) {
     header('Location: ' . URL . 'login.php');
 } else {
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
+$uid = $_SESSION['user_id'];
+$cid = $_GET['clothing_id'];
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-    <script src="./js/script.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Clother - Flannel long sleeved shirt</title>
-</head>
-
-<body>
-    <?php
-    include 'db.php';
-    include "config.php";
-    $uid = $_SESSION['user_id'];
-    $cid = $_GET['clothing_id'];
-
-    $query = "SELECT 
+$query = "SELECT 
     cls.closet_name,
     cls.closet_id,
     clo.clothing_id,
@@ -65,15 +42,37 @@ WHERE
     clothing_id = $cid;
                         ";
 
-    $result = mysqli_query($connection, $query);
+$result = mysqli_query($connection, $query);
 
-    if (!$result) {
-        die("DB query failed.");
-    }
-    $row = mysqli_fetch_assoc($result);
-    $clothing_id = $cid;
-    $closet_id = $row['closet_id'];
-    ?>
+if (!$result) {
+    die("DB query failed.");
+}
+$row = mysqli_fetch_assoc($result);
+$clothing_id = $cid;
+$closet_id = $row['closet_id'];
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Clother - <?php echo $row['clothing_name']?></title>
+</head>
+
+<body>
     <header class="p-4 py-3 border-bottom">
         <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
             <!--    Hamburger menu-->
@@ -182,8 +181,7 @@ WHERE
                                         echo '<input type="hidden" name="is_edit" value="true">';
                                         echo '<input type="hidden" name="clothing_id" value="' . $clothing_id . '">';
                                         ?>
-                                        <button type="submit" class="btn text-right text-hide clothingButton"
-                                            id="editClothingBtn"></button>
+                                        <button type="submit" class="btn text-right text-hide clothingButton editBtn"></button>
                                         </form>
                                     </div>
                                 </div>
@@ -284,7 +282,6 @@ WHERE
                                     }
                                     echo '</p>';
                                     ?>
-                                    <!-- <p id="clothingSize" class="mx-auto">M</p> -->
                                 </div>
                                 <div class="col-3"></div>
                             </div>
@@ -338,10 +335,8 @@ WHERE
                                         echo '<input type="hidden" name="clothing_id" value="' . $clothing_id . '" form="clothingRemovalForm">';
                                         echo '<input type="hidden" name="closet_id" value="' . $closet_id . '" form="clothingRemovalForm">';
                                         ?>
-                                        <button type="button" class="btn text-right text-hide clothingButton"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                            id="removeClothingBtn">Remove
-                                            clothing item</button>
+                                        <button type="button" class="btn text-right text-hide clothingButton removeItemBtn"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal">Remove clothing item</button>
                                         <!-- Modal -->
                                         <div class="modal fade" id="exampleModal" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
