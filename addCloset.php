@@ -160,9 +160,8 @@ if (!$result) {
                             <!--                Clothing image          -->
 
                             <?php
-                            echo '<form name="addClosetForm" id="addClosetForm" action="action.php" method="post" onsubmit="return validateForm()">';
+                            echo '<form name="addClosetForm" id="addClosetForm" action="action.php?addCloset=1" method="post" onsubmit="return validateForm()">';
                             ?>
-                            <input type="hidden" name="pictureInput" id="pictureInput" value="" form="addClothingForm">
                             <!--            Blue line           -->
                             <div class="row">
                                 <div class="col-6 mx-auto">
