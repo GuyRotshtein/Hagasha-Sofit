@@ -64,7 +64,6 @@ if (isset($row['closet_id'])) {
 if (isset($row['closet_name'])) {
     $closet_name = $row['closet_name'];
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +86,6 @@ if (isset($row['closet_name'])) {
 <body>
 <header class="px-2 py-3 sticky-top border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-        <!--    Hamburger menu-->
         <div class="col-4">
             <div class="mb-2 mb-md-0 header-hamburger">
                 <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
@@ -95,7 +93,6 @@ if (isset($row['closet_name'])) {
                     <img src="./images/icons/hamburger.png" height="40" width="40">
                 </button>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
-                    <!--        hamburger contents-->
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -135,11 +132,9 @@ if (isset($row['closet_name'])) {
                 </div>
             </div>
         </div>
-        <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
             <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
         </div>
-        <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
             <div class="flex-shrink-0 dropdown desktop-label">
                 <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
@@ -160,7 +155,6 @@ if (isset($row['closet_name'])) {
     </div>
 </header>
   <main>
-
     <div class="row">
       <div class="col-3 py-2 border-end border-primary-subtle border-3 desktop-menu">
         <div class="row">
@@ -183,7 +177,6 @@ if (isset($row['closet_name'])) {
         </div>
         <div class="row">
           <div class="col">
-            <!--        breadcrumbs         -->
               <ul class="list-group list-group-flush">
                   <li class="list-group-item nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
                   <li class="list-group-item nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a></li>
@@ -234,8 +227,6 @@ if (isset($row['closet_name'])) {
                   </div>
               </div>
               <div class="container text-left">
-
-                <!--    Coats     -->
                 <?php
                 $data = 0;
                 echo '<div class="row">';
@@ -244,7 +235,7 @@ if (isset($row['closet_name'])) {
                 echo '<div class="card-group d-flex flex-wrap">';
                 while ($row = mysqli_fetch_assoc($result)) {
                   if ($row["category_id"] == 2) {
-                    echo '<div class="card text-bg-transparent border-0">';
+                    echo '<div class="card mx-auto text-bg-transparent border-0">';
                     echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
                     echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                     echo '<div class="card-img-overlay"></div></a></div>';
@@ -263,9 +254,8 @@ if (isset($row['closet_name'])) {
                 echo '<div class="card-group d-flex flex-wrap">';
 
                 while ($row = mysqli_fetch_assoc($result)) {
-
                   if ($row["category_id"] == 3) {
-                    echo '<div class="card text-bg-transparent border-0">';
+                    echo '<div class="card mx-auto text-bg-transparent border-0">';
                     echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
                     echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                     echo '<div class="card-img-overlay"></div></a></div>';
@@ -284,15 +274,13 @@ if (isset($row['closet_name'])) {
                 echo '<div class="card-group d-flex flex-wrap">';
 
                 while ($row = mysqli_fetch_assoc($result)) {
-
                   if ($row["category_id"] == 1) {
-                    echo '<div class="card text-bg-transparent border-0">';
+                    echo '<div class="card mx-auto text-bg-transparent border-0">';
                     echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
                     echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                     echo '<div class="card-img-overlay"></div></a></div>';
                     $data = 1;
                   }
-
                 }
                 if ($data == 0)
                     echo '<div class="col card-list-empty d-inline-flex flex-column mx-auto justify-content-center bg-light-subtle rounded-3 px-5"><p class="d-block fs-5 text-body-secondary text-center">it seems there are no shirts in the closet...<br>Maybe you can add some?</p></div>';
@@ -325,7 +313,7 @@ if (isset($row['closet_name'])) {
                 while ($row = mysqli_fetch_assoc($result)) {
 
                   if ($row["category_id"] == 4) {
-                    echo '<div class="card text-bg-transparent border-0">';
+                    echo '<div class="card mx-auto text-bg-transparent border-0">';
                     echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
                     echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                     echo '<div class="card-img-overlay"></div></a></div>';
@@ -346,7 +334,7 @@ if (isset($row['closet_name'])) {
                 while ($row = mysqli_fetch_assoc($result)) {
 
                   if ($row["category_id"] == 8) {
-                    echo '<div class="card text-bg-transparent border-0">';
+                    echo '<div class="card mx-auto text-bg-transparent border-0">';
                     echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
                     echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                     echo '<div class="card-img-overlay"></div></a></div>';
@@ -367,7 +355,7 @@ if (isset($row['closet_name'])) {
                 while ($row = mysqli_fetch_assoc($result)) {
 
                   if ($row["category_id"] == 5) {
-                    echo '<div class="card text-bg-transparent border-0">';
+                    echo '<div class="card mx-auto text-bg-transparent border-0">';
                     echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
                     echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                     echo '<div class="card-img-overlay"></div></a></div>';
@@ -381,8 +369,6 @@ if (isset($row['closet_name'])) {
                   $data = 0;
                 echo '</div></div>';
                 mysqli_data_seek($result, 0); ?>
-
-
                 <div class="container text-center">
                   <div class="row">
                     <div class="col">
@@ -407,7 +393,7 @@ if (isset($row['closet_name'])) {
                 while ($row = mysqli_fetch_assoc($result)) {
 
                   if ($row["category_id"] == 6) {
-                    echo '<div class="card text-bg-transparent border-0">';
+                    echo '<div class="card mx-auto text-bg-transparent border-0">';
                     echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
                     echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                     echo '<div class="card-img-overlay"></div></a></div>';
@@ -430,7 +416,7 @@ if (isset($row['closet_name'])) {
                 while ($row = mysqli_fetch_assoc($result)) {
 
                   if ($row["category_id"] == 7) {
-                    echo '<div class="card text-bg-transparent border-0">';
+                    echo '<div class="card mx-auto text-bg-transparent border-0">';
                     echo '<a href="clothing.php?clothing_id=' . $row["clothing_id"] . '">';
                     echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                     echo '<div class="card-img-overlay"></div></a></div>';
@@ -462,7 +448,6 @@ if (isset($row['closet_name'])) {
                       <button type="button" class="btn text-right text-hide clothingButton removeItemBtn removeItemBtnDanger px-5 text-bg-danger" data-bs-toggle="modal"
                         data-bs-target="#exampleModal" id="removeClothingBtn">Remove
                         closet</button>
-                      <!-- Modal -->
                       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog">

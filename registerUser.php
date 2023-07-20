@@ -65,11 +65,13 @@ if (isset($_POST['is_edit'])){
     echo '<span class="d-none" id="regSwitch">false</span>';
 }
 ?>
-<header class="p-4 py-3 sticky-top border-bottom">
+<header class="px-2 sticky-top py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
         <div class="col-4">
-            <div class="mb-2 mb-md-0 header-hamburger">
+            <?php
+                if (isset($_SESSION["user"])) {
+                    echo '<div class="mb-2 mb-md-0 header-hamburger">
                 <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
                         aria-controls="Hamburger">
                     <img src="./images/icons/hamburger.png" height="40" width="40">
@@ -80,7 +82,7 @@ if (isset($_POST['is_edit'])){
                         <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body">
+                    <div class="offcanvas-body d-flex flex-column justify-content-between">
                         <div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" class="nav-item"><a href="./index.php"
@@ -90,12 +92,32 @@ if (isset($_POST['is_edit'])){
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                 </li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
+                                </li>';
+
+                                if ($_SESSION['is_admin']) {
+                                    echo '<li class="list-group-item nav-item"><a href="./admin.php" class="nav-link">Admin panel</a></li>';
+                                }
+
+                    echo '      </ul>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col mx-auto">
+                                    <div class=" mx-auto clothingLine d-block"></div>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" class="nav-item"><a href="./userSettings.php"
+                                                                                class="nav-link">User settings</a></li>
+                                <li class="list-group-item" class="nav-item"><a href="logout.php" class="nav-link">Log out</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>';
+                }
+            ?>
         </div>
         <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
@@ -104,22 +126,23 @@ if (isset($_POST['is_edit'])){
         <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
             <?php
-            if (isset($_SESSION["user"])) {
-                echo '<div class="flex-shrink-0 dropdown">
+                if (isset($_SESSION["user"])) {
+                    echo '<div class="flex-shrink-0 dropdown desktop-label">
                 <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+
+                    <img src="./uploads/user_pictures/'.$picture.'" alt="mdo" width="32" height="32" class="rounded-circle">
                 </button>
                 <ul class="dropdown-menu text-small shadow dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="./userSettings.php">Settings</a></li>
+                    <li><a class="dropdown-item" href="./userSettings.php">Profile</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
                 </ul>
             </div>';
-            }
+                }
             ?>
         </div>
     </div>

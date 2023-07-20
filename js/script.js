@@ -5,7 +5,6 @@ function validateForm(){
     let clothingCategory = document.addClothingForm.category.value;
     let errorFlag = 0;
 
-    //hiding all error texts on the page in case some were fixed
     document.getElementById(`invalidName`).style.display = `none`;
     document.getElementById(`invalidSize`).style.display = `none`;
     document.getElementById(`invalidCategory`).style.display = `none`;
@@ -42,14 +41,11 @@ function validateForm(){
     }
     let activePic = document.querySelector('.carousel-item.active img');
     let pictureSrc =  activePic.getAttribute('src').replace('./uploads/clothing/', '');
-
     document.getElementById('pictureInput').value = pictureSrc;
-    // if there is an error, don't submit the form
     if (errorFlag == 1){
         errorFlag = 0;
         return false;
     }
-
     return true;
 }
 function validateRegisterForm(){
@@ -63,7 +59,6 @@ function validateRegisterForm(){
     let userFavColor = document.registerForm.userColor.value;
     let errorFlag = 0;
 
-    //hiding all error texts on the page in case some were fixed
     document.getElementById(`invalidUserFName`).style.display = `none`;
     document.getElementById(`invalidUserLName`).style.display = `none`;
     document.getElementById(`invalidUserMail`).style.display = `none`;
@@ -143,7 +138,6 @@ function validateRegisterForm(){
         errorFlag = 0;
         return false;
     }
-
     return true;
 }
 (g=>{let h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});const d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
@@ -175,9 +169,15 @@ function displayWeather(data){
     const cityMobile = document.createElement('h2');
     cityMobile.classList.add('d-inline','text-center','mobile-label');
     cityMobile.innerHTML = data.name;
+    if (window.innerWidth < 900){
+        cityMobile.style.visibility = 'visible';
+        city.style.visibility = 'hidden';
+    } else {
+        cityMobile.style.visibility = 'hidden';
+        city.style.visibility = 'visible';
+    }
     cityRow.appendChild(cityMobile);
     cityCol.appendChild(cityRow);
-
 
     const weatherRow = document.createElement('div');
     weatherRow.classList.add('row','d-flex','justify-content-center');
@@ -226,7 +226,6 @@ function displayWeather(data){
         .then(response=> response.json())
         .then(data => generateRecommendation(data));
 }
-
 let map;
 function getLocation(callback) {
     if (document.getElementsByClassName('homePage') !== null){
@@ -251,7 +250,6 @@ function getLocation(callback) {
     }
 }
 getLocation(function(lat_lng){});
-
 async function initMap(user_position) {
     const { Map } = await google.maps.importLibrary("maps");
     map = new Map(document.getElementById("googleMap"), {
@@ -259,7 +257,6 @@ async function initMap(user_position) {
         zoom: 12,
     });
 }
-
 function tidyArray(array,favColor){
     let favColorExists = 0;
     if (array.length > 1){
@@ -279,12 +276,10 @@ function tidyArray(array,favColor){
     }
     return array;
 };
-
 function pickRandomClothing(array){
     const selectedClothing = array[Math.floor(Math.random()*array.length)];
     return selectedClothing;
 };
-
 const getClothes  = async (data)=>{
     let response = await fetch('recommendation.php', {});
     const result = await response.json();
@@ -295,31 +290,37 @@ const getClothes  = async (data)=>{
             allowedCats.push(tempCat.catId);
         }
     }
-
     for (const key in result.clothes) {
         let clothCat = parseInt(result.clothes[key].category_id);
         if (allowedCats.indexOf(clothCat) !== -1) {
-            if (clothCat == 1) {
-                slot1Array.push(result.clothes[key]);
-            }
-            if (clothCat === 4 || clothCat === 8) {
-                slot2Array.push(result.clothes[key]);
-            }
-            if (clothCat == 2 || clothCat == 3) {
-                slot3Array.push(result.clothes[key]);
-            }
-            if (clothCat == 5) {
-                slot4Array.push(result.clothes[key]);
-            }
-            if (clothCat == 6) {
-                slot5Array.push(result.clothes[key]);
-            }
-            if (clothCat == 7) {
-                slot6Array.push(result.clothes[key]);
+            switch (clothCat){
+                case 1:
+                    slot1Array.push(result.clothes[key]);
+                    break;
+                case 2:
+                    slot3Array.push(result.clothes[key]);
+                    break;
+                case 3:
+                    slot3Array.push(result.clothes[key]);
+                    break;
+                case 4:
+                    slot2Array.push(result.clothes[key]);
+                    break;
+                case 5:
+                    slot4Array.push(result.clothes[key]);
+                    break;
+                case 6:
+                    slot5Array.push(result.clothes[key]);
+                    break;
+                case 7:
+                    slot6Array.push(result.clothes[key]);
+                    break;
+                case 8:
+                    slot2Array.push(result.clothes[key]);
+                    break;
             }
         }
     }
-
     slot1Array = tidyArray(slot1Array, result.fav_color[0]);
     slot3Array = tidyArray(slot3Array, result.fav_color[0]);
     slot4Array = tidyArray(slot4Array, result.fav_color[0]);
@@ -333,7 +334,6 @@ const getClothes  = async (data)=>{
     if (slot5Array.length>0){selectedClothes.push(pickRandomClothing(slot5Array));}
     if (slot6Array.length>0){selectedClothes.push(pickRandomClothing(slot6Array));}
 };
-
 async function generateRecommendation(data) {
     selectedClothes.length = 0;
     await getClothes(data);
@@ -363,7 +363,6 @@ async function generateRecommendation(data) {
     recommendationWindow.innerHTML="";
     recommendationWindow.appendChild(ulFrg);
 };
-
 function insertJSONdata(data){
     if (document.addClothingForm) {
         const ulFrag = document.createDocumentFragment();
@@ -420,14 +419,14 @@ function insertJSONdata(data){
             const defaultPicImg = document.createElement('img');
             defaultPicImg.src='./uploads/clothing/default.png';
             defaultPicImg.value = 'default';
-            defaultPicImg.classList.add('d-block','w-100','object-fit-contain');
+            defaultPicImg.classList.add('mx-auto','rounded-circle','card-img','object-fit-contain','py-2');
             defaultPicDiv.appendChild(defaultPicImg);
             ulFrag.appendChild(defaultPicDiv);
             for(const key in data.pictures){
                 const pictureDiv = document.createElement('div');
                 pictureDiv.classList.add('carousel-item','object-fit-contain');
                 const pictureImg = document.createElement('img');
-                pictureImg.classList.add('d-block','w-100','object-fit-contain');
+                pictureImg.classList.add('mx-auto','rounded-circle','card-img','object-fit-contain','py-2');
                 pictureImg.src = './uploads/clothing/' + data.pictures[key].clothing_picture;
                 pictureDiv.appendChild(pictureImg);
                 ulFrag.appendChild(pictureDiv);
@@ -474,7 +473,6 @@ function insertJSONdata(data){
             pictureCarousel.appendChild(ulFrag);
     }
 };
-
 fetch("./js/includes/categories.json")
     .then(response => response.json())
     .then(data => insertJSONdata(data));

@@ -41,11 +41,9 @@ $favColor = $row_user['user_fav_color'];
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Clother - Closets List</title>
 </head>
-
 <body>
 <header class="px-2 py-3 sticky-top border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-        <!--    Hamburger menu-->
         <div class="col-4">
             <div class="mb-2 mb-md-0 header-hamburger">
                 <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
@@ -53,7 +51,6 @@ $favColor = $row_user['user_fav_color'];
                     <img src="./images/icons/hamburger.png" height="40" width="40">
                 </button>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
-                    <!--        hamburger contents-->
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -83,8 +80,7 @@ $favColor = $row_user['user_fav_color'];
                                 </div>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item" class="nav-item"><a href="./userSettings.php"
-                                                                                class="nav-link">User settings</a></li>
+                                <li class="list-group-item" class="nav-item"><a href="./userSettings.php" class="nav-link">User settings</a></li>
                                 <li class="list-group-item" class="nav-item"><a href="logout.php" class="nav-link">Log out</a>
                                 </li>
                             </ul>
@@ -93,16 +89,12 @@ $favColor = $row_user['user_fav_color'];
                 </div>
             </div>
         </div>
-        <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
             <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
         </div>
-        <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
             <div class="flex-shrink-0 dropdown desktop-label">
-                <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-
+                <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="<?php echo'./uploads/user_pictures/'.$picture;?>" alt="mdo" width="32" height="32" class="rounded-circle">
                 </button>
                 <ul class="dropdown-menu text-small shadow dropdown-menu-end">
@@ -135,7 +127,6 @@ $favColor = $row_user['user_fav_color'];
                 </div>
                 <div class="row">
                     <div class="col">
-                        <!--        breadcrumbs         -->
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
                             <li class="list-group-item nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a></li>
@@ -164,16 +155,12 @@ $favColor = $row_user['user_fav_color'];
                                     </div>
                                 </div>
                             </div>
-                            <!--            Blue line           -->
                             <div class="row">
                                 <div class="col-6 mx-auto">
                                     <div class=" mx-auto clothingLine d-block"></div>
                                 </div>
                             </div>
-
-                            <!--            Closets           -->
                             <?php
-
                             $query = "SELECT 
                             cls.closet_name,
                             cls.closet_id,
@@ -202,9 +189,9 @@ $favColor = $row_user['user_fav_color'];
                             $count = 0;
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $currentCloset = $row['closet_id'];
-                                if ($currentCloset == $lastCloset && $count < 5) {
+                                if ($currentCloset == $lastCloset && $count < 6) {
                                     // add item. set currentCloset as lastCloset
-                                    echo '<div class="card text-bg-transparent bg-transparent border-0 rounded-3">';
+                                    echo '<div class="card mx-auto text-bg-transparent bg-transparent border-0 rounded-3">';
                                     echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain rounded-3 bg-transparent" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
                                     echo '<div class="card-img-overlay "></div></div>';
 
@@ -218,33 +205,33 @@ $favColor = $row_user['user_fav_color'];
                                             </div>';
                                         $closed = 1;
                                     }
-
                                     if ($currentCloset != $lastCloset) {
-
                                         echo '<div class="row px-2 pb-4 closet-preview">';
                                         echo '<a href="closet.php?closet_id=' . $row["closet_id"] . '">';
-
-                                        echo '<h2 class="desktop-label mx-auto">' . $row["closet_name"].'</h2>';
-                                        echo '<h2 class="mobile-label text-center">' . $row["closet_name"].'</h2>';
+                                        echo '<h2 class="desktop-label mx-auto text-wrap">' . $row["closet_name"].'</h2>';
+                                        echo '<h2 class="mobile-label text-center text-wrap">' . $row["closet_name"].'</h2>';
                                         echo '<div class="card-group d-flex flex-wrap justify-content-start" >';
                                         $lastCloset = $currentCloset;
                                         $count = 0;
                                         $closed = 0;
+                                        if (isset($row['clothing_id'])){
+                                            echo '<div class="card mx-auto text-bg-transparent bg-transparent border-0 rounded-3">';
+                                            echo '<img src="./uploads/clothing/' . $row["clothing_picture"] . '" class="card-img object-fit-contain rounded-3 bg-transparent" alt="' . $row["clothing_name"] . '" title="' . $row["clothing_name"] . '">';
+                                            echo '<div class="card-img-overlay "></div></div>';
+                                        }
                                     }
                                     if (!isset($row['clothing_id'])){
                                         echo '<div class="card-list-empty d-inline-flex flex-column mx-auto justify-content-center bg-light-subtle rounded-3 px-5"><p class="d-block fs-5 text-body-secondary text-center">it seems there are no clothes in the '.$row['closet_name'].' closet...<br>Maybe you can add some?</p></div>';
                                         echo '</div></a></div>';
                                         $closed = 1;
                                     }
-                                    //                                close closet group, and continue running. if closet id changes, create a new group, set counter to 0, give it a name and insert the clothing from this row.
                                 }
                                 $count = $count + 1;
-                                //                            increase counter every time here too!
                             }
+                            echo '</div></a></div>';
                             echo '<div class="row">
                                 <div id="add-clothing" class="col-12 mx-auto d-flex justify-content-center">
                                 <a href="addCloset.php?user_id=' . $uid . '" class="img btn mx-auto p-0 clothingButton" role="button"></a></div></div>';
-
                             mysqli_free_result($result);
                             ?>
                         </div>
@@ -254,7 +241,6 @@ $favColor = $row_user['user_fav_color'];
         </div>
     </main>
 </body>
-
 </html>
 <?php
 mysqli_close($connection);

@@ -54,61 +54,69 @@ if (isset($_POST["loginMail"])) {
 </header>
 <main>
     <div class="row justify-content-center pt-3">
-        <div class="col-4 py-2">
-            <div class="container main-container rounded-4 px-3">
-                <div class="container text-left px-0">
-                    <div class="row pb-5">
-                        <div class="col-12 py-1">
-                            <h1>Welcome to Clother</h1>
-                            <div class="col mx-2"><h5>Your go-to for all clothing advice!</h5></div>
+        <div class="desktop-label col-3"></div>
+            <div class="col py-2 px-4">
+                <div class="container main-container rounded-4 px-3">
+                    <div class="container text-left px-0">
+                        <div class="row pb-4">
+                            <div class="col pt-2">
+                                <h1 class="mobile-label text-center">Welcome to Clother</h1>
+                                <h1 class="desktop-label text-start text-nowrap">Welcome to Clother</h1>
+                                <div class="col mobile-label mx-2 text-center text-secondary"><h6>Your go-to for all clothing advice!</h6></div>
+                                <div class="col desktop-label mx-2"><h5>Your go-to for all clothing advice!</h5></div>
+                            </div>
+                            <div class="col-9 d-flex flex-row-reverse"></div>
                         </div>
-                        <div class="col-9 d-flex flex-row-reverse"></div>
                     </div>
-                </div>
-                <div class="row pt-2">
-                    <div class="container justify-content-center text-center rounded-5 px-5">
-                        <h5>Log into Clother</h5>
-                        <div class="col-1"></div>
-                        <div class="col text-center">
-                            <form action="#" method="post" id="frm">
-                                <div class="row justify-content-center pt-1">
-                                    <div class="col-10">
-                                        <div class="form-group">
-                                            <label for="loginMail">Email: </label>
-                                            <input type="email" class="form-control text-center" required name="loginMail" id="loginMail"
-                                                   aria-describedby="emailHelp" placeholder="Enter account email">
+                    <div class="row pt-2">
+                        <div class="container justify-content-center text-center rounded-5 px-3">
+                            <h5>Log in</h5>
+                            <div class="desktop-label col-1"></div>
+                            <div class="col text-center">
+                                <form action="#" method="post" id="frm">
+                                    <div class="row justify-content-center pt-1">
+                                        <div class="desktop-label col-1"></div>
+                                        <div class="col mx-auto">
+                                            <div class="form-group">
+                                                <label for="loginMail">Email: </label>
+                                                <input type="email" class="form-control text-center" required name="loginMail" id="loginMail"
+                                                       aria-describedby="emailHelp" placeholder="Enter account email">
+                                            </div>
                                         </div>
+                                        <div class="desktop-label col-1"></div>
                                     </div>
-                                </div>
-                                <div class="row justify-content-center pt-3">
-                                    <div class="col-10">
-                                        <div class="form-group">
-                                            <label for="loginPass">Password: </label>
-                                            <input type="password" class="form-control text-center" required name="loginPass" id="loginPass"
-                                                   placeholder="Enter account password">
+                                    <div class="row justify-content-center pt-3">
+                                        <div class="desktop-label col-1"></div>
+                                        <div class="col mx-auto">
+                                            <div class="form-group">
+                                                <label for="loginPass">Password: </label>
+                                                <input type="password" class="form-control text-center" required name="loginPass" id="loginPass"
+                                                       placeholder="Enter account password">
+                                            </div>
                                         </div>
+                                        <div class="desktop-label col-1"></div>
                                     </div>
-                                </div>
-                                <div class="error-message text-danger"><?php if (isset($message)) {
-                                        echo $message;
-                                    } ?></div>
-                                <div class="row py-5"></div>
+                                    <div class="error-message text-danger"><?php if (isset($message)) {
+                                            echo $message;
+                                        } ?></div>
+                                    <div class="row py-5"></div>
+                                    <div class="row justify-content-center py-3">
+                                        <button type="submit" class="col-4 btn btn-primary">Log In</button>
+                                    </div>
+                                </form>
                                 <div class="row justify-content-center py-3">
-                                    <button type="submit" class="col-4 btn btn-primary">Log In</button>
-                                </div>
-                            </form>
-                            <div class="row justify-content-center py-3">
-                                <div class="col-12 d-flex flex-wrap justify-content-center">
-                                    <a href="#" class="px-5">Forgot password?</a>
-                                    <a href="./registerUser.php" class="px-5">Not registered?</a>
+                                    <div class="col-12 d-flex flex-wrap justify-content-center">
+                                        <a href="#" class="px-5">Forgot password?</a>
+                                        <a href="./registerUser.php" class="px-5">Not registered?</a>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="desktop-label col-1"></div>
                         </div>
-                        <div class="col-1"></div>
                     </div>
                 </div>
             </div>
-        </div>
+        <div class="col-3 desktop-label"></div>
     </div>
 </main>
 </body>

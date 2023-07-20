@@ -214,16 +214,17 @@ if (isset($_POST['is_edit'])){
                         </div>
                         <!--                Clothing image          -->
                         <div class="row pb-3">
-                            <div class="col-5 mx-auto">
+                            <div class="col-4 desktop-label"></div>
+                            <div class="col mx-auto">
                                 <h6>Please choose a picture:</h6>
                                 <div id="clothingImage" class="carousel carousel-dark slide">
                                     <div class="carousel-inner bg-body-tertiary rounded-3">
                                         <div class="carousel-item active">
                                             <?php
                                             if (isset($_POST['is_edit'])){
-                                                echo '<img src="./uploads/clothing/'.$row2["clothing_picture"].'" class="d-block w-100 object-fit-contain">';
+                                                echo '<img src="./uploads/clothing/'.$row2["clothing_picture"].'" class="mx-auto rounded-circle card-img object-fit-contain py-2">';
                                             } else {
-                                                echo '<img src="./uploads/clothing/default.png" class="d-block w-100 object-fit-contain">';
+                                                echo '<img src="./uploads/clothing/default.png" class="mx-auto rounded-circle card-img object-fit-contain py-2">';
                                             }
                                             ?>
                                         </div>
@@ -238,6 +239,7 @@ if (isset($_POST['is_edit'])){
                                     </button>
                                 </div>
                             </div>
+                            <div class="col-4 desktop-label"></div>
                         </div>
                         <?php
                         echo '<form name="addClothingForm" id="addClothingForm" action="action.php" method="post" onsubmit="return validateForm()">';
@@ -255,25 +257,27 @@ if (isset($_POST['is_edit'])){
                         </div>
                         <!--            details           -->
                         <div class="row py-3">
-                            <div class="col-3">
+                            <div class="col-3 desktop-label">
                                 <h6>Clothing item's name:</h6>
                             </div>
-                            <div class="col-6 text-center">
+                            <div class="col mx-auto text-center">
+                                <label class="form-label mobile-label"><h6>Clothing item's name</h6></label>
                                 <input class="form-control text-center" type="text" name="item" value=" <?php echo (isset($_POST['is_edit']))?$row2['clothing_name']:'';?>" placeholder="<?php echo (isset($_POST[`is_edit`]))?$row2[`clothing_name`]:`Item's name`;?>">
                                 </div>
-                                <div class="col-3"></div>
+                                <div class="col-3 desktop-label"></div>
                                 <div id="invalidName" class="invalid-feedback text-center">
                                     Please write The clothing item's name
                                 </div>
                             </div>
-                            <div class="row 3 py-3">
-                                <div class="col-3">
-                                    <h6>Colors</h6>
+                            <div class="row py-3">
+                                <div class="col-4 desktop-label">
+                                    <h6>Colors:</h6>
                                 </div>
-                                    <div class="col-6 text-center">
+                                    <div class="col mx-auto">
                                         <div class="row pb-2">
                                             <div class="col text-center">
-                                                <select class="form-select select-picker w-50 mx-auto text-center" data-dropup-auto="false" aria-label="Disabled Color selection" name="color" >
+                                                <label class="form-label mobile-label"><h6>Colors</h6></label>
+                                                <select class="form-select select-picker mx-auto text-center" data-dropup-auto="false" aria-label="Disabled Color selection" name="color" >
 
                                                 <?php
                                 if (isset($_POST['is_edit'])) {
@@ -314,7 +318,7 @@ if (isset($_POST['is_edit'])){
                                     </div>
                                         <div class="row">
                                 <div class="col text-center">
-                                    <select class="form-select select-picker w-50 mx-auto text-center" aria-label="Disabled Secondary Color selection" name="colorSecond" data-dropup-auto="false">
+                                    <select class="form-select select-picker mx-auto text-center" aria-label="Disabled Secondary Color selection" name="colorSecond" data-dropup-auto="false">
 
                                         <?php
                                         if (isset($_POST['is_edit']) && is_null($row2['secondary_color_id']) != 1) {
@@ -355,14 +359,15 @@ if (isset($_POST['is_edit'])){
                                 </div>
                             </div>
                         </div>
-                        <div class="col-3"></div>
+                        <div class="col-4 desktop-label"></div>
                     </div>
                     <div class="row py-3">
-                        <div class="col-3">
-                            <h6>Size</h6>
+                        <div class="col-4 desktop-label">
+                            <h6>Size:</h6>
                         </div>
-                        <div class="col-6 text-center">
-                            <select class="form-select text-center w-50 mx-auto" name="size" id="editSize"
+                        <div class="col mx-auto text-center">
+                            <label class="form-label mobile-label"><h6>Size</h6></label>
+                            <select class="form-select text-center mx-auto" name="size" id="editSize"
                                     aria-label="Default select example">
                                 <option selected value="<?php echo (isset($_POST['is_edit']))?$row2['size_id']:'';?>" disabled>Select a size</option>
                             </select>
@@ -370,13 +375,14 @@ if (isset($_POST['is_edit'])){
                                 Please select an option from the dropdown list
                             </div>
                         </div>
-                        <div class="col-3"></div>
+                        <div class="col-4 desktop-label"></div>
                     </div>
                     <div class="row py-3">
-                        <div class="col-3">
-                            <h6>Closet</h6>
+                        <div class="col-3 desktop-label">
+                            <h6>Closet:</h6>
                         </div>
-                        <div class="col-6 text-center">
+                        <div class="col mx-auto text-center">
+                            <label class="form-label mobile-label"><h6>Closet</h6></label>
                             <select class="form-select text-center mx-auto" name="closet"
                                     aria-label="Default select example">
                                 <?php
@@ -405,13 +411,14 @@ if (isset($_POST['is_edit'])){
                                 Please select an option from the dropdown list
                             </div>
                         </div>
-                        <div class="col-3"></div>
+                        <div class="col-3 desktop-label"></div>
                     </div>
                     <div class="row py-3">
-                        <div class="col-3">
-                            <h6>Category</h6>
+                        <div class="col-3 desktop-label">
+                            <h6>Category:</h6>
                         </div>
-                        <div class="col-6 text-center">
+                        <div class="col mx-auto text-center">
+                            <label class="form-label mobile-label"><h6>Category</h6></label>
                             <select class="form-select text-center mx-auto" name="category"
                                     aria-label="Default select example">
                                 <option selected value="<?php echo (isset($_POST['is_edit']))?$row2['category_id']:'';?>" disabled>Select a category</option>
@@ -420,7 +427,7 @@ if (isset($_POST['is_edit'])){
                                 Please select an option from the dropdown list
                             </div>
                         </div>
-                        <div class="col-3"></div>
+                        <div class="col-3 desktop-label"></div>
                     </div>
                     <!--            Blue line           -->
                     <div class="row pt-5">
