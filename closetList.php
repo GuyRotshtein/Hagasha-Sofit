@@ -244,6 +244,5 @@ $favColor = $row_user['user_fav_color'];
 </html>
 <?php
 mysqli_free_result($result_user);
-mysqli_free_result($result);
 mysqli_close($connection);
 ?>
