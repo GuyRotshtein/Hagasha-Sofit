@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 include "db.php";
-if (!isset($_POST['is_remove'])) {
+if (!isset($_POST['is_remove']) ) {
     $fName = mysqli_real_escape_string($connection, $_POST['userFName']);
     $lName = mysqli_real_escape_string($connection, $_POST['userLName']);
     $eMail = mysqli_real_escape_string($connection, $_POST['userMail']);
@@ -32,15 +32,87 @@ if (!isset($_POST['is_remove'])) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Clother - Login</title>
 </head>
-
 <body>
-    <header class="p-4 py-3 border-bottom">
-        <div class="d-flex align-items-center justify-content-center">
-            <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-                <div class="clother-logo"><img src="./images/icons/new_logo.png"></div>
-            </div>
+<header class="px-2 sticky-top py-3 border-bottom">
+    <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
+        <!--    Hamburger menu-->
+        <div class="col-4">
+            <?php
+            if (isset($_SESSION["user"])) {
+                echo '<div class="mb-2 mb-md-0 header-hamburger">
+                <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
+                        aria-controls="Hamburger">
+                    <img src="./images/icons/hamburger.png" height="40" width="40">
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
+                    <!--        hamburger contents-->
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body d-flex flex-column justify-content-between">
+                        <div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" class="nav-item"><a href="./index.php"
+                                                                                class="nav-link">Home</a></li>
+                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closets</a>
+                                </li>
+                                <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
+                                </li>
+                                <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
+                                </li>';
+
+                if ($_SESSION['is_admin']) {
+                    echo '<li class="list-group-item nav-item"><a href="./admin.php" class="nav-link">Admin panel</a></li>';
+                }
+
+                echo '      </ul>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col mx-auto">
+                                    <div class=" mx-auto clothingLine d-block"></div>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" class="nav-item"><a href="./userSettings.php"
+                                                                                class="nav-link">User settings</a></li>
+                                <li class="list-group-item" class="nav-item"><a href="logout.php" class="nav-link">Log out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+            }
+            ?>
         </div>
-    </header>
+        <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
+            <a class="clother-logo" href="<?php echo (isset($_POST['is_edit']))?'./index.php':'./login.php';?>"> <img src="./images/icons/new_logo.png"></a>
+        </div>
+        <div class="col-4 d-flex justify-content-end text-end header-user-menu">
+            <?php
+            if (isset($_SESSION["user"])) {
+                echo '<div class="flex-shrink-0 dropdown desktop-label">
+                <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+
+                    <img src="./uploads/user_pictures/'.$picture.'" alt="'.$fName.' '.$lName.'" width="32" height="32" class="rounded-circle">
+                </button>
+                <ul class="dropdown-menu text-small shadow dropdown-menu-end">
+                    <li><a class="dropdown-item" href="./userSettings.php">Settings</a></li>
+                    <li><a class="dropdown-item" href="./userSettings.php">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
+                </ul>
+            </div>';
+            }
+            ?>
+        </div>
+    </div>
+</header>
     <main>
         <div class="row justify-content-center pt-3">
             <div class="col-4 py-2">

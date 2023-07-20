@@ -5,14 +5,9 @@ include "db.php";
 session_start();
 $user_id = $_SESSION['user_id'];
 
-
 if (isset($_GET['addCloset'])) {
     $addCloset = $_GET['addCloset'];
-
-
-    // Use the $addCloset variable as needed
     if ($addCloset == 1) {
-        // Perform specific actions for addCloset=1
         $name = mysqli_real_escape_string($connection, $_POST['item']);
         echo $_POST['item'];
         $query = "INSERT INTO tbl_222_closets(closet_name,user_id) VALUES ('$name','$user_id')";
@@ -21,9 +16,8 @@ if (isset($_GET['addCloset'])) {
             die("DB query closet add failed.");
         }
         header('Location: ' . URL . 'closetList.php?');
-
+        mysqli_free_result($result);
     }
-
 } else {
     $name = mysqli_real_escape_string($connection, $_POST['item']);
     $picture = mysqli_real_escape_string($connection, $_POST['pictureInput']);
@@ -51,9 +45,9 @@ if (isset($_GET['addCloset'])) {
             if (!$result) {
                 die("DB update 2 query failed.");
             }
-
         }
         header('Location: ' . URL . 'clothing.php?clothing_id='.$clothing);
+        mysqli_free_result($result);
     } else {
         $query = "INSERT INTO tbl_222_clothes(clothing_name,clothing_picture,category_id,size_id,color_id) VALUES ('$name','$picture','$category','$size','$color')";
         $result = mysqli_query($connection, $query);
@@ -66,6 +60,7 @@ if (isset($_GET['addCloset'])) {
         if (!$result2) {
             die("DB query 2 failed.");
         }
+
         $row = mysqli_fetch_assoc($result2);
         $cid = $row['clothing_id'];
 
@@ -76,6 +71,9 @@ if (isset($_GET['addCloset'])) {
         }
 
         header('Location: ' . URL . 'closet.php?closet_id=' . $closet);
+        mysqli_free_result($result);
+        mysqli_free_result($result2);
+        mysqli_free_result($result3);
     }
 }
 

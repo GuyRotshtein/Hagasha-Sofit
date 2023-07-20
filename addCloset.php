@@ -61,11 +61,9 @@ if (!$result) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Clother - Add new clothing item</title>
 </head>
-
 <body>
-<<header class="px-2 py-3 border-bottom">
+<header class="px-2 py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-        <!--    Hamburger menu-->
         <div class="col-4">
             <div class="mb-2 mb-md-0 header-hamburger">
                 <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
@@ -73,7 +71,6 @@ if (!$result) {
                     <img src="./images/icons/hamburger.png" height="40" width="40">
                 </button>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
-                    <!--        hamburger contents-->
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -113,17 +110,13 @@ if (!$result) {
                 </div>
             </div>
         </div>
-        <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
             <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
         </div>
-        <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
             <div class="flex-shrink-0 dropdown desktop-label">
-                <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-
-                    <img src="<?php echo'./uploads/user_pictures/'.$picture;?>" alt="mdo" width="32" height="32" class="rounded-circle">
+                <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="<?php echo'./uploads/user_pictures/'.$picture.'" alt="'.$fName.' '.$lName.'"';?> width="32" height="32" class="rounded-circle">
                 </button>
                 <ul class="dropdown-menu text-small shadow dropdown-menu-end">
                     <li><a class="dropdown-item" href="./userSettings.php">Settings</a></li>
@@ -146,11 +139,8 @@ if (!$result) {
                 <div class="col ">
                     <nav style="--bs-breadcrumb-divider: '>';" class="px-3 py-1" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link"
-                                    href="index.php">Home</a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link"
-                                    href="closetList.php">Closets</a></li>
-
+                            <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="index.php">Home</a></li>
+                            <li class="breadcrumb-item" aria-current="page"><a class="breadcrumb-link" href="closetList.php">Closets</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Add new closet</li>
                         </ol>
                     </nav>
@@ -158,7 +148,6 @@ if (!$result) {
             </div>
             <div class="row">
                 <div class="col">
-                    <!--        breadcrumbs         -->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
                         <li class="list-group-item nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a></li>
@@ -184,18 +173,14 @@ if (!$result) {
                                 </div>
                             </div>
                         </div>
-                        <!--                Clothing image          -->
-
                         <?php
                         echo '<form name="addClosetForm" id="addClosetForm" action="action.php?addCloset=1" method="post" onsubmit="return validateForm()">';
                         ?>
-                        <!--            Blue line           -->
                         <div class="row">
                             <div class="col-6 mx-auto">
                                 <div class=" mx-auto clothingLine d-block"></div>
                             </div>
                         </div>
-                        <!--            details           -->
                         <div class="row py-3">
                             <div class="col-3">
                                 <h6>Closet name:</h6>
@@ -209,26 +194,18 @@ if (!$result) {
                                 Please write The closet name
                             </div>
                         </div>
-
-
-
-
-                        <!--            Blue line           -->
                         <div class="row">
                             <div class="col-6 mx-auto">
                                 <div class=" mx-auto clothingLine d-block"></div>
                             </div>
                         </div>
-                        <!--            Blue line           -->
                         <div class="row py-4">
                             <div class="col-3 mx-auto d-flex justify-content-center">
                                 <div class="col-3 mx-auto d-flex justify-content-center">
                                     <input type="submit" id="submit" name="submit"
                                         class="btn btn-outline-success mx-2 clothingSubmit" value="Confirm">
                                     <a href="closetList.php" class="btn btn-outline-danger mx-2">Cancel</a>
-
                                 </div>
-
                             </div>
                         </div>
                         <div id="clothingMsg" class="row text-center"></div>
@@ -243,5 +220,7 @@ if (!$result) {
 
 </html>
 <?php
+mysqli_free_result($result_user);
+mysqli_free_result($result);
 mysqli_close($connection);
 ?>

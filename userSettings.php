@@ -99,7 +99,7 @@ $favColor = $row['user_fav_color'];
             <div class="flex-shrink-0 dropdown desktop-label">
                 <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo'./uploads/user_pictures/'.$picture;?>" alt="mdo" width="32" height="32" class="rounded-circle">
+                    <img src="<?php echo'./uploads/user_pictures/'.$picture.'" alt="'.$fName.' '.$lName.'"';?> width="32" height="32" class="rounded-circle">
                 </button>
                 <ul class="dropdown-menu text-small shadow dropdown-menu-end">
                     <li><a class="dropdown-item" href="./userSettings.php">Settings</a></li>

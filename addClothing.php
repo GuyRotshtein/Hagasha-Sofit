@@ -83,7 +83,6 @@
 <body>
 <header class="px-2 py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-        <!--    Hamburger menu-->
         <div class="col-4">
             <div class="mb-2 mb-md-0 header-hamburger">
                 <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
@@ -91,7 +90,6 @@
                     <img src="./images/icons/hamburger.png" height="40" width="40">
                 </button>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
-                    <!--        hamburger contents-->
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -131,17 +129,13 @@
                 </div>
             </div>
         </div>
-        <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
             <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
         </div>
-        <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
             <div class="flex-shrink-0 dropdown desktop-label">
-                <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-
-                    <img src="<?php echo'./uploads/user_pictures/'.$picture;?>" alt="mdo" width="32" height="32" class="rounded-circle">
+                <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="<?php echo'./uploads/user_pictures/'.$picture.'" alt="'.$fName.' '.$lName.'"';?> width="32" height="32" class="rounded-circle">
                 </button>
                 <ul class="dropdown-menu text-small shadow dropdown-menu-end">
                     <li><a class="dropdown-item" href="./userSettings.php">Settings</a></li>
@@ -186,7 +180,6 @@ if (isset($_POST['is_edit'])){
             </div>
             <div class="row">
                 <div class="col">
-                    <!--        breadcrumbs         -->
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
                         <li class="list-group-item nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a></li>
@@ -212,7 +205,6 @@ if (isset($_POST['is_edit'])){
                                 </div>
                             </div>
                         </div>
-                        <!--                Clothing image          -->
                         <div class="row pb-3">
                             <div class="col-4 desktop-label"></div>
                             <div class="col mx-auto">
@@ -249,13 +241,11 @@ if (isset($_POST['is_edit'])){
                         }
                         ?>
                         <input type="hidden" name="pictureInput" id="pictureInput" value="" form="addClothingForm">
-                        <!--            Blue line           -->
                         <div class="row">
                             <div class="col-6 mx-auto">
                                 <div class=" mx-auto clothingLine d-block"></div>
                             </div>
                         </div>
-                        <!--            details           -->
                         <div class="row py-3">
                             <div class="col-3 desktop-label">
                                 <h6>Clothing item's name:</h6>
@@ -319,7 +309,6 @@ if (isset($_POST['is_edit'])){
                                         <div class="row">
                                 <div class="col text-center">
                                     <select class="form-select select-picker mx-auto text-center" aria-label="Disabled Secondary Color selection" name="colorSecond" data-dropup-auto="false">
-
                                         <?php
                                         if (isset($_POST['is_edit']) && is_null($row2['secondary_color_id']) != 1) {
                                             $query = "SELECT * FROM tbl_222_colors;";
@@ -429,13 +418,11 @@ if (isset($_POST['is_edit'])){
                         </div>
                         <div class="col-3 desktop-label"></div>
                     </div>
-                    <!--            Blue line           -->
                     <div class="row pt-5">
                         <div class="col-6 mx-auto">
                             <div class=" mx-auto clothingLine d-block"></div>
                         </div>
                     </div>
-                    <!--            Blue line           -->
                     <div id="clothingMsg" class="row text-center"></div>
                     </form>
                     <div class="row py-4">
@@ -464,5 +451,7 @@ if (isset($_POST['is_edit'])){
 </body>
 </html>
 <?php
+mysqli_free_result($result_user);
+mysqli_free_result($result);
 mysqli_close($connection);
 ?>
