@@ -25,6 +25,7 @@ if (isset($_GET['addCloset'])) {
     }
 
 } else {
+    
     $picture = mysqli_real_escape_string($connection, $_POST['pictureInput']);
     $color = mysqli_real_escape_string($connection, $_POST['color']);
     $size = mysqli_real_escape_string($connection, $_POST['size']);
