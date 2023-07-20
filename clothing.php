@@ -12,6 +12,20 @@ if (!isset($_SESSION["user"])) {
 $uid = $_SESSION['user_id'];
 $cid = $_GET['clothing_id'];
 
+$query_user = "SELECT * FROM tbl_222_users WHERE user_id = $uid;";
+$result_user = mysqli_query($connection, $query_user);
+
+if (!$result_user) {
+    die("DB user query failed.");
+}
+$row_user = mysqli_fetch_assoc($result_user);
+$fName = $row_user['f_name'];
+$lName = $row_user['l_name'];
+$picture = $row_user['user_picture'];
+$gender = $row_user['gender'];
+$country = $row_user['user_country'];
+$favColor = $row_user['user_fav_color'];
+
 $query = "SELECT 
     cls.closet_name,
     cls.closet_id,

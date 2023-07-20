@@ -16,6 +16,21 @@
         }
     }
     $uid = $_SESSION['user_id'];
+
+    $query_user = "SELECT * FROM tbl_222_users WHERE user_id = $uid;";
+    $result_user = mysqli_query($connection, $query_user);
+
+    if (!$result_user) {
+        die("DB query failed.");
+    }
+    $row_user = mysqli_fetch_assoc($result_user);
+    $fName = $row_user['f_name'];
+    $lName = $row_user['l_name'];
+    $picture = $row_user['user_picture'];
+    $gender = $row_user['gender'];
+    $country = $row_user['user_country'];
+    $favColor = $row_user['user_fav_color'];
+
     $cid = $_GET['closet_id']?:header('Location: ' . URL . 'closetList.php');
     $query = "SELECT 
                             *
@@ -107,11 +122,12 @@
             <div class="flex-shrink-0 dropdown">
                 <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+
+                    <img src="<?php echo'./uploads/user_pictures/'.$picture;?>" alt="mdo" width="32" height="32" class="rounded-circle">
                 </button>
                 <ul class="dropdown-menu text-small shadow dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="./userSettings.php">Settings</a></li>
+                    <li><a class="dropdown-item" href="./userSettings.php">Profile</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
