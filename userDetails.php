@@ -225,6 +225,41 @@ $favColor = $row_user['user_fav_color'];
                                     <div class=" mx-auto clothingLine d-block"></div>
                                 </div>
                             </div>
-                            <h5><?php echo $fname. "'s data" ?></h5>
+                            <h5>
+                                <?php echo $fname . "'s data" ?>
+                            </h5>
+                            <?php
+                            $query_closet = "SELECT count(*) AS closet_count FROM tbl_222_closets WHERE user_id = $uid;";
+                            $result_closet = mysqli_query($connection, $query_closet);
+                            if (!$result_closet) {
+                                die("DB query failed.");
+                            }
+                            $row_user = mysqli_fetch_assoc($result_closet);
+                            $closet_num = $row_user['closet_count'];
+
+                            $query_clothes = "SELECT u.user_id,  COUNT(cc.clothing_id) AS num_of_clothes
+                            FROM tbl_222_users u
+                            LEFT JOIN tbl_222_closets c ON u.user_id = c.user_id
+                            LEFT JOIN tbl_222_closet_clothes cc ON c.closet_id = cc.closet_id
+                            WHERE c.user_id=$uid
+                            GROUP BY u.user_id;";
+
+                            $result_clothes = mysqli_query($connection, $query_clothes);
+                            if (!$result_clothes) {
+                                die("DB query failed.");
+                            }
+                            $row_user = mysqli_fetch_assoc($result_clothes);
+                            $clothes_num = $row_user['num_of_clothes'];
+                            echo '<ul class="list-unstyled py-3">';
+
+                            echo '<li class="py-1">Number of closets: ' . $closet_num . '</li>';
+                            echo '<li class="py-1">Number of clothes: ' . $clothes_num . '</li>';
+
+                            echo '</ul>';
+
+
+
+                            ?>
+
 
                         </div>
