@@ -39,59 +39,75 @@ $favColor = $row_user['user_fav_color'];
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Clother - Home</title>
+    <title>Clother - Admin Page</title>
 </head>
-
 <body class="homePage">
-    <header class="p-4 py-3 border-bottom">
+    <header class="px-2 py-3 sticky-top border-bottom">
         <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-            <!--    Hamburger menu-->
             <div class="col-4">
                 <div class="mb-2 mb-md-0 header-hamburger">
                     <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
-                        aria-controls="Hamburger">
+                            aria-controls="Hamburger">
                         <img src="./images/icons/hamburger.png" height="40" width="40">
                     </button>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger"
-                        aria-labelledby="HamburgerLabel">
-                        <!--        hamburger contents-->
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
-                        <div class="offcanvas-body">
+                        <div class="offcanvas-body d-flex flex-column justify-content-between">
                             <div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item" class="nav-item"><a href="./index.php"
-                                            class="nav-link">Home</a></li>
-                                    <li class="list-group-item" class="nav-item"><a href="closetList.php"
-                                            class="nav-link">Closets</a>
+                                                                                    class="nav-link">Home</a></li>
+                                    <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closets</a>
                                     </li>
-                                    <li class="list-group-item" class="nav-item"><a href="#"
-                                            class="nav-link">Calendar</a>
+                                    <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                     </li>
                                     <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
                                     </li>
+                                    <?php
+                                    $query_admin = "SELECT is_admin FROM tbl_222_users WHERE user_id = $uid;";
+                                    $result_admin = mysqli_query($connection, $query_admin);
 
+                                    if (!$result_admin) {
+                                        die("DB query failed.");
+                                    }
+                                    $row_admin = mysqli_fetch_assoc($result_admin);
+                                    $_SESSION['is_admin'] = $row_admin['is_admin'];
+                                    $admin = $row_admin['is_admin'];
+                                    if ($_SESSION['is_admin']) {
+                                        echo '<li class="list-group-item nav-item"><a href="./admin.php" class="nav-link">Admin panel</a></li>';
+                                    }
+                                    ?>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="row">
+                                    <div class="col mx-auto">
+                                        <div class=" mx-auto clothingLine d-block"></div>
+                                    </div>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" class="nav-item"><a href="./userSettings.php"
+                                                                                    class="nav-link">User settings</a></li>
+                                    <li class="list-group-item" class="nav-item"><a href="logout.php" class="nav-link">Log out</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--    logo      -->
             <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
                 <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
             </div>
-            <!--    User panel    -->
             <div class="col-4 d-flex justify-content-end text-end header-user-menu">
-                <div class="flex-shrink-0 dropdown">
+                <div class="flex-shrink-0 dropdown desktop-label">
                     <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-expanded="false">
 
-                        <img src="<?php echo './uploads/user_pictures/' . $picture; ?>" alt="mdo" width="32" height="32"
-                            class="rounded-circle">
+                        <img src="<?php echo'./uploads/user_pictures/'.$picture.'" alt="'.$fName.' '.$lName.'"';?> width="32" height="32" class="rounded-circle">
                     </button>
                     <ul class="dropdown-menu text-small shadow dropdown-menu-end">
                         <li><a class="dropdown-item" href="./userSettings.php">Settings</a></li>
@@ -156,70 +172,78 @@ $favColor = $row_user['user_fav_color'];
             <div class="col">
                 <div class="container-fluid ">
                     <div class="container py-2">
-                        <div class="container main-container px-3">
+                        <div class="container main-container px-2">
                             <div class="container text-left px-0">
                                 <div class="row">
-                                    <!--                                Search bar - use AJAX? dunno :)-->
-                                    <div class="col-3 py-1">
-                                        <h1> Admin panel</h1>
+                                    <div class="col py-1">
+                                        <h1 class="desktop-label"> Admin panel</h1>
+                                        <h1 class="mobile-label text-center"> Admin panel</h1>
                                     </div>
-                                    <div class="col-9 d-flex flex-row-reverse"></div>
-                                    <h5>User list</h5>
+                                    <div class="col d-flex flex-row-reverse"></div>
+                                    <h5 class="desktop-label">User list</h5>
+                                    <h5 class="mobile-label text-center">User list</h5>
                                 </div>
                             </div>
+                            <div class="row"><div class="col">
+                            <table class="table-responsive">
+                                <table class="table table-sm table-hover ">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col" class="desktop-label">First name</th>
+                                            <th scope="col" class="mobile-label">F.name</th>
+                                            <th scope="col" class="desktop-label">Last name</th>
+                                            <th scope="col" class="mobile-label">L.name</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $query_users = "SELECT * FROM tbl_222_users WHERE is_admin = 0;";
+                                        $result_users = mysqli_query($connection, $query_users);
 
-                            <table class="table table-hover ">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">First name</th>
-                                        <th scope="col">Last name</th>
-                                        <th scope="col"></th>
+                                        if (!$result_users) {
+                                            die("DB query failed.");
+                                        }
 
+                                        while ($row_users = mysqli_fetch_assoc($result_users)) {
+                                            $id = $row_users['user_id'];
+                                            $fName = $row_users['f_name'];
+                                            $lName = $row_users['l_name'];
+                                            $picture = $row_users['user_picture'];
+                                            $gender = $row_users['gender'];
+                                            $country = $row_users['user_country'];
+                                            $favColor = $row_users['user_fav_color'];
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $query_users = "SELECT * FROM tbl_222_users WHERE is_admin = 0;";
-                                    $result_users = mysqli_query($connection, $query_users);
-
-                                    if (!$result_users) {
-                                        die("DB query failed.");
-                                    }
-
-                                    while ($row_users = mysqli_fetch_assoc($result_users)) {
-                                        $id = $row_users['user_id'];
-                                        $fName = $row_users['f_name'];
-                                        $lName = $row_users['l_name'];
-                                        $picture = $row_users['user_picture'];
-                                        $gender = $row_users['gender'];
-                                        $country = $row_users['user_country'];
-                                        $favColor = $row_users['user_fav_color'];
-
-                                        echo '<tr>';
-                                        echo '<th scope="col">' . $id . '</th>';
-                                        echo '<th scope="col">' . $fName . '</th>';
-                                        echo '<th scope="col">' . $lName . '</th>';
-                                        echo '<th scope="col">
-                                        <div style="display: flex;">
-                                        <form name="userRemovalForm" id="userRemovalForm" action="userCRUD.php" method="POST">
-                                            <input type="hidden" name="is_remove" value="true">
-                                            <input type="hidden" name="del_user_id" value="' . $id . '">
-                                            <button type="submit" class="btn text-right text-hide clothingButton removeItemBtn removeItemBtnDanger px-5 text-bg-danger">Delete User</button>
-                                        </form>
-                                        
-                                        <form action="userDetails.php" method="POST">
-                                            <input type="hidden" name="is_read" value="' . $id . '">
-                                            <button type="submit" class="btn btn-secondary ms-1 px-5">View user</button>
-                                        </form>
-                                    </div>
-                                              </th>';
-                                        echo '</tr>';
-                                    }
-                                    ?>
-                                </tbody>
+                                            echo '<tr>';
+                                            echo '<th scope="col" class="align-middle">' . $id . '</th>';
+                                            echo '<th scope="col" class="align-middle">' . $fName . '</th>';
+                                            echo '<th scope="col" class="align-middle">' . $lName . '</th>';
+                                            echo '<th scope="col">
+                                            <div class="d-flex flex-wrap flex-column justify-content-center align-items-center">
+                                            <div>
+                                            <form name="userRemovalForm" id="userRemovalForm" action="userCRUD.php" method="POST">
+                                                <input type="hidden" name="is_remove" value="true">
+                                                <input type="hidden" name="del_user_id" value="' . $id . '">
+                                                <button type="submit" class="btn text-right text-hide clothingButton removeItemBtn removeItemBtnDanger px-5 text-bg-danger desktop-label">Delete User</button>
+                                                <button type="submit" class="btn text-right text-hide clothingButton removeItemBtn px-2 text-bg-danger mobile-label button-mobile"></button>
+                                            </form>
+                                            </div><div>
+                                            <form name="userInfoForm" class="userInfoForm" action="userDetails.php" method="POST">
+                                                <input type="hidden" name="is_read" value="' . $id . '">
+                                                <button type="submit" class="btn bg-primary text-right text-hide clothingButton infoButton px-5 mt-1 text-bg-primary desktop-label">Delete User</button>
+                                                <button type="submit" class="btn bg-primary px-2 infoButton mobile-label button-mobile"></button>
+                                            </form>
+                                            </div>
+                                        </div>
+                                                  </th>';
+                                            echo '</tr>';
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
                             </table>
+                                </div> </div>
                             <div class="row">
                                 <div class="col-6 mx-auto">
                                     <div class=" mx-auto clothingLine d-block"></div>
