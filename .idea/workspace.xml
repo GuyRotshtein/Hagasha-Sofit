@@ -6,18 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8754e0d6-43b2-45b3-b725-f3b8fcef56a6" name="Changes" comment="Reactivity fixes for most pages and comment removal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/action.php" beforeDir="false" afterPath="$PROJECT_DIR$/action.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addCloset.php" beforeDir="false" afterPath="$PROJECT_DIR$/addCloset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addClothing.php" beforeDir="false" afterPath="$PROJECT_DIR$/addClothing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/closet.php" beforeDir="false" afterPath="$PROJECT_DIR$/closet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/closetList.php" beforeDir="false" afterPath="$PROJECT_DIR$/closetList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clothing.php" beforeDir="false" afterPath="$PROJECT_DIR$/clothing.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/get_product.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/registerUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/registerUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/userCRUD.php" beforeDir="false" afterPath="$PROJECT_DIR$/userCRUD.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userSettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/userSettings.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +60,7 @@
       <recent name="C:\Users\guyro\Documents\Shenkar\Year 3\Semester 2\Web and Cloud\FinalHagasha\Hagasha-Sofit\uploads\clothing" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.action.php">
+  <component name="RunManager" selected="JavaScript Debug.login.php">
     <configuration name="action.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Hagasha-Sofit/action.php" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -92,10 +85,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.login.php" />
         <item itemvalue="JavaScript Debug.action.php" />
         <item itemvalue="JavaScript Debug.index.php" />
         <item itemvalue="JavaScript Debug.userCRUD.php" />
-        <item itemvalue="JavaScript Debug.login.php" />
         <item itemvalue="JavaScript Debug.closetList.php" />
       </list>
     </recent_temporary>
@@ -124,7 +117,7 @@
       <workItem from="1689706333523" duration="7865000" />
       <workItem from="1689753420811" duration="17757000" />
       <workItem from="1689788253375" duration="12096000" />
-      <workItem from="1689861396675" duration="8886000" />
+      <workItem from="1689861396675" duration="10265000" />
     </task>
     <task id="LOCAL-00001" summary="Updated and header style. Also added gitIgnore file and created file for login page, as well as a config php file.">
       <created>1689409894029</created>
@@ -175,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689869935441</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Reactivity fixes for most pages and comment removal">
+      <created>1689871552651</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1689871552651</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

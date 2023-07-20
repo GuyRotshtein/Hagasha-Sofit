@@ -30,7 +30,15 @@ if (!isset($_POST['is_remove']) ) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>Clother - Login</title>
+    <?php
+    if (isset($_POST['is_edit'])){
+        echo "<title>Clother - Edit ".$fName." ".$lName."'s account</title>";
+    } else if(isset($_POST['is_remove'])){
+        echo '<title>Clother - Remove account</title>';
+    } {
+        echo '<title>Clother - Register</title>';
+    }
+    ?>
 </head>
 <body>
 <header class="px-2 sticky-top py-3 border-bottom">
@@ -38,7 +46,7 @@ if (!isset($_POST['is_remove']) ) {
         <!--    Hamburger menu-->
         <div class="col-4">
             <?php
-            if (isset($_SESSION["user"])) {
+            if (isset($_SESSION["user"]) && !isset($_POST['is_remove'])) {
                 echo '<div class="mb-2 mb-md-0 header-hamburger">
                 <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
                         aria-controls="Hamburger">
@@ -92,11 +100,10 @@ if (!isset($_POST['is_remove']) ) {
         </div>
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
             <?php
-            if (isset($_SESSION["user"])) {
+            if (isset($_SESSION["user"]) && !isset($_POST['is_remove'])) {
                 echo '<div class="flex-shrink-0 dropdown desktop-label">
                 <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-
                     <img src="./uploads/user_pictures/'.$picture.'" alt="'.$fName.' '.$lName.'" width="32" height="32" class="rounded-circle">
                 </button>
                 <ul class="dropdown-menu text-small shadow dropdown-menu-end">
@@ -113,23 +120,24 @@ if (!isset($_POST['is_remove']) ) {
         </div>
     </div>
 </header>
-    <main>
-        <div class="row justify-content-center pt-3">
-            <div class="col-4 py-2">
-                <div class="container main-container rounded-4 px-3">
-                    <div class="container text-left px-0">
-                        <div class="row pb-5">
-                            <div class="col-12 py-1">
-                                <h1>Welcome to Clother</h1>
-                                <div class="col mx-2">
-                                    <h5>Your go-to for all clothing advice!</h5>
-                                </div>
-                            </div>
-                            <div class="col-9 d-flex flex-row-reverse"></div>
+<main>
+    <div class="row justify-content-center pt-3">
+        <div class="desktop-label col-3"></div>
+        <div class="col mx-auto py-2 px-4">
+            <div class="container main-container rounded-4 px-3">
+                <div class="container text-left px-0">
+                    <div class="row pb-4">
+                        <div class="col pt-2">
+                            <h1 class="mobile-label text-center">Welcome to Clother</h1>
+                            <h1 class="desktop-label text-start text-nowrap">Welcome to Clother</h1>
+                            <div class="col mobile-label mx-2 text-center text-secondary"><h6>Your go-to for all clothing advice!</h6></div>
+                            <div class="col desktop-label mx-2"><h5>Your go-to for all clothing advice!</h5></div>
                         </div>
+                        <div class="col-9 d-flex flex-row-reverse"></div>
                     </div>
-                    <div class="row pt-2">
-                        <div class="container justify-content-center text-center rounded-5 px-5">
+                </div>
+                <div class="row pt-2">
+                    <div class="container justify-content-center text-center rounded-5 px-3">
                             <?php
                             if (isset($_POST['isEdit'])) {
                                 session_start();
@@ -150,18 +158,12 @@ if (!isset($_POST['is_remove']) ) {
                                 if (!$result) {
                                     die("DB update query failed.");
                                 }
-                                //                            sleep(3);
-                                echo 'UPDATE SUCCESFULL!';
-                                sleep(4);
                                 header('Location: ' . URL . 'userSettings.php');
                             } else if (isset($_POST['is_remove']) && isset($_POST['del_user_id'])) {
-
-
                                 $user_id = $_POST["del_user_id"];
                                 if($user_id == 1){
                                 header('Location: ' . URL . 'admin.php');
                                 exit;
-
                                 }
                                 $query = "DELETE clth . * FROM tbl_222_clothes clth
                                         INNER JOIN
@@ -174,24 +176,21 @@ if (!isset($_POST['is_remove']) ) {
                                 if (!$result) {
                                     die("DB delete clothing query failed.");
                                 }
-                                //delete the clothes
+
                                 $query = "DELETE clos . * FROM tbl_222_closets clos WHERE clos.user_id = $user_id;";
                                 $result = mysqli_query($connection, $query);
                                 if (!$result) {
                                     die("DB delete closets query failed.");
                                 }
-                                //delete the closets
+
                                 $query = "DELETE usr . * FROM tbl_222_users usr WHERE usr.user_id = $user_id;";
                                 $result = mysqli_query($connection, $query);
                                 if (!$result) {
                                     die("DB delete closets query failed.");
                                 }
-                                //delete user
-                                //send to login page
                                 
                                 header('Location: ' . URL . 'admin.php');
                             } else if (isset($_POST['is_remove'])) {
-                                //first, get all clothes in closets that the user owns
                                 session_start();
                                 $number = $_SESSION['user_id'];
                                 $query = "DELETE clth . * FROM tbl_222_clothes clth
@@ -205,47 +204,64 @@ if (!isset($_POST['is_remove']) ) {
                                 if (!$result) {
                                     die("DB delete clothing query failed.");
                                 }
-                                //delete the clothes
+
                                 $query = "DELETE clos . * FROM tbl_222_closets clos WHERE clos.user_id = $number;";
                                 $result = mysqli_query($connection, $query);
                                 if (!$result) {
                                     die("DB delete closets query failed.");
                                 }
-                                //delete the closets
+
                                 $query = "DELETE usr . * FROM tbl_222_users usr WHERE usr.user_id = $number;";
                                 $result = mysqli_query($connection, $query);
                                 if (!$result) {
                                     die("DB delete closets query failed.");
                                 }
-                                //delete user
-                                //send to login page
-                                
-                                header('Location: ' . URL . 'login.php');
-                            } else {
+                            } else if (isset($_POST['isInsert'])){
                                 $query = "INSERT INTO tbl_222_users(f_name,l_name,email,password,phone,user_picture,gender,user_country,user_fav_color) VALUES ('$fName','$lName','$eMail','$pass','$phone','$picture','$gender','$country','$favColor')";
                                 $result = mysqli_query($connection, $query);
                                 if (!$result) {
                                     die("DB insert query failed.");
                                 }
-                                //                            sleep(10);
-//                            header('Location: ' . URL . 'closet.php?closet_id='.$closet);
+                            } else {
+                                header('Location: ' . URL . 'index.php');
                             }
                             ?>
-                            <h5>Log into Clother</h5>
-                            <div class="col-1"></div>
-                            <div class="col text-center">
-
-                                <div class="row justify-content-center py-3">
+                        <div class="desktop-label col-1"></div>
+                        <div class="col text-center">
+                            <div class="row justify-content-center pt-3">
+                                <div class="desktop-label col-1"></div>
+                                <div class="col mx-auto">
+                                    <?php
+                                    if (isset($_POST['is_remove'])) {
+                                        echo '<h5>User removed</h5>';
+                                        echo '<div class="row pt-5">
+                                                    <h6> your user was successfully removed from the system. Press the "Proceed" button to return to the log in screen</h6>
+                                                </div>
+                                                <div class="row justify-content-center py-3">
+                                                        <a href="./login.php" class="col-4 btn btn-primary">Proceed</a>
+                                                </div>';
+                                    } else if (isset($_POST['isInsert'])){
+                                        echo '<h5>User Created</h5>';
+                                        echo '<div class="row pt-5">
+                                                    <h6> your user was successfully created in the system. Press the "Proceed" button to return to the log in screen</h6>
+                                                </div>
+                                                <div class="row justify-content-center py-3">
+                                                        <a href="./login.php" class="col-4 btn btn-primary">Proceed</a>
+                                                </div>';
+                                    }
+                                    ?>
                                 </div>
+                                <div class="desktop-label col-1"></div>
                             </div>
-                            <div class="col-1"></div>
                         </div>
+                        <div class="desktop-label col-1"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
-</body>
+        <div class="desktop-label col-3"></div>
+    </div>
+</main>
 
 </html>
 <?php

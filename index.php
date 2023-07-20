@@ -40,11 +40,9 @@ $favColor = $row_user['user_fav_color'];
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Clother - Home</title>
 </head>
-
 <body class="homePage">
 <header class="px-2 py-3 sticky-top border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-        <!--    Hamburger menu-->
         <div class="col-4">
             <div class="mb-2 mb-md-0 header-hamburger">
                 <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
@@ -52,7 +50,6 @@ $favColor = $row_user['user_fav_color'];
                     <img src="./images/icons/hamburger.png" height="40" width="40">
                 </button>
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
-                    <!--        hamburger contents-->
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -139,7 +136,6 @@ $favColor = $row_user['user_fav_color'];
                 </div>
                 <div class="row">
                     <div class="col">
-                        <!--        breadcrumbs         -->
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
                             <li class="list-group-item nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a></li>
@@ -160,7 +156,6 @@ $favColor = $row_user['user_fav_color'];
                         <div class="container main-container px-3">
                             <div class="container text-left px-0">
                                 <div class="row">
-                                    <!--                                Search bar - use AJAX? dunno :)-->
                                     <div class="col text-center mobile-label py-1">
                                         <h1>Details</h1>
                                     </div>
@@ -170,8 +165,6 @@ $favColor = $row_user['user_fav_color'];
                                     <div class="col-9 desktop-label"></div>
                                 </div>
                             </div>
-
-                            <!--            Recommendations           -->
                             <div class="row">
                                 <h5 class="desktop-label pt-2">Recommendations</h5>
                                 <h5 class="mobile-label text-center pt-2">Recommendations</h5>
@@ -211,7 +204,6 @@ $favColor = $row_user['user_fav_color'];
                                     </div>
                                 </div>
                             </div>
-                            <!--                        Map & Weather-->
                             <div id="weatherData" class="row d-flex flex-wrap justify-content-between pb-3 pt-5">
                                 <div class="weatherCol col-6 mx-auto">
                                     <div class="row">
@@ -234,7 +226,6 @@ $favColor = $row_user['user_fav_color'];
                                     </div>
                                 </div>
                             </div>
-                            <!--                        Messages?-->
                         </div>
                     </div>
                 </div>

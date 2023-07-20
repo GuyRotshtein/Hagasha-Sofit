@@ -239,6 +239,8 @@ if (isset($_POST['is_edit'])){
                             if (isset($_POST['is_edit'])) {
                                 echo '<input type="hidden" name="isEdit" value="true" form="registerForm">';
                                 echo '<input type="hidden" name="userId" value="'.$user_id.'" form="registerForm">';
+                            } else {
+                                echo '<input type="hidden" name="isInsert" value="true" form="registerForm">';
                             }
                             ?>
                             <input type="hidden" name="userPicture" id="userPicture" value="<?php echo (isset($_POST['is_edit']))?$picture:'';?>" form="registerForm">
