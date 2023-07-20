@@ -164,74 +164,67 @@ $favColor = $row_user['user_fav_color'];
                                         <h1> Admin panel</h1>
                                     </div>
                                     <div class="col-9 d-flex flex-row-reverse"></div>
-                                    <h5>User list</h5>
+                                    <h5>User details</h5>
+                                    <div class="row">
+                                        <div class="col-6 mx-auto">
+                                            <div class=" mx-auto clothingLine d-block"></div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
+                            <?php
+                            if (isset($_POST['is_read'])) {
+                                $uid = $_POST['is_read'];
+                                $query_user = "SELECT * FROM tbl_222_users WHERE user_id = $uid;";
+                                $result_user = mysqli_query($connection, $query_user);
 
-                            <table class="table table-hover ">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">First name</th>
-                                        <th scope="col">Last name</th>
-                                        <th scope="col"></th>
+                                if (!$result_user) {
+                                    die("DB query failed.");
+                                }
+                                $row_user = mysqli_fetch_assoc($result_user);
+
+                                $fname = $row_user['f_name'];
+                                $lname = $row_user['l_name'];
+                                $email = $row_user['email'];
+                                $phone = $row_user['phone'];
+                                $gender = $row_user['gender'];
+                                $country = $row_user['user_country'];
+                                $favColor = $row_user['user_fav_color'];
+                                $picture = $row_user['user_picture'];
+                                echo '<div class = container text-start>';
+                                echo ' <div class="row">';
+                                echo ' <div class="col">';
+                                echo '<div class="card text-bg-transparent border-0 mx-auto  pb-5">';
+                                echo '<img src="./uploads/user_pictures/' . $picture . '" class="mx-auto rounded-circle card-img object-fit-cover" alt="' . $fName . ' ' . $lName . '" title="' . $fName . ' ' . $lName . '">';
+                                echo '<div class="card-img-overlay"></div></div>';
+                                echo '</div>';
+                                echo '<div class ="col-md-auto">';
+                                echo '<div class="d-flex" style=height:230px>';
+                                echo '<div class ="vr"></div></div>';
+                                echo '</div>';
+                                echo ' <div class="col">';
+                                echo '<ul class="list-unstyled py-3">';
+                                echo '<li class="py-1">first name: ' . $fname . '</li>';
+                                echo '<li class="py-1">Last name: ' . $lname . '</li>';
+                                echo '<li class="py-1">Email: ' . $email . '</li>';
+                                echo '<li class="py-1">Country: ' . $country . '</li>';
+                                echo '<li class="py-1">Favorite color: ' . $favColor . '</li>';
+                                echo '</ul>';
+                                echo '</div>';
+                                echo '</div>';
 
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $query_users = "SELECT * FROM tbl_222_users WHERE is_admin = 0;";
-                                    $result_users = mysqli_query($connection, $query_users);
 
-                                    if (!$result_users) {
-                                        die("DB query failed.");
-                                    }
+                                echo '</div>';
 
-                                    while ($row_users = mysqli_fetch_assoc($result_users)) {
-                                        $id = $row_users['user_id'];
-                                        $fName = $row_users['f_name'];
-                                        $lName = $row_users['l_name'];
-                                        $picture = $row_users['user_picture'];
-                                        $gender = $row_users['gender'];
-                                        $country = $row_users['user_country'];
-                                        $favColor = $row_users['user_fav_color'];
-
-                                        echo '<tr>';
-                                        echo '<th scope="col">' . $id . '</th>';
-                                        echo '<th scope="col">' . $fName . '</th>';
-                                        echo '<th scope="col">' . $lName . '</th>';
-                                        echo '<th scope="col">
-                                        <div style="display: flex;">
-                                        <form name="userRemovalForm" id="userRemovalForm" action="userCRUD.php" method="POST">
-                                            <input type="hidden" name="is_remove" value="true">
-                                            <input type="hidden" name="del_user_id" value="' . $id . '">
-                                            <button type="submit" class="btn text-right text-hide clothingButton removeItemBtn removeItemBtnDanger px-5 text-bg-danger">Delete User</button>
-                                        </form>
-                                        
-                                        <form action="userDetails.php" method="POST">
-                                            <input type="hidden" name="is_read" value="' . $id . '">
-                                            <button type="submit" class="btn btn-secondary ms-1 px-5">View user</button>
-                                        </form>
-                                    </div>
-                                              </th>';
-                                        echo '</tr>';
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+                            }
+                            ?>
                             <div class="row">
                                 <div class="col-6 mx-auto">
                                     <div class=" mx-auto clothingLine d-block"></div>
                                 </div>
                             </div>
+                            <h5><?php echo $fname. "'s data" ?></h5>
 
                         </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-</html>
