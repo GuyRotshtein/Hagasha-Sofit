@@ -264,7 +264,7 @@ function tidyArray(array,favColor){
     let favColorExists = 0;
     if (array.length > 1){
         array.forEach(function (arrayItem) {
-            if (parseInt(arrayItem.color_id) == favColor || (typeof(arrayItem.secondary_color_id) !== 'undefined' && parseInt(arrayItem.secondary_color_id))){
+            if (parseInt(arrayItem.color_id) == favColor || (parseInt(arrayItem.secondary_color_id) == favColor)){
                 favColorExists = 1;
             }
         });
@@ -273,7 +273,6 @@ function tidyArray(array,favColor){
                 if ((typeof(array[i].secondary_color_id) !== 'undefined')){
                     if (parseInt(array[i].color_id) != favColor && parseInt(array[i].secondary_color_id) != favColor) array.splice(i, 1);
                 } else {
-                    if (parseInt(array[i].color_id) != favColor) array.splice(i, 1);
                 }
             }
         }
@@ -325,12 +324,14 @@ const getClothes  = async (data)=>{
     slot3Array = tidyArray(slot3Array, result.fav_color[0]);
     slot4Array = tidyArray(slot4Array, result.fav_color[0]);
     slot5Array = tidyArray(slot5Array, result.fav_color[0]);
+    slot6Array = tidyArray(slot6Array, result.fav_color[0]);
 
     if (slot1Array.length>0){selectedClothes.push(pickRandomClothing(slot1Array));}
     if (slot2Array.length>0){selectedClothes.push(pickRandomClothing(slot2Array));}
     if (slot3Array.length>0){selectedClothes.push(pickRandomClothing(slot3Array));}
     if (slot4Array.length>0){selectedClothes.push(pickRandomClothing(slot4Array));}
     if (slot5Array.length>0){selectedClothes.push(pickRandomClothing(slot5Array));}
+    if (slot6Array.length>0){selectedClothes.push(pickRandomClothing(slot6Array));}
 };
 
 async function generateRecommendation(data) {
@@ -341,6 +342,7 @@ async function generateRecommendation(data) {
     const recommendationWindow = document.getElementById('rec_clothes');
     const ulFrg = document.createDocumentFragment();
     selectedClothes.forEach(function (arrayItem) {
+        console.log(arrayItem);
         const card = document.createElement('div');
         card.classList.add('card','bg-transparent','border-0');
         const cardImg = document.createElement('img');
