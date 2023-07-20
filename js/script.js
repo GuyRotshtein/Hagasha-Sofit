@@ -220,11 +220,14 @@ function displayWeather(data){
     weatherRow.appendChild(weatherDescCol);
     cityCol.appendChild(weatherRow);
     ulFrag.appendChild(cityCol);
+    if( $('.homePage').length )
+    {
     document.getElementById('weatherPanel').appendChild(ulFrag);
 
     fetch("./js/includes/categories.json")
         .then(response=> response.json())
         .then(data => generateRecommendation(data));
+    }
 }
 let map;
 function getLocation(callback) {
@@ -243,7 +246,14 @@ function getLocation(callback) {
                 user_position.lat = location.lat;
                 user_position.lng = location.lon;
                 callback(user_position);
-                initMap(user_position);
+                if( $('.homePage').length )
+                {
+                    initMap(user_position).then(response => {
+                    }).catch(e => {
+                        console.log(e);
+                    });
+                }
+                initMap(user_position).then(r => function (){});
             })
         })
     }
@@ -251,10 +261,13 @@ function getLocation(callback) {
 getLocation(function(lat_lng){});
 async function initMap(user_position) {
     const { Map } = await google.maps.importLibrary("maps");
-    map = new Map(document.getElementById("googleMap"), {
-        center: { lat: user_position.lat, lng: user_position.lng },
-        zoom: 12,
-    });
+    if( $('#googleMap').length )
+    {
+        map = new Map(document.getElementById("googleMap"), {
+            center: { lat: user_position.lat, lng: user_position.lng },
+            zoom: 12,
+        });
+    }
 }
 function tidyArray(array,favColor){
     let favColorExists = 0;

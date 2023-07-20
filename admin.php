@@ -42,7 +42,7 @@ $favColor = $row_user['user_fav_color'];
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Clother - Admin Page</title>
 </head>
-<body class="homePage">
+<body>
     <header class="px-2 py-3 sticky-top border-bottom">
         <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
             <div class="col-4">

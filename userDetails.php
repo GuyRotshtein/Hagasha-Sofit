@@ -41,7 +41,6 @@ $favColor = $row_user['user_fav_color'];
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Clother - Home</title>
 </head>
-
 <body class="homePage">
     <header class="p-4 py-3 border-bottom">
         <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
@@ -87,7 +86,6 @@ $favColor = $row_user['user_fav_color'];
                 <div class="flex-shrink-0 dropdown">
                     <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-
                         <img src="<?php echo './uploads/user_pictures/' . $picture; ?>" alt="mdo" width="32" height="32"
                             class="rounded-circle">
                     </button>
@@ -211,11 +209,7 @@ $favColor = $row_user['user_fav_color'];
                                 echo '</ul>';
                                 echo '</div>';
                                 echo '</div>';
-
-
-
                                 echo '</div>';
-
                             }
                             ?>
                             <div class="row">
@@ -247,18 +241,18 @@ $favColor = $row_user['user_fav_color'];
                                 die("DB query failed.");
                             }
                             $row_user = mysqli_fetch_assoc($result_clothes);
-                            
                             $clothes_num = !isset($row_user['num_of_clothes']) ? 0 : $row_user['num_of_clothes'];
                             echo '<ul class="list-unstyled py-3">';
 
                             echo '<li class="py-1">Number of closets: ' . $closet_num . '</li>';
                             echo '<li class="py-1">Number of clothes: ' . $clothes_num . '</li>';
-
                             echo '</ul>';
-
-
-
                             ?>
-
-
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
