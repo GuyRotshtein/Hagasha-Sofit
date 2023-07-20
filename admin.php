@@ -231,7 +231,7 @@ $favColor = $row_user['user_fav_color'];
                                             </div><div>
                                             <form name="userInfoForm" class="userInfoForm" action="userDetails.php" method="POST">
                                                 <input type="hidden" name="is_read" value="' . $id . '">
-                                                <button type="submit" class="btn bg-primary text-right text-hide clothingButton infoButton px-5 mt-1 text-bg-primary desktop-label">Delete User</button>
+                                                <button type="submit" class="btn bg-primary text-right text-hide clothingButton infoButton px-5 mt-1 text-bg-primary desktop-label">User Info</button>
                                                 <button type="submit" class="btn bg-primary px-2 infoButton mobile-label button-mobile"></button>
                                             </form>
                                             </div>
