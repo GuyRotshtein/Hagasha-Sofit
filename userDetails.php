@@ -249,7 +249,8 @@ $favColor = $row_user['user_fav_color'];
                                 die("DB query failed.");
                             }
                             $row_user = mysqli_fetch_assoc($result_clothes);
-                            $clothes_num = $row_user['num_of_clothes'];
+                            
+                            $clothes_num = !isset($row_user['num_of_clothes']) ? 0 : $row_user['num_of_clothes'];
                             echo '<ul class="list-unstyled py-3">';
 
                             echo '<li class="py-1">Number of closets: ' . $closet_num . '</li>';
