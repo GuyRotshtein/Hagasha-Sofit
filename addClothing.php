@@ -317,6 +317,7 @@ if (isset($_POST['is_edit'])){
                                                     echo '<option value="' . $row["color_id"] . '">' . $row["color_name"] . '</option>';
                                                 }
                                             }
+                                            echo '<option value="">no secondary color</option>';
                                         } else {
                                             $query = "SELECT * FROM tbl_222_colors;";
                                             $result = mysqli_query($connection, $query);
@@ -325,7 +326,7 @@ if (isset($_POST['is_edit'])){
                                                 die("DB secondary color query failed.");
                                             }
 
-                                            echo '<option value=0 selected disabled>select secondary color</option>';
+                                            echo '<option value=0 selected>select secondary color</option>';
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                 echo '<option value="'.$row["color_id"].'">'.$row["color_name"].'</option>';
                                             }

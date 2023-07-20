@@ -7,6 +7,7 @@
     <list default="true" id="8754e0d6-43b2-45b3-b725-f3b8fcef56a6" name="Changes" comment="updated Headers with user pictures, logo forwarding to index and user settings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/action.php" beforeDir="false" afterPath="$PROJECT_DIR$/action.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/addClothing.php" beforeDir="false" afterPath="$PROJECT_DIR$/addClothing.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clothing.php" beforeDir="false" afterPath="$PROJECT_DIR$/clothing.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +115,7 @@
       <workItem from="1689706333523" duration="7865000" />
       <workItem from="1689753420811" duration="17757000" />
       <workItem from="1689788253375" duration="12096000" />
-      <workItem from="1689834963767" duration="4378000" />
+      <workItem from="1689834963767" duration="6987000" />
     </task>
     <task id="LOCAL-00001" summary="Updated and header style. Also added gitIgnore file and created file for login page, as well as a config php file.">
       <created>1689409894029</created>

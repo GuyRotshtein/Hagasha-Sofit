@@ -87,7 +87,7 @@ $closet_id = $row['closet_id'];
 </head>
 
 <body>
-<header class="p-4 py-3 border-bottom">
+<header class="px-2 py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
         <div class="col-4">
@@ -102,7 +102,7 @@ $closet_id = $row['closet_id'];
                         <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body">
+                    <div class="offcanvas-body d-flex flex-column justify-content-between">
                         <div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" class="nav-item"><a href="./index.php"
@@ -112,6 +112,19 @@ $closet_id = $row['closet_id'];
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                 </li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col mx-auto">
+                                    <div class=" mx-auto clothingLine d-block"></div>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" class="nav-item"><a href="./userSettings.php"
+                                                                                class="nav-link">User settings</a></li>
+                                <li class="list-group-item" class="nav-item"><a href="logout.php" class="nav-link">Log out</a>
                                 </li>
                             </ul>
                         </div>
@@ -125,7 +138,7 @@ $closet_id = $row['closet_id'];
         </div>
         <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
-            <div class="flex-shrink-0 dropdown">
+            <div class="flex-shrink-0 dropdown desktop-label">
                 <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -186,11 +199,14 @@ $closet_id = $row['closet_id'];
                 <div class="container py-2">
                     <div class="container main-container">
                         <div class="container text-left px-0">
-                            <div class="row">
-                                <div class="col-3 px-3 py-1 desktop-label">
-                                    <h1>Details</h1>
+                            <div class="row d-flex justify-content-between px-3">
+                                <div class="col-3 d-flex py-1">
+                                    <h1 class="desktop-label">Details</h1>
                                 </div>
-                                <div class="col d-flex flex-row-reverse">
+                                <div class="col-6 py-2">
+                                    <h1 class="mobile-label text-center">Details</h1>
+                                </div>
+                                <div class="col-3 d-flex flex-row-reverse">
                                     <?php
                                     echo '<form name="editClothing" class="py-2" action="addClothing.php?closet_id=' . $closet_id . '" method="post">';
                                     echo '<input type="hidden" name="is_edit" value="true">';
@@ -219,21 +235,23 @@ $closet_id = $row['closet_id'];
                         </div>
                         <!--            details           -->
                         <div class="row py-3">
-                            <div class="col-3">
-                                <h6>Item</h6>
+                            <div class="col-3 desktop-label">
+                                <h6>Item's name:</h6>
                             </div>
-                            <div class="col-6 text-center">
+                            <div class="col text-center">
+                                <label class="form-label mobile-label"><h6>Item's name</h6></label>
                                 <?php
                                 echo '<p class="mx-auto">' . $row['clothing_name'] . '</p>';
                                 ?>
                             </div>
-                            <div class="col-3"></div>
+                            <div class="col-3 desktop-label"></div>
                         </div>
-                        <div class="row 3 py-3">
-                            <div class="col-4">
-                                <h6>Colors</h6>
+                        <div class="row py-3">
+                            <div class="col-4 desktop-label">
+                                <h6>Colors:</h6>
                             </div>
-                            <div class="col-4 text-center">
+                            <div class="col-3 mx-auto text-center">
+                                <label class="form-label mobile-label"><h6>Colors</h6></label>
                                 <?php
                                 echo '<div id="clothingColors" class="mx-auto d-inline-flex justify-content-center p-1 bg-body-tertiary rounded-2">';
 
@@ -268,13 +286,14 @@ $closet_id = $row['closet_id'];
                                 echo '</div>'
                                     ?>
                             </div>
-                            <div class="col-4"></div>
+                            <div class="col-4 desktop-label"></div>
                         </div>
                         <div class="row py-3">
-                            <div class="col-3">
-                                <h6>Size</h6>
+                            <div class="col-3 desktop-label">
+                                <h6>Size:</h6>
                             </div>
-                            <div class="col-6 text-center">
+                            <div class="col text-center">
+                                <label class="form-label mobile-label"><h6>Size</h6></label>
                                 <?php
                                 $size = $row['size_id'];
                                 echo '<p class="mx-auto">';
@@ -298,24 +317,26 @@ $closet_id = $row['closet_id'];
                                 echo '</p>';
                                 ?>
                             </div>
-                            <div class="col-3"></div>
+                            <div class="col-3 desktop-label"></div>
                         </div>
                         <div class="row py-3">
-                            <div class="col-3">
-                                <h6>Closet</h6>
+                            <div class="col-3 desktop-label">
+                                <h6>Closet:</h6>
                             </div>
-                            <div class="col-6 text-center">
+                            <div class="col text-center">
+                                <label class="form-label mobile-label"><h6>Closet</h6></label>
                                 <?php
                                 echo '<p class="mx-auto">' . $row['closet_name'] . '</p>';
                                 ?>
                             </div>
-                            <div class="col-3"></div>
+                            <div class="col-3 desktop-label"></div>
                         </div>
                         <div class="row py-3">
-                            <div class="col-3">
-                                <h6>Category</h6>
+                            <div class="col-3 desktop-label">
+                                <h6>Category:</h6>
                             </div>
-                            <div class="col-6 text-center">
+                            <div class="col text-center">
+                                <label class="form-label mobile-label"><h6>Category</h6></label>
                                 <?php
                                 $catId = $row['category_id'];
                                 $catName = $row['category_name'];
@@ -333,7 +354,7 @@ $closet_id = $row['closet_id'];
                                 echo '<p id="clothingCategory" class="mx-auto">' . category($catId, $catName) . '</p>';
                                 ?>
                             </div>
-                            <div class="col-3"></div>
+                            <div class="col-3 desktop-label"></div>
                         </div>
                         <!--            Blue line           -->
                         <div class="row">
