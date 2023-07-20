@@ -81,7 +81,7 @@
     ?>
 </head>
 <body>
-<header class="p-4 py-3 border-bottom">
+<header class="px-2 py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
         <div class="col-4">
@@ -96,7 +96,7 @@
                         <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body">
+                    <div class="offcanvas-body d-flex flex-column justify-content-between">
                         <div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" class="nav-item"><a href="./index.php"
@@ -106,6 +106,24 @@
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                 </li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
+                                </li>
+                                <?php
+                                if ($_SESSION['is_admin']) {
+                                    echo '<li class="list-group-item nav-item"><a href="./admin.php" class="nav-link">Admin panel</a></li>';
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col mx-auto">
+                                    <div class=" mx-auto clothingLine d-block"></div>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" class="nav-item"><a href="./userSettings.php"
+                                                                                class="nav-link">User settings</a></li>
+                                <li class="list-group-item" class="nav-item"><a href="logout.php" class="nav-link">Log out</a>
                                 </li>
                             </ul>
                         </div>
@@ -119,7 +137,7 @@
         </div>
         <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
-            <div class="flex-shrink-0 dropdown">
+            <div class="flex-shrink-0 dropdown desktop-label">
                 <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -170,14 +188,15 @@ if (isset($_POST['is_edit'])){
                 <div class="col">
                     <!--        breadcrumbs         -->
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" class="nav-item"><a href="index.php"
-                                                                        class="nav-link px-3">Home</a></li>
-                        <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link px-3">Closet</a>
-                        </li>
-                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
-                        </li>
-                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Travel</a>
-                        </li>
+                        <li class="list-group-item nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
+                        <li class="list-group-item nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a></li>
+                        <li class="list-group-item nav-item"><a href="#" class="nav-link px-3">Calendar</a></li>
+                        <li class="list-group-item nav-item"><a href="#" class="nav-link px-3">Travel</a></li>
+                        <?php
+                        if ($_SESSION['is_admin']) {
+                            echo '<li class="list-group-item nav-item"><a href="admin.php" class="nav-link px-3">Admin panel</a></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>

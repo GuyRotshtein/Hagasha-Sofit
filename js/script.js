@@ -165,18 +165,24 @@ function displayWeather(data){
     const temperature = Math.round(parseFloat(data.main.temp)).toString();
     const ulFrag = document.createDocumentFragment();
     const cityCol = document.createElement('div');
-    cityCol.classList.add('col','pt-3');
-    const cityRow = document.createElement('div');
-    cityRow.classList.add('row')
+    cityCol.classList.add('pt-3','px-3','d-inline-box');
+    const cityRow = document.createElement('label');
+    cityRow.classList.add('row','d-flex')
     const city = document.createElement('h2');
+    city.classList.add('d-inline','desktop-label');
     city.innerHTML = data.name;
     cityRow.appendChild(city);
+    const cityMobile = document.createElement('h2');
+    cityMobile.classList.add('d-inline','text-center','mobile-label');
+    cityMobile.innerHTML = data.name;
+    cityRow.appendChild(cityMobile);
     cityCol.appendChild(cityRow);
 
+
     const weatherRow = document.createElement('div');
-    weatherRow.classList.add('row');
+    weatherRow.classList.add('row','d-flex','justify-content-center');
     const imageCol = document.createElement('div');
-    imageCol.classList.add('col-4','d-flex','justify-content-center','pe-0')
+    imageCol.classList.add('col-4','d-flex','justify-content-center','pe-4')
     const weatherIcon = document.createElement('img');
     weatherIcon.src = `https://openweathermap.org/img/wn/`+ data.weather[0].icon +`@2x.png`;
     weatherIcon.setAttribute('id','weatherImage');
@@ -185,7 +191,7 @@ function displayWeather(data){
     imageCol.appendChild(weatherIcon);
     weatherRow.appendChild(imageCol);
     const weatherDescCol = document.createElement('div');
-    weatherDescCol.classList.add('col-8','d-flex','flex-column','justify-content-center','ps-0');
+    weatherDescCol.classList.add('col-4','d-flex','flex-column','justify-content-center','ps-0');
     const temperatureCol = document.createElement('div');
     temperatureCol.classList.add('col','d-flex','align-items-end')
     const temperatureText = document.createElement('h2');
@@ -198,9 +204,9 @@ function displayWeather(data){
     weatherDescCol.appendChild(temperatureCol);
 
     const detailsCol = document.createElement('div');
-    detailsCol.classList.add('col');
+    detailsCol.classList.add('col','d-flex');
     const weatherDetails = document.createElement('h5');
-    weatherDetails.classList.add('text-secondary');
+    weatherDetails.classList.add('text-secondary','d-inline');
 
     let date = new Date;
     let hour = date.getHours();
@@ -470,7 +476,3 @@ function insertJSONdata(data){
 fetch("./js/includes/categories.json")
     .then(response => response.json())
     .then(data => insertJSONdata(data));
-
-window.onload=()=>{
-
-}

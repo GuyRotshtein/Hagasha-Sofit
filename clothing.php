@@ -87,7 +87,7 @@ $closet_id = $row['closet_id'];
 </head>
 
 <body>
-<header class="px-2 py-3 border-bottom">
+<header class="px-2 py-3 sticky-top border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
         <div class="col-4">
@@ -113,6 +113,11 @@ $closet_id = $row['closet_id'];
                                 </li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
                                 </li>
+                                <?php
+                                if ($_SESSION['is_admin']) {
+                                    echo '<li class="list-group-item nav-item"><a href="./admin.php" class="nav-link">Admin panel</a></li>';
+                                }
+                                ?>
                             </ul>
                         </div>
                         <div>
@@ -182,14 +187,15 @@ $closet_id = $row['closet_id'];
                 <div class="col">
                     <!--        breadcrumbs         -->
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" class="nav-item"><a href="index.php"
-                                class="nav-link px-3">Home</a></li>
-                        <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link px-3">Closet</a>
-                        </li>
-                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
-                        </li>
-                        <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Travel</a>
-                        </li>
+                        <li class="list-group-item nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
+                        <li class="list-group-item nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a></li>
+                        <li class="list-group-item nav-item"><a href="#" class="nav-link px-3">Calendar</a></li>
+                        <li class="list-group-item nav-item"><a href="#" class="nav-link px-3">Travel</a></li>
+                        <?php
+                        if ($_SESSION['is_admin']) {
+                            echo '<li class="list-group-item nav-item"><a href="admin.php" class="nav-link px-3">Admin panel</a></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>

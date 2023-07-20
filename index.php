@@ -42,68 +42,89 @@ $favColor = $row_user['user_fav_color'];
 </head>
 
 <body class="homePage">
-    <header class="p-4 py-3 border-bottom">
-        <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-            <!--    Hamburger menu-->
-            <div class="col-4">
-                <div class="mb-2 mb-md-0 header-hamburger">
-                    <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
+<header class="px-2 py-3 sticky-top border-bottom">
+    <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
+        <!--    Hamburger menu-->
+        <div class="col-4">
+            <div class="mb-2 mb-md-0 header-hamburger">
+                <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
                         aria-controls="Hamburger">
-                        <img src="./images/icons/hamburger.png" height="40" width="40">
-                    </button>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger"
-                        aria-labelledby="HamburgerLabel">
-                        <!--        hamburger contents-->
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item" class="nav-item"><a href="./index.php"
-                                            class="nav-link">Home</a></li>
-                                    <li class="list-group-item" class="nav-item"><a href="closetList.php"
-                                            class="nav-link">Closets</a>
-                                    </li>
-                                    <li class="list-group-item" class="nav-item"><a href="#"
-                                            class="nav-link">Calendar</a>
-                                    </li>
-                                    <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
-                                    </li>
+                    <img src="./images/icons/hamburger.png" height="40" width="40">
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger" aria-labelledby="HamburgerLabel">
+                    <!--        hamburger contents-->
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body d-flex flex-column justify-content-between">
+                        <div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" class="nav-item"><a href="./index.php"
+                                                                                class="nav-link">Home</a></li>
+                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link">Closets</a>
+                                </li>
+                                <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
+                                </li>
+                                <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
+                                </li>
+                                <?php
+                                $query_admin = "SELECT is_admin FROM tbl_222_users WHERE user_id = $uid;";
+                                $result_admin = mysqli_query($connection, $query_admin);
 
-                                </ul>
+                                if (!$result_admin) {
+                                    die("DB query failed.");
+                                }
+                                $row_admin = mysqli_fetch_assoc($result_admin);
+                                $_SESSION['is_admin'] = $row_admin['is_admin'];
+                                $admin = $row_admin['is_admin'];
+                                if ($_SESSION['is_admin']) {
+                                    echo '<li class="list-group-item nav-item"><a href="./admin.php" class="nav-link">Admin panel</a></li>';
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col mx-auto">
+                                    <div class=" mx-auto clothingLine d-block"></div>
+                                </div>
                             </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" class="nav-item"><a href="./userSettings.php"
+                                                                                class="nav-link">User settings</a></li>
+                                <li class="list-group-item" class="nav-item"><a href="logout.php" class="nav-link">Log out</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--    logo      -->
-            <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
-                <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
-            </div>
-            <!--    User panel    -->
-            <div class="col-4 d-flex justify-content-end text-end header-user-menu">
-                <div class="flex-shrink-0 dropdown">
-                    <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
+        </div>
+        <!--    logo      -->
+        <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
+            <a class="clother-logo" href="./index.php"> <img src="./images/icons/new_logo.png"></a>
+        </div>
+        <!--    User panel    -->
+        <div class="col-4 d-flex justify-content-end text-end header-user-menu">
+            <div class="flex-shrink-0 dropdown desktop-label">
+                <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
 
-                        <img src="<?php echo './uploads/user_pictures/' . $picture; ?>" alt="mdo" width="32" height="32"
-                            class="rounded-circle">
-                    </button>
-                    <ul class="dropdown-menu text-small shadow dropdown-menu-end">
-                        <li><a class="dropdown-item" href="./userSettings.php">Settings</a></li>
-                        <li><a class="dropdown-item" href="./userSettings.php">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
-                    </ul>
-                </div>
+                    <img src="<?php echo'./uploads/user_pictures/'.$picture;?>" alt="mdo" width="32" height="32" class="rounded-circle">
+                </button>
+                <ul class="dropdown-menu text-small shadow dropdown-menu-end">
+                    <li><a class="dropdown-item" href="./userSettings.php">Settings</a></li>
+                    <li><a class="dropdown-item" href="./userSettings.php">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
+                </ul>
             </div>
         </div>
-    </header>
+    </div>
+</header>
     <main>
         <div class="row">
             <div class="col-3 py-2 border-end border-primary-subtle border-3 desktop-menu">
@@ -122,26 +143,13 @@ $favColor = $row_user['user_fav_color'];
                     <div class="col">
                         <!--        breadcrumbs         -->
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" class="nav-item"><a href="./index.php"
-                                    class="nav-link px-3">Home</a></li>
-                            <li class="list-group-item" class="nav-item"><a href="./closetList.php"
-                                    class="nav-link px-3">Closet</a>
-                            </li>
-                            <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
-                            </li>
-                            <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Travel</a>
-                            </li>
+                            <li class="list-group-item nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
+                            <li class="list-group-item nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a></li>
+                            <li class="list-group-item nav-item"><a href="#" class="nav-link px-3">Calendar</a></li>
+                            <li class="list-group-item nav-item"><a href="#" class="nav-link px-3">Travel</a></li>
                             <?php
-                            $query_admin = "SELECT is_admin FROM tbl_222_users WHERE user_id = $uid;";
-                            $result_admin = mysqli_query($connection, $query_admin);
-
-                            if (!$result_admin) {
-                                die("DB query failed.");
-                            }
-                            $row_admin = mysqli_fetch_assoc($result_admin);
-                            $admin = $row_admin['is_admin'];
-                            if ($admin) {
-                                echo '<li class="list-group-item" class="nav-item"><a href="admin.php" class="nav-link ps-3">Admin panel</a></li>';
+                            if ($_SESSION['is_admin']) {
+                                echo '<li class="list-group-item nav-item"><a href="admin.php" class="nav-link px-3">Admin panel</a></li>';
                             }
                             ?>
                         </ul>
@@ -155,19 +163,23 @@ $favColor = $row_user['user_fav_color'];
                             <div class="container text-left px-0">
                                 <div class="row">
                                     <!--                                Search bar - use AJAX? dunno :)-->
-                                    <div class="col-3 py-1">
+                                    <div class="col text-center mobile-label py-1">
                                         <h1>Details</h1>
                                     </div>
-                                    <div class="col-9 d-flex flex-row-reverse"></div>
+                                    <div class="col-3 desktop-label py-1">
+                                        <h1>Details</h1>
+                                    </div>
+                                    <div class="col-9 desktop-label"></div>
                                 </div>
                             </div>
 
                             <!--            Recommendations           -->
                             <div class="row">
-                                <h5>Recommendations</h5>
+                                <h5 class="desktop-label pt-2">Recommendations</h5>
+                                <h5 class="mobile-label text-center pt-2">Recommendations</h5>
                                 <div class="col d-inline-flex">
                                     <div id="rec_clothes"
-                                        class="card-group d-flex flex-wrap p-2 bg-light-subtle gap-1 border-3 mx-auto">
+                                        class="card-group d-flex flex-wrap p-2 bg-light-subtle gap-1 border-3 mx-auto justify-content-center">
                                         <div class="card text-bg-transparent border-0 bg-light-">
                                             <img src="uploads/clothing/default.png"
                                                 class="card-img card-img-main object-fit-contain placeholder placeholder-glow"
@@ -202,23 +214,25 @@ $favColor = $row_user['user_fav_color'];
                                 </div>
                             </div>
                             <!--                        Map & Weather-->
-                            <div class="row justify-content-center pb-3 pt-5">
-                                <div class="col-6">
+                            <div id="weatherData" class="row d-flex flex-wrap justify-content-between pb-3 pt-5">
+                                <div class="weatherCol col-6 mx-auto">
                                     <div class="row">
-                                        <h4>Map</h4>
+                                        <h4 class="desktop-label">Map</h4>
+                                        <label class="mobile-label text-center pb-1"><h4>Map</h4></label>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-10">
-                                            <div id="googleMap" class="rounded-3"></div>
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-center">
+                                            <div id="googleMap" class="d-inline-flex rounded-3"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="weatherCol col-6 mx-auto">
                                     <div class="row">
-                                        <h4>Weather</h4>
+                                        <h4 class="desktop-label">Weather</h4>
+                                        <label class=" mobile-label text-center pb-1 pt-5"><h4>Weather</h4></label>
                                     </div>
-                                    <div class="d-flex flex-wrap align-content-start justify-content-start"
-                                        id="weatherPanel">
+                                    <div class="d-flex flex-wrap align-items-center bg-light-subtle rounded-3 justify-content-center"
+                                         id="weatherPanel">
                                     </div>
                                 </div>
                             </div>

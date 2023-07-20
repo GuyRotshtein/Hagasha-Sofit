@@ -99,7 +99,6 @@ header-container{
 #add-clothing {
     position: fixed;
     bottom: 10px;
-    left: 50%;
     transform: translateX(-50%);
 }
 #add-clothing a{
@@ -123,9 +122,7 @@ header-container{
     color: #5C90DF;
     transition: 0.15s;
 }
-#googleMap{
-    height: 400px;
-}
+
 #weatherImage{
     display: inline-block;
     width: auto;
@@ -162,22 +159,60 @@ header-container{
     .desktop-label{
         display: none;
     }
+    .weatherCol{
+        width: 100vw;
+    }
+    #googleMap{
+        height: 50vh;
+        width: 50vh;
+        /*max-height: 250px;*/
+        /*max-width: 250px;*/
+    }
+    #add-clothing{
+        left: 50vw;
+    }
 }
-@media only screen and (min-width: 901px){
+@media only screen and (min-width: 901px) and (max-width: 1439px){
     .header-hamburger{
         display: none;
     }
     .desktop-menu{
         height: auto;
-        overflow-y: hidden;
-    }
-    #rec_clothes .card, #rec_clothes .card .card-img{
 
     }
     #contentArea{
         max-height: 90vh;
     }
+    #googleMap{
+        min-height: 300px;
+        min-width: 300px;
+    }
     .mobile-label{
         display: none;
+    }
+    #add-clothing{
+        left: 62.3333334vw;
+    }
+}
+@media only screen and (min-width: 1440px){
+    .header-hamburger{
+        display: none;
+    }
+    .desktop-menu{
+        height: auto;
+    }
+    #contentArea{
+        max-height: 90vh;
+    }
+    #googleMap{
+        height: 400px;
+        min-width: 400px;
+        max-width: 30vw;
+    }
+    .mobile-label{
+        display: none;
+    }
+    #add-clothing{
+        left: 62.3333334vw;
     }
 }

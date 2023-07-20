@@ -43,7 +43,7 @@ $favColor = $row_user['user_fav_color'];
 </head>
 
 <body>
-<header class="p-4 py-3 border-bottom">
+<header class="px-2 py-3 sticky-top border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
         <div class="col-4">
@@ -58,7 +58,7 @@ $favColor = $row_user['user_fav_color'];
                         <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body">
+                    <div class="offcanvas-body d-flex flex-column justify-content-between">
                         <div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" class="nav-item"><a href="./index.php"
@@ -68,6 +68,24 @@ $favColor = $row_user['user_fav_color'];
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Calendar</a>
                                 </li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
+                                </li>
+                                <?php
+                                if ($_SESSION['is_admin']) {
+                                    echo '<li class="list-group-item nav-item"><a href="./admin.php" class="nav-link">Admin panel</a></li>';
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col mx-auto">
+                                    <div class=" mx-auto clothingLine d-block"></div>
+                                </div>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" class="nav-item"><a href="./userSettings.php"
+                                                                                class="nav-link">User settings</a></li>
+                                <li class="list-group-item" class="nav-item"><a href="logout.php" class="nav-link">Log out</a>
                                 </li>
                             </ul>
                         </div>
@@ -81,7 +99,7 @@ $favColor = $row_user['user_fav_color'];
         </div>
         <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
-            <div class="flex-shrink-0 dropdown">
+            <div class="flex-shrink-0 dropdown desktop-label">
                 <button class=" btn d-block link-dark text-decoration-none dropdown-toggle" type="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -119,15 +137,15 @@ $favColor = $row_user['user_fav_color'];
                     <div class="col">
                         <!--        breadcrumbs         -->
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item" class="nav-item"><a href="./index.php"
-                                    class="nav-link px-3">Home</a></li>
-                            <li class="list-group-item" class="nav-item"><a href="./closetList.php"
-                                    class="nav-link px-3">Closet</a>
-                            </li>
-                            <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
-                            </li>
-                            <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Travel</a>
-                            </li>
+                            <li class="list-group-item nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
+                            <li class="list-group-item nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a></li>
+                            <li class="list-group-item nav-item"><a href="#" class="nav-link px-3">Calendar</a></li>
+                            <li class="list-group-item nav-item"><a href="#" class="nav-link px-3">Travel</a></li>
+                            <?php
+                            if ($_SESSION['is_admin']) {
+                                echo '<li class="list-group-item nav-item"><a href="admin.php" class="nav-link px-3">Admin panel</a></li>';
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -138,8 +156,11 @@ $favColor = $row_user['user_fav_color'];
                         <div class="container main-container px-3">
                             <div class="container text-left px-0">
                                 <div class="row">
-                                    <div class="col-3 px-3 py-1">
-                                        <h1>Closets</h1>
+                                    <div class="col d-inline flex px-3 py-1">
+                                        <h1 class="desktop-label">Closets</h1>
+                                        <h1 class="mobile-label text-center">Closets</h1>
+                                    </div>
+                                    <div class="col-9 desktop-label px-3 py-1">
                                     </div>
                                 </div>
                             </div>
@@ -203,7 +224,8 @@ $favColor = $row_user['user_fav_color'];
                                         echo '<div class="row px-2 pb-4 closet-preview">';
                                         echo '<a href="closet.php?closet_id=' . $row["closet_id"] . '">';
 
-                                        echo '<h2 class="d-inline-flex mx-auto">' . $row["closet_name"].'</h2>';
+                                        echo '<h2 class="desktop-label mx-auto">' . $row["closet_name"].'</h2>';
+                                        echo '<h2 class="mobile-label text-center">' . $row["closet_name"].'</h2>';
                                         echo '<div class="card-group d-flex flex-wrap justify-content-start" >';
                                         $lastCloset = $currentCloset;
                                         $count = 0;

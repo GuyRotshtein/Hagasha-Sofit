@@ -65,7 +65,7 @@ if (isset($_POST['is_edit'])){
     echo '<span class="d-none" id="regSwitch">false</span>';
 }
 ?>
-<header class="p-4 py-3 border-bottom">
+<header class="p-4 py-3 sticky-top border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
         <!--    Hamburger menu-->
         <div class="col-4">
@@ -151,15 +151,16 @@ if (isset($_POST['is_edit'])){
                         <div class="col">
                             <!--        breadcrumbs         -->
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item" class="nav-item"><a href="index.php"
-                                                                                class="nav-link px-3">Home</a></li>
-                                <li class="list-group-item" class="nav-item"><a href="closetList.php" class="nav-link px-3">Closet</a>
-                                </li>
-                                <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Calendar</a>
-                                </li>
-                                <li class="list-group-item" class="nav-item"><a href="#" class="nav-link px-3">Travel</a>
-                                </li>
-                            </ul>
+                            <li class="list-group-item nav-item"><a href="./index.php" class="nav-link px-3">Home</a></li>
+                            <li class="list-group-item nav-item"><a href="./closetList.php" class="nav-link px-3">Closet</a></li>
+                            <li class="list-group-item nav-item"><a href="#" class="nav-link px-3">Calendar</a></li>
+                            <li class="list-group-item nav-item"><a href="#" class="nav-link px-3">Travel</a></li>
+                            ';
+                            if ($_SESSION['is_admin']) {
+                                echo '<li class="list-group-item" class="nav-item"><a href="admin.php" class="nav-link ps-3">Admin panel</a></li>';
+                            }
+                            echo '
+                        </ul>
                         </div>
                     </div>
                 </div>';
