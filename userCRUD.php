@@ -12,7 +12,6 @@ if (!isset($_POST['is_remove']) ) {
     $country = mysqli_real_escape_string($connection, $_POST['userCountry']);
     $favColor = mysqli_real_escape_string($connection, $_POST['userColor']);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +24,8 @@ if (!isset($_POST['is_remove']) ) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
     <script src="./js/script.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +44,6 @@ if (!isset($_POST['is_remove']) ) {
 <body>
 <header class="px-2 sticky-top py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-        <!--    Hamburger menu-->
         <div class="col-4">
             <?php
             if (isset($_SESSION["user"]) && !isset($_POST['is_remove'])) {

@@ -228,25 +228,24 @@ function displayWeather(data){
 }
 let map;
 function getLocation(callback) {
-    if (document.getElementsByClassName('homePage') !== null){
-        if (navigator.geolocation ) {
-            const lat_lng = navigator.geolocation.getCurrentPosition(function (position) {
+    if (document.getElementsByClassName('homePage') !== null) {
+        const getIP = 'http://ip-api.com/json/';
+        const openWeatherMap = 'http://api.openweathermap.org/data/2.5/weather';
+        $.getJSON(getIP).done(function (location) {
+            $.getJSON(openWeatherMap, {
+                lat: location.lat,
+                lon: location.lon,
+                units: 'metric',
+                appid: '14d415b6653f524f309d8d3300b0e89e'
+            }).done(function (weather) {
+                displayWeather(weather);
                 const user_position = {};
-                user_position.lat = position.coords.latitude;
-                user_position.lng = position.coords.longitude;
+                user_position.lat = location.lat;
+                user_position.lng = location.lon;
                 callback(user_position);
-                if (document.getElementById('googleMap') !== null){
-                fetch("https://api.openweathermap.org/data/2.5/weather?lat="+ user_position.lat+"&lon="+user_position.lng+"&units=metric&appid=14d415b6653f524f309d8d3300b0e89e",{})
-                    .then(response => response.json())
-                    .then(data => displayWeather(data))
-                    .catch(error => console.log('error', error));
-
                 initMap(user_position);
-                }
-            },function error(msg) {alert('Please enable your GPS position feature.');},{ enableHighAccuracy: true, timeout: 10 * 1000 * 1000, maximumAge: 0 });
-        } else {
-            alert("Geolocation is not supported by this browser.");
-        }
+            })
+        })
     }
 }
 getLocation(function(lat_lng){});
@@ -342,7 +341,6 @@ async function generateRecommendation(data) {
     const recommendationWindow = document.getElementById('rec_clothes');
     const ulFrg = document.createDocumentFragment();
     selectedClothes.forEach(function (arrayItem) {
-        console.log(arrayItem);
         const card = document.createElement('div');
         card.classList.add('card','bg-transparent','border-0');
         const cardImg = document.createElement('img');

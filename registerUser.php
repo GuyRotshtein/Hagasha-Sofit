@@ -44,6 +44,7 @@ if (isset($_POST['is_edit'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="./js/script.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,7 +68,6 @@ if (isset($_POST['is_edit'])){
 ?>
 <header class="px-2 sticky-top py-3 border-bottom">
     <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-        <!--    Hamburger menu-->
         <div class="col-4">
             <?php
                 if (isset($_SESSION["user"])) {
@@ -93,11 +93,9 @@ if (isset($_POST['is_edit'])){
                                 </li>
                                 <li class="list-group-item" class="nav-item"><a href="#" class="nav-link">Travel</a>
                                 </li>';
-
                                 if ($_SESSION['is_admin']) {
                                     echo '<li class="list-group-item nav-item"><a href="./admin.php" class="nav-link">Admin panel</a></li>';
                                 }
-
                     echo '      </ul>
                         </div>
                         <div>
@@ -119,11 +117,9 @@ if (isset($_POST['is_edit'])){
                 }
             ?>
         </div>
-        <!--    logo      -->
         <div class="col-4 d-flex col-md-auto mb-2 justify-content-center mb-md-0 header-logo">
             <a class="clother-logo" href="<?php echo (isset($_POST['is_edit']))?'./index.php':'./login.php';?>"> <img src="./images/icons/new_logo.png"></a>
         </div>
-        <!--    User panel    -->
         <div class="col-4 d-flex justify-content-end text-end header-user-menu">
             <?php
                 if (isset($_SESSION["user"])) {
@@ -205,7 +201,6 @@ if (isset($_POST['is_edit'])){
                                 </div>
                             </div>
                         </div>
-                        <!--                User image          -->
                         <div class="row pb-3">
                             <div class="col-4 desktop-label"></div>
                             <div class="col mx-auto">
@@ -244,13 +239,11 @@ if (isset($_POST['is_edit'])){
                             }
                             ?>
                             <input type="hidden" name="userPicture" id="userPicture" value="<?php echo (isset($_POST['is_edit']))?$picture:'';?>" form="registerForm">
-                            <!--            Blue line           -->
                             <div class="row">
                                 <div class="col-6 mx-auto">
                                     <div class=" mx-auto clothingLine d-block"></div>
                                 </div>
                             </div>
-                            <!--            details           -->
                             <div class="row pt-3">
                                 <div class="col-3 desktop-label">
                                 </div>
@@ -438,7 +431,6 @@ if (isset($_POST['is_edit'])){
                                 </div>
                                 <div class="col-4 desktop-label"></div>
                             </div>
-                            <!--            Blue line           -->
                             <div class="row py-4">
                                 <div class="col-6 mx-auto">
                                     <div class=" mx-auto clothingLine d-block"></div>
@@ -449,7 +441,6 @@ if (isset($_POST['is_edit'])){
                             </div>
                             <div class="row py-4">
                                 <div class="col-3 mx-auto d-flex justify-content-center">
-<!--                                    ADD RESPONSIVITY HERE!!!!-->
                                     <input type="submit" name="submit" form="registerForm" class="btn btn-success mx-2" value="<?php echo (isset($_POST['is_edit']))?'Update user':'Register user';?>">
                                     <?php
                                     if (isset($_POST['is_edit'])) {

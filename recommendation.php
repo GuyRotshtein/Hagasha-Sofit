@@ -5,7 +5,6 @@ include "config.php";
 
 $favColor = 0;
 $uid = $_SESSION['user_id'];
-//$uid = 1;
 $query = "SELECT 
                             user_fav_color
                         FROM
@@ -22,8 +21,6 @@ while($row = mysqli_fetch_assoc($result)) {
     $favColor = $row["user_fav_color"];
 }
 mysqli_free_result($result);
-
-// getting all clothes data. filtering later, so we get all clothes now and filter ones w/ no favorite color later - so each clothing items is represented
 
 $query = "SELECT 
                             clo.clothing_id,
@@ -49,7 +46,6 @@ $result = mysqli_query($connection, $query);
 if(!$result) {
     die("DB clothing query failed.");
 }
-//echo 'number of results: '. mysqli_num_rows($result).'<br>';
 $clothes = array();
 while($row = mysqli_fetch_assoc($result)) {
     $clothes[] = $row;

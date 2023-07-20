@@ -21,7 +21,6 @@ $picture = $row_user['user_picture'];
 $gender = $row_user['gender'];
 $country = $row_user['user_country'];
 $favColor = $row_user['user_fav_color'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +33,7 @@ $favColor = $row_user['user_fav_color'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="./js/script.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,6 @@ $favColor = $row_user['user_fav_color'];
 <body class="homePage">
     <header class="p-4 py-3 border-bottom">
         <div class="d-flex align-items-center justify-content-center justify-content-md-between ">
-            <!--    Hamburger menu-->
             <div class="col-4">
                 <div class="mb-2 mb-md-0 header-hamburger">
                     <button class="btn " type="button" data-bs-toggle="offcanvas" data-bs-target="#Hamburger"
@@ -54,7 +53,6 @@ $favColor = $row_user['user_fav_color'];
                     </button>
                     <div class="offcanvas offcanvas-start" tabindex="-1" id="Hamburger"
                         aria-labelledby="HamburgerLabel">
-                        <!--        hamburger contents-->
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="HamburgerLabel">CLOTHER</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
