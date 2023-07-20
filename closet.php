@@ -120,11 +120,11 @@ $favColor = $row_user['user_fav_color'];
                             tbl_222_closets cls
                                 INNER JOIN
                             tbl_222_users USING (user_id)
-                                INNER JOIN
+                                LEFT JOIN
                             tbl_222_closet_clothes USING (closet_id)
-                                INNER JOIN
+                                LEFT JOIN
                             tbl_222_clothes clo USING (clothing_id)
-                                INNER JOIN
+                                LEFT JOIN
                             tbl_222_category cat USING (category_id)
                         WHERE
                             user_id = $uid and closet_id = $cid
@@ -136,8 +136,12 @@ $favColor = $row_user['user_fav_color'];
     }
     $row = mysqli_fetch_assoc($result);
     $clothing_id = $cid;
-    $closet_id = $row['closet_id'];
-    $closet_name = $row['closet_name'];
+    if (isset($row['closet_id'])){
+        $closet_id = $row['closet_id'];
+    }
+    if (isset($row['closet_name'])){
+        $closet_name = $row['closet_name'];
+    }
     ?>
     <div class="row">
       <div class="col-3 py-2 border-end border-primary-subtle border-3 desktop-menu">
@@ -182,8 +186,7 @@ $favColor = $row_user['user_fav_color'];
                 <div class="row">
                   <div class="col">
                     <?php
-                    $row = mysqli_fetch_assoc($result);
-                    echo '<h1>' . $row['closet_name'] . '</h1>';
+                    echo '<h1>' . $closet_name . '</h1>';
                     mysqli_data_seek($result, 0);
 
                     ?>

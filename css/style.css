@@ -64,13 +64,14 @@ header-container{
 
 .removeItemBtn {
     background-image: url('../images/icons/delete.png');
-    background-position: 15% 50%;
+    background-position: left;;
     background-size: 20px;
     width: 220px;
     font-weight: bold;
 }
 .removeItemBtnDanger{
     background-image: url('../images/icons/delete_light.png');!important;
+    background-position: 15% 50%;!important;
 }
 .editBtn {
     background-image: url('../images/icons/edit.png');
