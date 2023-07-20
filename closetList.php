@@ -161,11 +161,11 @@ $favColor = $row_user['user_fav_color'];
                             clo.clothing_picture
                         FROM
                             tbl_222_closets cls
-                                INNER JOIN
+                                RIGHT JOIN
                             tbl_222_users USING (user_id)
-                                INNER JOIN
+                                LEFT JOIN
                             tbl_222_closet_clothes USING (closet_id)
-                                INNER JOIN
+                                LEFT JOIN
                             tbl_222_clothes clo USING (clothing_id)
                         WHERE
                             user_id = $uid
@@ -181,7 +181,6 @@ $favColor = $row_user['user_fav_color'];
                             $count = 0;
                             while ($row = mysqli_fetch_assoc($result)) {
                                 $currentCloset = $row['closet_id'];
-
                                 if ($currentCloset == $lastCloset && $count < 5) {
                                     // add item. set currentCloset as lastCloset
                                     echo '<div class="card text-bg-transparent bg-transparent border-0 rounded-3">';
@@ -191,17 +190,29 @@ $favColor = $row_user['user_fav_color'];
                                 } else {
                                     if ($closed == 0) {
                                         echo '</div></a></div>';
+                                        echo '<div class="row">
+                                                <div class="col-6 mx-auto">
+                                                    <div class=" mx-auto clothingLine d-block"></div>
+                                                </div>
+                                            </div>';
                                         $closed = 1;
                                     }
 
                                     if ($currentCloset != $lastCloset) {
+
                                         echo '<div class="row px-2 pb-4 closet-preview">';
                                         echo '<a href="closet.php?closet_id=' . $row["closet_id"] . '">';
-                                        echo '<h2>' . $row["closet_name"] . '</h2>';
+
+                                        echo '<h2 class="d-inline-flex mx-auto">' . $row["closet_name"].'</h2>';
                                         echo '<div class="card-group d-flex flex-wrap justify-content-start" >';
                                         $lastCloset = $currentCloset;
                                         $count = 0;
                                         $closed = 0;
+                                    }
+                                    if (!isset($row['clothing_id'])){
+                                        echo '<div class="card-list-empty d-inline-flex flex-column mx-auto justify-content-center bg-light-subtle rounded-3 px-5"><p class="d-block fs-5 text-body-secondary text-center">it seems there are no clothes in the '.$row['closet_name'].' closet...<br>Maybe you can add some?</p></div>';
+                                        echo '</div></a></div>';
+                                        $closed = 1;
                                     }
                                     //                                close closet group, and continue running. if closet id changes, create a new group, set counter to 0, give it a name and insert the clothing from this row.
                                 }
@@ -211,7 +222,6 @@ $favColor = $row_user['user_fav_color'];
                             echo '<div class="row">
                                 <div id="add-clothing" class="col-12 mx-auto d-flex justify-content-center">
                                 <a href="addCloset.php?user_id=' . $uid . '" class="img btn mx-auto p-0 clothingButton" role="button"></a></div></div>';
-
 
                             mysqli_free_result($result);
                             ?>

@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8754e0d6-43b2-45b3-b725-f3b8fcef56a6" name="Changes" comment="Implemented updating of existing clothes, altered the addClothing page to include secondary colors, as well as fixes">
+    <list default="true" id="8754e0d6-43b2-45b3-b725-f3b8fcef56a6" name="Changes" comment="updated Headers with user pictures, logo forwarding to index and user settings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addCloset.php" beforeDir="false" afterPath="$PROJECT_DIR$/addCloset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addClothing.php" beforeDir="false" afterPath="$PROJECT_DIR$/addClothing.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/closet.php" beforeDir="false" afterPath="$PROJECT_DIR$/closet.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/closetList.php" beforeDir="false" afterPath="$PROJECT_DIR$/closetList.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clothing.php" beforeDir="false" afterPath="$PROJECT_DIR$/clothing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/userActionTaken.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +115,7 @@
       <workItem from="1689706333523" duration="7865000" />
       <workItem from="1689753420811" duration="17757000" />
       <workItem from="1689788253375" duration="12096000" />
-      <workItem from="1689834963767" duration="756000" />
+      <workItem from="1689834963767" duration="2565000" />
     </task>
     <task id="LOCAL-00001" summary="Updated and header style. Also added gitIgnore file and created file for login page, as well as a config php file.">
       <created>1689409894029</created>
@@ -163,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689780287633</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="updated Headers with user pictures, logo forwarding to index and user settings">
+      <created>1689835781047</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1689835781047</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +190,8 @@
     <MESSAGE value="Added clothing removal code and pages" />
     <MESSAGE value="updated edit button to work" />
     <MESSAGE value="Implemented updating of existing clothes, altered the addClothing page to include secondary colors, as well as fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented updating of existing clothes, altered the addClothing page to include secondary colors, as well as fixes" />
+    <MESSAGE value="updated Headers with user pictures, logo forwarding to index and user settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated Headers with user pictures, logo forwarding to index and user settings" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

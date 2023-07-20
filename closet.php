@@ -153,7 +153,7 @@ $favColor = $row_user['user_fav_color'];
                     href="./closetList.php">Closets</a></li>
                 <?php
                 $row = mysqli_fetch_assoc($result);
-                echo '<li class="breadcrumb-item active" aria-current="page">' . $row['closet_name'] . '</li>'
+                echo '<li class="breadcrumb-item active" aria-current="page">' . $closet_name . '</li>'
                   ?>
               </ol>
             </nav>
