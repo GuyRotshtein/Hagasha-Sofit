@@ -141,7 +141,7 @@ $favColor = $row_user['user_fav_color'];
                             $row_admin = mysqli_fetch_assoc($result_admin);
                             $admin = $row_admin['is_admin'];
                             if ($admin) {
-                                echo '<li class="list-group-item" class="nav-item"><a href="#" class="nav-link ps-3">Admin panel</a></li>';
+                                echo '<li class="list-group-item" class="nav-item"><a href="admin.php" class="nav-link ps-3">Admin panel</a></li>';
                             }
                             ?>
                         </ul>
